@@ -326,8 +326,6 @@ footer.site .foot a{color:rgba(245,241,232,.75)} footer.site .foot a:hover{color
 .ticker{display:flex;gap:10px;align-items:center;margin-top:16px;background:var(--surface2);border:1px dashed var(--line2);border-radius:6px;padding:9px 13px;font-family:var(--mono);font-size:13.5px;max-width:640px;color:var(--ink2)}
 .ticker .dot{width:8px;height:8px;border-radius:50%;background:var(--green);flex:none;animation:pulseDot 1.6s ease-in-out infinite}
 .ticker .live{font-weight:700;color:var(--accent);letter-spacing:.05em;font-size:11.5px;flex:none}
-#tickTxt{transition:opacity .3s ease}
-#tickTxt.fade{opacity:0}
 /* live playground */
 .playground{background:var(--surface);border:1.5px solid var(--ink);border-radius:6px;box-shadow:7px 7px 0 var(--ink);padding:24px;position:relative}
 .pg-live{display:inline-flex;align-items:center;gap:8px;background:var(--green-soft);color:var(--green-deep);font-family:var(--mono);font-weight:700;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;padding:5px 11px;border-radius:3px;margin-bottom:14px}
@@ -516,8 +514,7 @@ a.btn{text-decoration:none;display:inline-flex;align-items:center;justify-conten
 }
 /* ---------- Average tool in the above-fold area ----------
    The hero is ordered H1 first, then the Average Calculator tool card, then
-   the rest of the intro (tagline, lede, search, popular chips, ticker, stat
-   row) below the tool — so the tool is on screen the moment the page loads,
+   the rest of the intro (tagline and lede) below the tool — so the tool is on screen the moment the page loads,
    with no scrolling, on desktop and phone alike. The tighter hero top
    padding and grid gap keep the whole heading-plus-tool block inside the
    first viewport. */
@@ -1644,10 +1641,6 @@ function homeView(){
   +'<div class="hero-rest">'
   +'<p class="hero-tag">Don\'t just get the answer. <span class="hl">See how it works.</span></p>'
   +'<p class="lede">Enter any list of numbers and get the mean, median, mode, range, sum and standard deviation instantly — in Standard, Percentage, Weighted or Geometric mode, with the working shown. The full Average Calculator guide is right below the tool. The full Percentage Calculator lives on this homepage too, right below the Average Calculator. Numera\'s 14 other calculators, each on its own page with its formula, method and worked example, live in the directory. In plain language, for students, teachers and everyday use.</p>'
-  +'<div class="searchbox"><div class="field"><span aria-hidden="true" style="font-size:20px;color:var(--ink3)">⌕</span><input id="heroSearch" type="search" placeholder="Search calculators — try “BMI”, “loan” or “average”…" aria-label="Search calculators" autocomplete="off"><button class="go" id="heroGo" type="button">Search</button></div><div class="suggest" id="heroSuggest" role="listbox"></div></div>'
-  +'<div class="chips"><span class="lbl">Popular:</span>'+["fraction","bmi","loan","age"].map(function(s){ var c=calcBySlug(s); return '<a class="chip" href="#/calculator/'+s+'">'+esc(c.name.replace(" Calculator",""))+'</a>'; }).join("")+'</div>'
-  +'<div class="ticker" aria-hidden="true"><span class="dot"></span><span class="live">Live</span><span id="tickTxt">18% of 240 = 43.2 — watch the Playground below do this with sliders</span></div>'
-  +'<div class="statrow"><div class="stat"><b data-count="16">0</b><span>calculators, all free</span></div><div class="stat"><b data-count="8">0</b><span>clear categories</span></div><div class="stat"><b data-count="100" data-suffix="%">0</b><span>no sign-up required</span></div></div>'
   +'</div>'
   +'</div></div></div>';
 
@@ -1765,21 +1758,6 @@ function initPlayground(){
 }
 function initHeroMotion(){
   var RM=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  /* count-up stats */
-  Array.prototype.forEach.call(document.querySelectorAll(".stat b[data-count]"), function(el){
-    var target=Number(el.getAttribute("data-count")), suf=el.getAttribute("data-suffix")||"";
-    if(RM){ el.textContent=target+suf; return; }
-    var t0=null;
-    function frame(ts){ if(!t0) t0=ts; var p=Math.min(1,(ts-t0)/900); var e=1-Math.pow(1-p,3); el.textContent=Math.round(target*e)+suf; if(p<1) requestAnimationFrame(frame); }
-    requestAnimationFrame(frame);
-  });
-  /* rotating live ticker */
-  var tick=document.getElementById("tickTxt");
-  if(tick && !RM){
-    var lines=["18% of 240 = 43.2 — try it in the Playground below","Average of 80, 65 and 90 = 78.3 — drag the sliders and watch it move","A 3–4–5 triangle: √(3² + 4²) = 5 — Pythagoras, live","$20,000 at 6% over 5 years = $386.66 a month","Born 15 Mar 2000? On 30 Oct 2026 you are 26 years, 7 months, 15 days old"];
-    var i=0;
-    setInterval(function(){ tick.classList.add("fade"); setTimeout(function(){ i=(i+1)%lines.length; tick.textContent=lines[i]; tick.classList.remove("fade"); }, 320); }, 3400);
-  }
   /* scroll reveal for sections */
   var secs=document.querySelectorAll("section.block");
   if(!("IntersectionObserver" in window) || RM){ Array.prototype.forEach.call(secs, function(s){ s.classList.add("in"); }); return; }
@@ -1911,30 +1889,6 @@ function wireHomePage(){
   if(listSearch){
     listSearch.addEventListener("input", function(){ gridQuery = this.value.trim(); gridFilter = ""; renderGrid(); });
     document.getElementById("listGo").addEventListener("click", function(){ gridQuery = listSearch.value.trim(); renderGrid(); });
-  }
-  var input = document.getElementById("heroSearch"), sug = document.getElementById("heroSuggest");
-  if(input && sug){
-    function showSug(){
-      var q = input.value.trim();
-      if(q && q.toLowerCase().indexOf("average")>=0){ sug.innerHTML = '<a href="#top" role="option"><b>Average Calculator</b><span>On this homepage \u2191</span></a>'; sug.classList.add("open"); return; }
-      if(q && q.toLowerCase().indexOf("percent")>=0){ sug.innerHTML = '<a href="#percentage-calculator" role="option"><b>Percentage Calculator</b><span>On this homepage \u2193</span></a>'; sug.classList.add("open"); return; }
-      var list = q ? searchCalcs(q) : CALCS.filter(function(c){ return c.popular; });
-      if(!list.length){ sug.innerHTML = '<a href="#/all-calculators"><b>No matches</b><span>Browse all \u2193</span></a>'; }
-      else sug.innerHTML = list.slice(0,6).map(function(c){ return '<a href="#/calculator/' + c.slug + '" role="option"><b>' + esc(c.name) + '</b><span>' + catName(c.cat) + '</span></a>'; }).join("");
-      sug.classList.add("open");
-    }
-    input.addEventListener("focus", showSug);
-    input.addEventListener("input", showSug);
-    input.addEventListener("keydown", function(ev){ if(ev.key === "Enter"){ applySearch(input.value.trim()); sug.classList.remove("open"); } if(ev.key === "Escape"){ sug.classList.remove("open"); } });
-    document.getElementById("heroGo").addEventListener("click", function(){ applySearch(input.value.trim()); sug.classList.remove("open"); });
-    if(!sugDocWired){
-      sugDocWired = true;
-      document.addEventListener("click", function(ev){
-        if(!ev.target.closest(".searchbox")){ var sg = document.getElementById("heroSuggest"); if(sg) sg.classList.remove("open"); }
-        var sugLink = ev.target.closest("#heroSuggest a[href^='#/calculator/']");
-        if(sugLink){ var sg2 = document.getElementById("heroSuggest"); if(sg2) sg2.classList.remove("open"); }
-      });
-    }
   }
 }
 /* nav search + theme + menu — all stay on the homepage */
