@@ -4,14 +4,14 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="color-scheme" content="light dark" />
-<meta name="description" content="The Average Calculator — free on Numera's homepage, with Standard, Percentage, Weighted and Geometric modes and the full guide to mean, median and mode — plus 15 more free calculators, each on its own page with its formula, step-by-step method and a worked example." />
+<meta name="description" content="The Average Calculator — free on Numera's homepage, with Standard, Percentage, Weighted and Geometric modes and the full guide to mean, median and mode — plus the full Percentage Calculator on this homepage too, and 14 more free calculators, each on its own page with its formula, step-by-step method and a worked example." />
 <link rel="icon" href="data:," />
 <title>Average Calculator — Free Mean, Median &amp; Mode Calculator | Numera</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","name":"Numera","description":"Free online calculators with formulas, steps and worked examples — the Average Calculator lives on the homepage, the other calculators each have their own page, and all categories live together on one Categories page."}
+{"@context":"https://schema.org","@type":"WebSite","name":"Numera","description":"Free online calculators with formulas, steps and worked examples — the Average Calculator and the Percentage Calculator live on the homepage, the other calculators each have their own page, and all categories live together on one Categories page."}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
@@ -523,11 +523,11 @@ a.btn{text-decoration:none;display:inline-flex;align-items:center;justify-conten
         <a class="logo" href="#/" style="margin-bottom:10px"><span class="mark">∑</span>Num<em>era</em></a>
         <p>Free calculators that show their working. Every tool explains its formula and method in clear, simple steps, with a worked example — so you get the answer and understand how it was reached.</p>
       </div>
-      <div><h4>Calculators</h4><a href="#/all-calculators">All Calculators</a><a href="#/popular">Popular Calculators</a><a href="#/calculator/percentage">Percentage Calculator</a><a href="#/calculator/standard">Standard Calculator</a><a href="#/calculator/scientific">Scientific Calculator</a><a href="#/calculator/loan">Loan Calculator</a><a href="#/calculator/bmi">BMI Calculator</a></div>
-      <div><h4>Categories</h4><a href="#/categories">Categories — all on one page</a><a href="#/categories" data-cat-link="math">Math</a><a href="#/categories" data-cat-link="scientific">Scientific</a><a href="#/categories" data-cat-link="finance">Finance</a><a href="#/categories" data-cat-link="health">Health &amp; Fitness</a><a href="#/categories" data-cat-link="date-time">Date &amp; Time</a><a href="#/categories" data-cat-link="education">Education</a><a href="#/categories" data-cat-link="conversion">Conversion</a><a href="#/categories" data-cat-link="everyday">Everyday</a><a href="#/categories" data-cat-link="numbers">Percentage</a></div>
+      <div><h4>Calculators</h4><a href="#/all-calculators">All Calculators</a><a href="#/popular">Popular Calculators</a><a href="#percentage-calculator">Percentage Calculator</a><a href="#/calculator/standard">Standard Calculator</a><a href="#/calculator/scientific">Scientific Calculator</a><a href="#/calculator/loan">Loan Calculator</a><a href="#/calculator/bmi">BMI Calculator</a></div>
+      <div><h4>Categories</h4><a href="#/categories">Categories — all on one page</a><a href="#/categories" data-cat-link="math">Math</a><a href="#/categories" data-cat-link="scientific">Scientific</a><a href="#/categories" data-cat-link="finance">Finance</a><a href="#/categories" data-cat-link="health">Health &amp; Fitness</a><a href="#/categories" data-cat-link="date-time">Date &amp; Time</a><a href="#/categories" data-cat-link="education">Education</a><a href="#/categories" data-cat-link="conversion">Conversion</a><a href="#/categories" data-cat-link="everyday">Everyday</a></div>
       <div><h4>About</h4><a href="#about">About Numera</a><a href="#about">Contact: hello@numera.example</a><a href="#about">Results are estimates — verify important figures independently.</a></div>
     </div>
-    <div class="footbar"><span>© 2026 Numera. Results are estimates for guidance — verify important figures independently.</span><span>16 calculators · 9 categories · No sign-up required</span></div>
+    <div class="footbar"><span>© 2026 Numera. Results are estimates for guidance — verify important figures independently.</span><span>16 calculators · 8 categories · No sign-up required</span></div>
   </div>
 </footer>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -565,8 +565,7 @@ var CATEGORIES = [
   {slug:"date-time", name:"Date & Time Calculators", tint:"tint-d", blurb:"Exact ages, date differences and day counting without calendar guesswork.", icon:"date"},
   {slug:"education", name:"Education Calculators", tint:"tint-a", blurb:"GPA and study tools that show how grades are really weighted.", icon:"gpa"},
   {slug:"conversion", name:"Conversion Calculators", tint:"tint-b", blurb:"Length, weight and temperature conversions with exact factors.", icon:"conv"},
-  {slug:"everyday", name:"Everyday Calculators", tint:"tint-c", blurb:"Tips, splits and quick answers for daily life.", icon:"tip"},
-  {slug:"numbers", name:"Percentage Calculators", tint:"tint-a", blurb:"Percent questions done properly — % of a number, one number as a % of another, and percentage change, each with its formula and working shown.", icon:"pct"}
+  {slug:"everyday", name:"Everyday Calculators", tint:"tint-c", blurb:"Tips, splits and quick answers for daily life.", icon:"tip"}
 ];
 var CALCS = [
  {slug:"standard", name:"Standard Calculator", cat:"math", icon:"calc", popular:1, desc:"A fast, keyboard-friendly calculator with a visible history of everything you've worked out.",
@@ -581,12 +580,6 @@ var CALCS = [
   steps:["Choose DEG for school geometry or RAD for calculus and physics.","Build your expression with the function keys — functions wrap the current entry.","Press = to evaluate; invalid inputs (like log of a negative) show an error instead of a misleading number."],
   example:{q:"What is sin(30°) in DEG mode?", a:"0.5", work:"The sine of 30 degrees is exactly one half — a result worth memorising."},
   faqs:[["DEG or RAD — which should I use?","Use DEG when your angles are given in degrees (most school and everyday geometry). Use RAD when working with calculus, waves or physics formulas where angles are in radians. A full turn is 360° = 2π radians."],["Why did log(−5) show an error?","Logarithms are only defined for positive numbers, so the calculator refuses rather than inventing a value. The same applies to square roots of negatives and division by zero."]]},
- {slug:"percentage", name:"Percentage Calculator", cat:"numbers", icon:"pct", popular:1, desc:"All three percentage questions: % of a number, what % one number is of another, and % change.",
-  intro:"Percentages come in three flavours and mixing them up is the most common number mistake people make. Pick the question you're actually asking and Numera shows the formula it used.",
-  formula:"Part = (P ÷ 100) × Whole · P% = (Part ÷ Whole) × 100 · Change = ((New − Old) ÷ Old) × 100",
-  steps:["Choose your question from the three tabs.","Enter the two numbers.","Read the answer plus the plain-English sentence underneath — it restates the result so you can sanity-check it."],
-  example:{q:"What is 18% of 240?", a:"43.2", work:"(18 ÷ 100) × 240 = 0.18 × 240 = 43.2."},
-  faqs:[["What is the difference between percentage change and percentage points?","Percentage change is relative: going from 10% to 12% is a 20% increase. Percentage points is the raw difference: 2 points. This calculator computes relative percentage change."],["Can the result be over 100%?","Yes — whenever the part is bigger than the whole, or a value more than doubles, percentages above 100 are correct."]]},
  {slug:"fraction", name:"Fraction Calculator", cat:"math", icon:"frac", popular:1, desc:"Add, subtract, multiply and divide fractions with automatic simplifying and mixed numbers.",
   intro:"Fraction arithmetic made clear: enter two fractions, pick an operation, and see the simplified result as a proper fraction, a mixed number and a decimal.",
   formula:"a/b ± c/d = (ad ± bc) / bd · a/b × c/d = ac/bd · a/b ÷ c/d = ad/bc — then divide top and bottom by their greatest common divisor.",
@@ -1372,8 +1365,8 @@ function calcPageHTML(c){
 }
 function categoriesPageHTML(){
   var h='<div class="wrap"><nav class="crumbs" aria-label="Breadcrumb"><a href="#/">Home</a><span class="sep">\u203a</span><span aria-current="page">Categories</span></nav>'
-  +'<div class="calc-head"><span class="pill-badge">Categories \u00b7 All 9 on one page</span><h1>Categories</h1><p>All nine categories together on this single page. Every category below shows its description and lists its calculators by name. The full calculator cards live only on the All Calculators page.</p></div>'
-  +'<p class="kid-note"><b>How this page works \u2014</b> use the jump buttons to go straight to a category on this page, or scroll through all nine categories in order.</p>'
+  +'<div class="calc-head"><span class="pill-badge">Categories \u00b7 All '+CATEGORIES.length+' on one page</span><h1>Categories</h1><p>All '+CATEGORIES.length+' categories together on this single page. Every category below shows its description and lists its calculators by name. The full calculator cards live only on the All Calculators page.</p></div>'
+  +'<p class="kid-note"><b>How this page works \u2014</b> use the jump buttons to go straight to a category on this page, or scroll through all '+CATEGORIES.length+' categories in order.</p>'
   +'<div class="filters" role="group" aria-label="Jump to a category on this page">'
   +CATEGORIES.map(function(cat){ return '<button type="button" data-jump-cat="'+cat.slug+'">'+esc(cat.name.replace(" Calculators",""))+'</button>'; }).join("")+'</div>'
   +'</div>';
@@ -1420,6 +1413,19 @@ function averageDetailHTML(){
   +'<h2>Frequently asked questions</h2>'
   +'<details class="faq"><summary>Mean vs median — which should I report?</summary><p>Report the median when your data has outliers (house prices, salaries). Report the mean when every value counts equally (test scores, temperatures). Showing both is best practice.</p></details>'
   +'<details class="faq"><summary>What is standard deviation?</summary><p>It measures spread: roughly how far values typically sit from the mean. This calculator uses the population formula (dividing by n); for a sample estimate, dividing by n−1 gives a slightly larger value.</p></details>'
+  +'</div></div></section>';
+}
+function pctHomeHTML(){
+  return '<section class="block" id="percentage-calculator"><div class="wrap">'
+  +'<div class="sec-head"><div><h2>Percentage Calculator</h2><p>Percentages come in three flavours and mixing them up is the most common number mistake people make. Pick the question you\'re actually asking and Numera shows the formula it used.</p></div></div>'
+  +'<p class="kid-note"><b>Learning tip \u2014</b> results update as you type. Below the tool you will find the formula, a step-by-step method and a worked example, so you can check any answer by hand.</p>'
+  +'<div class="tool" id="pctToolBox">'+RENDER.percentage()+'</div>'
+  +'<div class="prose"><h2>Formula and method</h2><div class="formula">Part = (P ÷ 100) × Whole · P% = (Part ÷ Whole) × 100 · Change = ((New − Old) ÷ Old) × 100</div>'
+  +'<h3>How to use it</h3><ol><li style="--d:0">Choose your question from the three tabs.</li><li style="--d:1">Enter the two numbers.</li><li style="--d:2">Read the answer plus the plain-English sentence underneath — it restates the result so you can sanity-check it.</li></ol>'
+  +'<h2>Worked example</h2><p><b>What is 18% of 240?</b></p><div class="formula">Answer: 43.2</div><p>(18 ÷ 100) × 240 = 0.18 × 240 = 43.2.</p>'
+  +'<h2>Frequently asked questions</h2>'
+  +'<details class="faq"><summary>What is the difference between percentage change and percentage points?</summary><p>Percentage change is relative: going from 10% to 12% is a 20% increase. Percentage points is the raw difference: 2 points. This calculator computes relative percentage change.</p></details>'
+  +'<details class="faq"><summary>Can the result be over 100%?</summary><p>Yes — whenever the part is bigger than the whole, or a value more than doubles, percentages above 100 are correct.</p></details>'
   +'</div></div></section>';
 }
 function guideHTML(){
@@ -1609,16 +1615,17 @@ function homeView(){
   +'<span class="pill-badge">Numera\'s main calculator · Free · No sign-up</span>'
   +'<h1><span class="hl">Average Calculator</span></h1>'
   +'<p class="hero-tag">Don\'t just get the answer. <span class="hl">See how it works.</span></p>'
-  +'<p class="lede">Enter any list of numbers and get the mean, median, mode, range, sum and standard deviation instantly — in Standard, Percentage, Weighted or Geometric mode, with the working shown. The full Average Calculator guide is right below the tool. Numera\'s 15 other calculators, each on its own page with its formula, method and worked example, live in the directory. In plain language, for students, teachers and everyday use.</p>'
+  +'<p class="lede">Enter any list of numbers and get the mean, median, mode, range, sum and standard deviation instantly — in Standard, Percentage, Weighted or Geometric mode, with the working shown. The full Average Calculator guide is right below the tool. The full Percentage Calculator lives on this homepage too, right below the Average Calculator. Numera\'s 14 other calculators, each on its own page with its formula, method and worked example, live in the directory. In plain language, for students, teachers and everyday use.</p>'
   +'<div class="searchbox"><div class="field"><span aria-hidden="true" style="font-size:20px;color:var(--ink3)">⌕</span><input id="heroSearch" type="search" placeholder="Search calculators — try “BMI”, “loan” or “average”…" aria-label="Search calculators" autocomplete="off"><button class="go" id="heroGo" type="button">Search</button></div><div class="suggest" id="heroSuggest" role="listbox"></div></div>'
-  +'<div class="chips"><span class="lbl">Popular:</span>'+["percentage","fraction","bmi","loan","age"].map(function(s){ var c=calcBySlug(s); return '<a class="chip" href="#/calculator/'+s+'">'+esc(c.name.replace(" Calculator",""))+'</a>'; }).join("")+'</div>'
+  +'<div class="chips"><span class="lbl">Popular:</span>'+["fraction","bmi","loan","age"].map(function(s){ var c=calcBySlug(s); return '<a class="chip" href="#/calculator/'+s+'">'+esc(c.name.replace(" Calculator",""))+'</a>'; }).join("")+'</div>'
   +'<div class="ticker" aria-hidden="true"><span class="dot"></span><span class="live">Live</span><span id="tickTxt">18% of 240 = 43.2 — watch the Playground below do this with sliders</span></div>'
-  +'<div class="statrow"><div class="stat"><b data-count="16">0</b><span>calculators, all free</span></div><div class="stat"><b data-count="9">0</b><span>clear categories</span></div><div class="stat"><b data-count="100" data-suffix="%">0</b><span>no sign-up required</span></div></div>'
+  +'<div class="statrow"><div class="stat"><b data-count="16">0</b><span>calculators, all free</span></div><div class="stat"><b data-count="8">0</b><span>clear categories</span></div><div class="stat"><b data-count="100" data-suffix="%">0</b><span>no sign-up required</span></div></div>'
   +'</div>'
   +'<div class="hero-card"><p class="hero-card-title">Try the Average Calculator live</p><p>Enter a set of numbers — test scores work well — pick a mode, and see the result calculated instantly, with the working shown.</p>'+avgWidgetHTML("ft","85, 92, 78, 92, 64")+'<p style="margin-top:12px"><a href="#how-to-use" style="color:var(--accent);font-weight:900;text-decoration:none">Read the full Average Calculator guide below \u2193</a></p></div>'
   +'</div></div></div>';
 
   h+=averageDetailHTML();
+  h+=pctHomeHTML();
   h+=guideHTML();
 
   h+='<section class="block" style="padding-top:36px"><div class="wrap"><div class="playground" id="playground"><span class="pg-live">Live playground</span><h3 class="pg-title">Don\'t read about it — play with it.</h3><p class="pg-sub">Three tiny live demos. Drag a slider and watch the answer, the bars and the working update instantly — exactly how every full calculator on its own page behaves. No “calculate” button needed.</p>'
@@ -1631,7 +1638,7 @@ function homeView(){
   +'<div class="pg-view" id="pgView-pct"><div class="pg-grid"><div>'
   +'<div class="pg-row"><div class="pg-lab"><span>Percentage</span><span class="pg-val" id="pgPctV">18%</span></div><input type="range" id="pgPct" min="0" max="100" value="18" aria-label="Percentage"></div>'
   +'<div class="pg-row"><div class="pg-lab"><span>Of this amount</span><span class="pg-val" id="pgAmtV">240</span></div><input type="range" id="pgAmt" min="0" max="500" step="10" value="240" aria-label="Amount"><div class="pg-bar"><i id="pgPctBar" style="width:18%"></i></div><p class="hint" style="margin:6px 0 0">The bar fills with the percentage you choose.</p></div>'
-  +'</div><div class="pg-result"><div class="rlabel">Result</div><div class="pg-big" id="pgPctBig">43.2</div><div class="rsub" id="pgPctSub">(18 ÷ 100) × 240 = <b>43.2</b> — “per cent” simply means out of every 100.</div><div class="btnrow" style="margin-top:12px"><a class="btn ghost sm" href="#/calculator/percentage">Open the full Percentage Calculator \u2192</a></div></div></div></div>'
+  +'</div><div class="pg-result"><div class="rlabel">Result</div><div class="pg-big" id="pgPctBig">43.2</div><div class="rsub" id="pgPctSub">(18 ÷ 100) × 240 = <b>43.2</b> — “per cent” simply means out of every 100.</div><div class="btnrow" style="margin-top:12px"><a class="btn ghost sm" href="#percentage-calculator">Open the full Percentage Calculator \u2192</a></div></div></div></div>'
   +'<div class="pg-view" id="pgView-tri"><div class="pg-grid"><div>'
   +'<svg viewBox="0 0 200 142" role="img" aria-label="Right-angled triangle that reshapes as you drag the sliders" style="width:100%;max-width:340px;display:block;margin:4px auto 10px"><polygon id="pgTriPoly" points="20,120 140,120 20,60" fill="var(--accent-soft)" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round"/><polyline points="20,106 34,106 34,120" fill="none" stroke="var(--ink)" stroke-width="1.6"/><text id="pgTriLA" x="80" y="137" text-anchor="middle" font-family="var(--mono)" font-size="12" fill="var(--ink2)">a = 6</text><text id="pgTriLB" x="10" y="92" text-anchor="middle" font-size="12" fill="var(--ink2)" transform="rotate(-90 10 92)">b = 8</text><text id="pgTriLC" x="88" y="82" font-size="12" fill="var(--accent)" font-weight="700">c</text></svg>'
   +'<div class="pg-row"><div class="pg-lab"><span>Side a (along the bottom)</span><span class="pg-val" id="pgTaV">6</span></div><input type="range" id="pgTa" min="1" max="12" value="6" aria-label="Side a"></div>'
@@ -1639,7 +1646,7 @@ function homeView(){
   +'</div><div class="pg-result"><div class="rlabel">Hypotenuse (longest side)</div><div class="pg-big" id="pgTriBig">10</div><div class="rsub" id="pgTriSub">Pythagoras: √(6² + 8²) = √100 = <b>10</b>. Area = (6 × 8) ÷ 2 = <b>24</b>.</div><div class="btnrow" style="margin-top:12px"><a class="btn ghost sm" href="#/calculator/triangle">Open the full Triangle Calculator \u2192</a></div></div></div></div>'
   +'</div></div></section>';
 
-  h+='<section class="block"><div class="wrap"><div class="sec-head"><div><h2><span class="ch-no">§ 15</span>Popular calculators</h2><p>The tools people use most \u2014 note the formula printed on every card. The full popular list now lives on its own page.</p></div><a class="more" href="#/popular">View popular \u2192</a></div><div class="teaser"><p>Percentage, BMI, Loan, Age and the other most-used tools \u2014 listed by name on the Popular page, and opened from the All Calculators page, where every card opens that calculator\u2019s own page with its tool, formula, method and worked example.</p><a class="btn" href="#/popular">Open the Popular page \u2192</a></div></div></section>';
+  h+='<section class="block"><div class="wrap"><div class="sec-head"><div><h2><span class="ch-no">§ 15</span>Popular calculators</h2><p>The tools people use most \u2014 note the formula printed on every card. The full popular list now lives on its own page.</p></div><a class="more" href="#/popular">View popular \u2192</a></div><div class="teaser"><p>BMI, Loan, Age, Fraction and the other most-used tools \u2014 listed by name on the Popular page, and opened from the All Calculators page, where every card opens that calculator\u2019s own page with its tool, formula, method and worked example.</p><a class="btn" href="#/popular">Open the Popular page \u2192</a></div></div></section>';
 
   h+='<section class="block"><div class="wrap"><div class="sec-head"><div><h2><span class="ch-no">§ 16</span>Learn while you calculate</h2><p>Every calculator on Numera is designed to teach as it calculates, in three clear steps.</p></div></div><div class="steps3">'
   +'<div class="step-card"><span class="num">1</span><h3>Enter your numbers</h3><p>Large, clearly labelled fields and buttons that are easy to read and tap, with sensible starter values so you can see a real result straight away.</p></div>'
@@ -1647,7 +1654,7 @@ function homeView(){
   +'<div class="step-card"><span class="num">3</span><h3>Understand the method</h3><p>Below every tool you will find the formula, a step-by-step method and a fully worked example, so the answer can be checked and understood.</p></div>'
   +'</div></div></section>';
 
-  h+='<section class="block" id="categories"><div class="wrap"><div class="sec-head"><div><h2><span class="ch-no">§ 17</span>Browse by category</h2><p>Nine chapters, one home per tool — organised the way a textbook is. All categories live together on the single Categories page; select any card to open that page at that category.</p></div><a class="more" href="#/categories">Open Categories page →</a></div><div class="catgrid">'
+  h+='<section class="block" id="categories"><div class="wrap"><div class="sec-head"><div><h2><span class="ch-no">§ 17</span>Browse by category</h2><p>Eight chapters, one home per tool — organised the way a textbook is. All categories live together on the single Categories page; select any card to open that page at that category.</p></div><a class="more" href="#/categories">Open Categories page →</a></div><div class="catgrid">'
   +CATEGORIES.map(function(cat,idx){ return catCardHTML(cat, idx); }).join("")+'</div></div></section>';
 
   h+='<section class="block"><div class="wrap"><div class="challenge"><span class="ch-badge">Practice question</span><h2>Test your understanding</h2><p>Try working this out in your head or on paper first, then check your answer. There are no scores and no timers — if you need it, a clear hint and the full method are shown.</p><div class="ch-q" id="chQ">…</div><div class="ch-row"><input class="inp" id="chInp" type="number" inputmode="decimal" placeholder="Your answer" aria-label="Your answer to the practice question"><button class="btn" id="chCheck" type="button">Check answer</button><button class="btn ghost" id="chNew" type="button">New question</button></div><div class="ch-fb" id="chFb" aria-live="polite"></div></div></div></section>';
@@ -1672,7 +1679,7 @@ function homeView(){
   +'<div><h3>Percentages are hundredths</h3><div class="formula">P% of Y = (P ÷ 100) × Y</div><p>“Per cent” means per hundred. 18% of 240 is 0.18 × 240 = 43.2 — the same move powers tips, discounts and tax.</p></div>'
   +'<div><h3>An average is a fair share</h3><div class="formula">Mean = total ÷ count</div><p>Add everything together, then share the total equally. When a few very large values pull the mean around, the median — the middle value — gives a fairer picture of “typical”.</p></div>'
   +'<div><h3>Compounding builds on itself</h3><div class="formula">A = P(1 + r)ᵗ</div><p>Interest earns interest, so growth curves upwards over time. At 7%, money roughly doubles every 10 years — the rule of 72 in action.</p></div>'
-  +'</div><p style="margin-top:20px"><a href="#/calculator/percentage" style="font-weight:900">Try the Percentage Calculator \u2192</a> &nbsp;·&nbsp; <a href="#/calculator/compound-interest" style="font-weight:900">See compounding live \u2192</a></p></div></div></section>';
+  +'</div><p style="margin-top:20px"><a href="#percentage-calculator" style="font-weight:900">Try the Percentage Calculator \u2192</a> &nbsp;·&nbsp; <a href="#/calculator/compound-interest" style="font-weight:900">See compounding live \u2192</a></p></div></div></section>';
 
   h+='<section class="block" id="about"><div class="wrap"><div class="sec-head"><div><h2><span class="ch-no">§ 21</span>About Numera</h2><p>Numera is a free calculator suite built on one editorial rule: a calculator must show its working. Every tool publishes its formula, a step-by-step method and a worked example you can verify by hand. Results are estimates for guidance — verify important figures independently. Questions or a correction? Email <a href="mailto:hello@numera.example" style="color:var(--accent);font-weight:700">hello@numera.example</a>.</p></div></div></div></section>';
   return h;
@@ -1805,6 +1812,11 @@ function applySearch(q){
     else { location.hash="#/"; }
     return;
   }
+  if(q.toLowerCase().indexOf("percent")>=0){
+    if(currentView==="home"){ scrollToAnchor("percentage-calculator"); }
+    else { location.hash="#percentage-calculator"; }
+    return;
+  }
   if(currentView==="all-calcs"){
     gridQuery=q;
     var ls=document.getElementById("listSearch"); if(ls) ls.value=gridQuery;
@@ -1829,7 +1841,7 @@ function renderHome(anchor){
   currentView = "home";
   app.innerHTML = homeView();
   document.title = "Average Calculator \u2014 Free Mean, Median & Mode Calculator | Numera";
-  initAvg("ft"); initChallenge(); initPlayground(); initHeroMotion();
+  initAvg("ft"); if(INIT.percentage) INIT.percentage(); initChallenge(); initPlayground(); initHeroMotion();
   wireHomePage();
   scrollToAnchor(anchor);
 }
@@ -1883,6 +1895,7 @@ function wireHomePage(){
     function showSug(){
       var q = input.value.trim();
       if(q && q.toLowerCase().indexOf("average")>=0){ sug.innerHTML = '<a href="#top" role="option"><b>Average Calculator</b><span>On this homepage \u2191</span></a>'; sug.classList.add("open"); return; }
+      if(q && q.toLowerCase().indexOf("percent")>=0){ sug.innerHTML = '<a href="#percentage-calculator" role="option"><b>Percentage Calculator</b><span>On this homepage \u2193</span></a>'; sug.classList.add("open"); return; }
       var list = q ? searchCalcs(q) : CALCS.filter(function(c){ return c.popular; });
       if(!list.length){ sug.innerHTML = '<a href="#/all-calculators"><b>No matches</b><span>Browse all \u2193</span></a>'; }
       else sug.innerHTML = list.slice(0,6).map(function(c){ return '<a href="#/calculator/' + c.slug + '" role="option"><b>' + esc(c.name) + '</b><span>' + catName(c.cat) + '</span></a>'; }).join("");
