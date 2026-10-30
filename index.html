@@ -493,13 +493,14 @@ a.btn{text-decoration:none;display:inline-flex;align-items:center;justify-conten
 .text-link-row{margin-top:16px}
 .text-link-row a{color:var(--accent);font-weight:800;text-decoration:none}
 .text-link-row a:hover{text-decoration:underline}
-/* ---------- Landscape layout — homepage Average & Percentage tools ----------
-   Both homepage tools sit wide: mode tabs and inputs in the left column,
-   the dark results panel in the right column, side by side instead of
-   stacked. The hero intro moves to its own full-width row so the Average
-   tool card has the full page width for its landscape split. Below the
-   tablet breakpoint the split stacks again so nothing squeezes or scrolls
-   sideways on a phone. */
+/* ---------- Landscape layout — homepage Average tool only ----------
+   Only the Average Calculator hero tool sits wide: mode tabs and inputs in
+   the left column, the dark results panel in the right column, side by side
+   instead of stacked. The hero intro moves to its own full-width row so the
+   Average tool card has the full page width for its landscape split. Below
+   the tablet breakpoint the split stacks again so nothing squeezes or
+   scrolls sideways on a phone. The Percentage Calculator below it keeps its
+   stacked layout: question tabs and number fields on top, result below. */
 .hero-grid{grid-template-columns:1fr;gap:30px}
 .hero-grid>*{grid-column:1/-1}
 .landscape-tool{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:24px;align-items:stretch}
@@ -510,14 +511,8 @@ a.btn{text-decoration:none;display:inline-flex;align-items:center;justify-conten
 .landscape-result-col .result{flex:1;width:100%}
 .hero-card .landscape-tool{margin-top:6px}
 .hero-card .landscape-controls textarea.inp{min-height:104px}
-#pctToolBox .landscape-controls .row2{grid-template-columns:1fr}
-#pctToolBox .landscape-controls .row2 .inp{margin-bottom:14px}
 @media(max-width:820px){
   .landscape-tool{grid-template-columns:1fr}
-  #pctToolBox .landscape-controls .row2{grid-template-columns:1fr 1fr}
-}
-@media(max-width:560px){
-  #pctToolBox .landscape-controls .row2{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -941,12 +936,11 @@ RENDER.scientific = function(){ return '<div style="max-width:560px">'+keypadHTM
 INIT.scientific = function(){ initKeypad(true); };
 
 RENDER.percentage = function(){
-  return '<div class="landscape-tool pct-landscape"><div class="landscape-controls">'
-  +'<div class="seg" role="tablist" aria-label="Percentage question"><button type="button" class="on" data-m="0">What is X% of Y?</button><button type="button" data-m="1">X is what % of Y?</button><button type="button" data-m="2">% change</button></div>'
+  return '<div class="seg" role="tablist" aria-label="Percentage question"><button type="button" class="on" data-m="0">What is X% of Y?</button><button type="button" data-m="1">X is what % of Y?</button><button type="button" data-m="2">% change</button></div>'
   +'<div class="row2"><div><label class="f" id="pctL1" for="pctA">Percentage (X)</label><input class="inp" id="pctA" type="number" inputmode="decimal" value="18"></div>'
   +'<div><label class="f" id="pctL2" for="pctB">Number (Y)</label><input class="inp" id="pctB" type="number" inputmode="decimal" value="240"></div></div>'
   +'<div class="err" id="pctErr" role="alert"></div>'
-  +'</div><div class="landscape-result-col"><div class="result" id="pctRes" aria-live="polite"></div></div></div>';
+  +'<div class="result" id="pctRes" aria-live="polite"></div>';
 };
 INIT.percentage = function(){
   var mode=0, labels=[["Percentage (X)","Number (Y)"],["Part (X)","Whole (Y)"],["From (old value)","To (new value)"]];
