@@ -1365,7 +1365,7 @@ function calcPageHTML(c){
 }
 function categoriesPageHTML(){
   var h='<div class="wrap"><nav class="crumbs" aria-label="Breadcrumb"><a href="#/">Home</a><span class="sep">\u203a</span><span aria-current="page">Categories</span></nav>'
-  +'<div class="calc-head"><span class="pill-badge">Categories \u00b7 All '+CATEGORIES.length+' on one page</span><h1>Categories</h1><p>All '+CATEGORIES.length+' categories together on this single page. Every category below shows its description and lists its calculators by name. The full calculator cards live only on the All Calculators page.</p></div>'
+  +'<div class="calc-head"><span class="pill-badge">Categories \u00b7 All '+CATEGORIES.length+' on one page</span><h1>Categories</h1><p>All '+CATEGORIES.length+' categories together on this single page. Every category below shows its description and lists its calculators by name. The full calculator cards live only on the All Calculators page. Eight chapters, one home per tool — organised the way a textbook is.</p></div>'
   +'<p class="kid-note"><b>How this page works \u2014</b> use the jump buttons to go straight to a category on this page, or scroll through all '+CATEGORIES.length+' categories in order.</p>'
   +'<div class="filters" role="group" aria-label="Jump to a category on this page">'
   +CATEGORIES.map(function(cat){ return '<button type="button" data-jump-cat="'+cat.slug+'">'+esc(cat.name.replace(" Calculators",""))+'</button>'; }).join("")+'</div>'
@@ -1564,7 +1564,7 @@ function allCalcsPageHTML(){
 function popularPageHTML(){
   var popular=CALCS.filter(function(c){return c.popular;});
   return '<div class="wrap"><nav class="crumbs" aria-label="Breadcrumb"><a href="#/">Home</a><span class="sep">›</span><span aria-current="page">Popular Calculators</span></nav>'
-  +'<div class="calc-head"><span class="pill-badge">Most used · '+popular.length+' calculators</span><h1>Popular Calculators</h1><p>The tools people use most, listed by name below. The full calculator cards live only on the All Calculators page \u2014 head there to open any of these tools, with its formula, method and worked example.</p></div>'
+  +'<div class="calc-head"><span class="pill-badge">Most used · '+popular.length+' calculators</span><h1>Popular Calculators</h1><p>The tools people use most, listed by name below. The full calculator cards live only on the All Calculators page \u2014 head there to open any of these tools, with its formula, method and worked example \u2014 note the formula printed on every card.</p></div>'
   +'<div class="page-actions"><a class="btn ghost sm" href="#/all-calculators">Browse all calculators \u2192</a><a class="btn ghost sm" href="#/">Back to home</a></div>'
   +'<ul class="name-list-plain">'+popular.map(function(c){ return '<li>'+esc(c.name)+'</li>'; }).join("")+'</ul>'
   +'<p class="text-link-row"><a href="#/all-calculators">Open these calculators on the All Calculators page \u2192</a></p>'
@@ -1643,7 +1643,6 @@ function homeView(){
   +'</div><div class="pg-result"><div class="rlabel">Hypotenuse (longest side)</div><div class="pg-big" id="pgTriBig">10</div><div class="rsub" id="pgTriSub">Pythagoras: √(6² + 8²) = √100 = <b>10</b>. Area = (6 × 8) ÷ 2 = <b>24</b>.</div><div class="btnrow" style="margin-top:12px"><a class="btn ghost sm" href="#/calculator/triangle">Open the full Triangle Calculator \u2192</a></div></div></div></div>'
   +'</div></div></section>';
 
-  h+='<section class="block"><div class="wrap"><div class="sec-head"><div><h2><span class="ch-no">§ 15</span>Popular calculators</h2><p>The tools people use most \u2014 note the formula printed on every card. The full popular list now lives on its own page.</p></div><a class="more" href="#/popular">View popular \u2192</a></div><div class="teaser"><p>BMI, Loan, Age, Fraction and the other most-used tools \u2014 listed by name on the Popular page, and opened from the All Calculators page, where every card opens that calculator\u2019s own page with its tool, formula, method and worked example.</p><a class="btn" href="#/popular">Open the Popular page \u2192</a></div></div></section>';
 
   h+='<section class="block"><div class="wrap"><div class="sec-head"><div><h2><span class="ch-no">§ 16</span>Learn while you calculate</h2><p>Every calculator on Numera is designed to teach as it calculates, in three clear steps.</p></div></div><div class="steps3">'
   +'<div class="step-card"><span class="num">1</span><h3>Enter your numbers</h3><p>Large, clearly labelled fields and buttons that are easy to read and tap, with sensible starter values so you can see a real result straight away.</p></div>'
@@ -1651,13 +1650,9 @@ function homeView(){
   +'<div class="step-card"><span class="num">3</span><h3>Understand the method</h3><p>Below every tool you will find the formula, a step-by-step method and a fully worked example, so the answer can be checked and understood.</p></div>'
   +'</div></div></section>';
 
-  h+='<section class="block" id="categories"><div class="wrap"><div class="sec-head"><div><h2><span class="ch-no">§ 17</span>Browse by category</h2><p>Eight chapters, one home per tool — organised the way a textbook is. All categories live together on the single Categories page; select any card to open that page at that category.</p></div><a class="more" href="#/categories">Open Categories page →</a></div><div class="catgrid">'
-  +CATEGORIES.map(function(cat,idx){ return catCardHTML(cat, idx); }).join("")+'</div></div></section>';
 
   h+='<section class="block"><div class="wrap"><div class="challenge"><span class="ch-badge">Practice question</span><h2>Test your understanding</h2><p>Try working this out in your head or on paper first, then check your answer. There are no scores and no timers — if you need it, a clear hint and the full method are shown.</p><div class="ch-q" id="chQ">…</div><div class="ch-row"><input class="inp" id="chInp" type="number" inputmode="decimal" placeholder="Your answer" aria-label="Your answer to the practice question"><button class="btn" id="chCheck" type="button">Check answer</button><button class="btn ghost" id="chNew" type="button">New question</button></div><div class="ch-fb" id="chFb" aria-live="polite"></div></div></div></section>';
 
-  // All calculators — teaser on the homepage; the full directory lives on its own page
-  h+='<section class="block"><div class="wrap"><div class="sec-head"><div><h2><span class="ch-no">§ 18</span>All calculators</h2><p>The rest of the collection \u2014 all '+CALCS.length+' directory calculators in one place. The full list, with search and category filters, now lives on its own page.</p></div><a class="more" href="#/all-calculators">View all \u2192</a></div><div class="teaser"><p>Filter by category, search by name, or jump straight to a tool from the dropdown \u2014 on the All Calculators page.</p><a class="btn" href="#/all-calculators">Open All Calculators \u2192</a></div></div></section>';
 
   h+='<section class="block"><div class="wrap"><div class="sec-head"><div><h2><span class="ch-no">§ 19</span>Recently added</h2><p>The newest calculators in the collection — also available in the full list above.</p></div></div><div class="grid">'
   +fresh.map(cardHTML).join("")+'</div></div></section>';
