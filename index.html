@@ -1,0 +1,1151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<meta name="description" content="Numera — free, fast and accurate online calculators for math, finance, health, dates and everyday life. Every tool shows its formula, steps and a worked example." />
+<link rel="icon" href="data:," />
+<title>Numera — Free Online Calculators That Show Their Working</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"Numera","description":"Free online calculators with formulas, steps and worked examples.","potentialAction":{"@type":"SearchAction","target":"#/calculators?q={query}","query-input":"required name=query"}}
+</script>
+<style>
+:root{
+  --bg:#F6F4EE; --bg2:#EFECE2; --surface:#FFFFFF; --surface2:#FBFAF6; --ink:#15211C; --ink2:#4A5A53; --ink3:#7A8A82;
+  --line:#E3DED0; --accent:#0E7C66; --accent-ink:#FFFFFF; --accent-soft:#E2F1EC; --amber:#D98E1F; --amber-soft:#FBF0DA;
+  --coral:#D9552C; --coral-soft:#FBE9E1; --blue:#256D8F; --blue-soft:#E3EFF5;
+  --shadow:0 1px 2px rgba(21,33,28,.05),0 8px 24px rgba(21,33,28,.06); --shadow-lg:0 2px 4px rgba(21,33,28,.06),0 18px 44px rgba(21,33,28,.12);
+  --r-lg:18px; --r-md:12px; --r-sm:9px;
+  --disp:"Bricolage Grotesque",system-ui,sans-serif; --body:"Public Sans",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root{ --bg:#0E1512; --bg2:#0A100D; --surface:#16211C; --surface2:#1A2620; --ink:#EDF3EF; --ink2:#B7C6BE; --ink3:#82968B;
+    --line:#26352E; --accent:#2FBF9B; --accent-ink:#06231B; --accent-soft:#14332A; --amber:#E8AE4A; --amber-soft:#33270F;
+    --coral:#F07B52; --coral-soft:#3A2117; --blue:#5FA8C9; --blue-soft:#17303E;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.3); --shadow-lg:0 2px 4px rgba(0,0,0,.35),0 18px 44px rgba(0,0,0,.45); }
+}
+:root[data-theme="light"]{ --bg:#F6F4EE; --bg2:#EFECE2; --surface:#FFFFFF; --surface2:#FBFAF6; --ink:#15211C; --ink2:#4A5A53; --ink3:#7A8A82; --line:#E3DED0; --accent:#0E7C66; --accent-ink:#FFFFFF; --accent-soft:#E2F1EC; --amber:#D98E1F; --amber-soft:#FBF0DA; --coral:#D9552C; --coral-soft:#FBE9E1; --blue:#256D8F; --blue-soft:#E3EFF5; --shadow:0 1px 2px rgba(21,33,28,.05),0 8px 24px rgba(21,33,28,.06); --shadow-lg:0 2px 4px rgba(21,33,28,.06),0 18px 44px rgba(21,33,28,.12); }
+:root[data-theme="dark"]{ --bg:#0E1512; --bg2:#0A100D; --surface:#16211C; --surface2:#1A2620; --ink:#EDF3EF; --ink2:#B7C6BE; --ink3:#82968B; --line:#26352E; --accent:#2FBF9B; --accent-ink:#06231B; --accent-soft:#14332A; --amber:#E8AE4A; --amber-soft:#33270F; --coral:#F07B52; --coral-soft:#3A2117; --blue:#5FA8C9; --blue-soft:#17303E; --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.3); --shadow-lg:0 2px 4px rgba(0,0,0,.35),0 18px 44px rgba(0,0,0,.45); }
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{margin:0;font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:clip}
+.hero-grid>*,.tool-grid>*,.learn-grid>*,.grid>*,.catgrid>*,.whygrid>*,.foot>*{min-width:0}
+img,svg{max-width:100%}
+@media(max-width:560px){ .statrow{grid-template-columns:1fr 1fr;gap:14px} .searchbox .go{padding:0 14px} .hero h1{font-size:32px} .foot{grid-template-columns:1fr} }
+a{color:inherit}
+button{font-family:inherit;cursor:pointer}
+input,select,textarea{font-family:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:var(--disp);line-height:1.12;margin:0;letter-spacing:-.01em}
+.mono{font-family:var(--mono)}
+/* ---------- Nav ---------- */
+header.site{position:sticky;top:0;z-index:60;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:18px;height:64px}
+.logo{font-family:var(--disp);font-weight:800;font-size:24px;text-decoration:none;display:flex;align-items:center;gap:9px;white-space:nowrap}
+.logo .mark{width:32px;height:32px;border-radius:9px;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-family:var(--mono);font-size:17px;font-weight:700}
+.logo em{font-style:normal;color:var(--accent)}
+.nav nav{display:flex;gap:4px;margin-left:8px}
+.nav nav a{text-decoration:none;font-weight:600;font-size:14.5px;color:var(--ink2);padding:8px 12px;border-radius:8px}
+.nav nav a:hover{color:var(--ink);background:var(--surface)}
+.nav .spacer{flex:1}
+.iconbtn{width:40px;height:40px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink);display:grid;place-items:center;font-size:17px}
+.iconbtn:hover{border-color:var(--accent)}
+.navsearch{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:0 12px;height:40px;min-width:190px}
+.navsearch input{border:0;background:transparent;color:var(--ink);font-size:14px;width:100%;outline:none}
+.burger{display:none}
+@media(max-width:860px){ .nav nav{display:none} .navsearch{display:none} .burger{display:grid} .nav nav.open{display:flex;position:absolute;top:64px;left:0;right:0;flex-direction:column;background:var(--surface);border-bottom:1px solid var(--line);padding:10px 16px 16px;gap:2px} .nav nav.open a{padding:11px 10px} }
+/* ---------- Hero ---------- */
+.hero{padding:44px 0 8px;background-image:radial-gradient(var(--line) 1.1px,transparent 1.1px);background-size:22px 22px}
+.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:34px;align-items:start}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr}}
+.hero h1{font-size:clamp(34px,4.6vw,52px);font-weight:800}
+.hero h1 .hl{color:var(--accent)}
+.hero p.lede{font-size:17.5px;color:var(--ink2);max-width:56ch;margin:14px 0 22px}
+.searchbox{position:relative;max-width:620px}
+.searchbox .field{display:flex;align-items:center;gap:10px;background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:6px 6px 6px 16px;box-shadow:var(--shadow)}
+.searchbox .field:focus-within{border-color:var(--accent)}
+.searchbox input{flex:1;border:0;background:transparent;color:var(--ink);font-size:16.5px;outline:none;min-width:0;height:44px}
+.searchbox .go{background:var(--accent);color:var(--accent-ink);border:0;border-radius:10px;padding:0 20px;height:44px;font-weight:700;font-size:15px}
+.suggest{position:absolute;left:0;right:0;top:calc(100% + 8px);background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-lg);overflow:hidden;z-index:40;display:none}
+.suggest.open{display:block}
+.suggest a{display:flex;gap:12px;align-items:center;padding:12px 16px;text-decoration:none}
+.suggest a:hover,.suggest a.sel{background:var(--accent-soft)}
+.suggest a b{font-size:15px}
+.suggest a span{color:var(--ink3);font-size:13px;margin-left:auto;white-space:nowrap}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;align-items:center}
+.chips .lbl{font-size:13px;color:var(--ink3);font-weight:600}
+.chip{border:1px solid var(--line);background:var(--surface);color:var(--ink2);border-radius:999px;padding:7px 14px;font-size:13.5px;font-weight:600;text-decoration:none}
+.chip:hover{border-color:var(--accent);color:var(--accent)}
+.hero-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow-lg);padding:20px}
+.hero-card h3{font-size:16px;margin-bottom:4px}
+.hero-card p{color:var(--ink2);font-size:13.5px;margin:0 0 12px}
+.statrow{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:26px;max-width:620px}
+.stat{border-top:2px solid var(--accent);padding-top:8px}
+.stat b{font-family:var(--disp);font-size:22px;display:block}
+.stat span{font-size:12.5px;color:var(--ink3);font-weight:600}
+/* ---------- Sections & cards ---------- */
+section.block{padding:44px 0 6px}
+.sec-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:20px;flex-wrap:wrap}
+.sec-head h2{font-size:clamp(24px,3vw,32px);font-weight:800}
+.sec-head p{color:var(--ink2);margin:6px 0 0;max-width:62ch}
+.sec-head a.more{font-weight:700;color:var(--accent);text-decoration:none;white-space:nowrap}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:20px;text-decoration:none;display:flex;flex-direction:column;gap:8px;box-shadow:var(--shadow);transition:transform .16s ease,border-color .16s ease}
+.card:hover{transform:translateY(-3px);border-color:var(--accent)}
+.card .ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent)}
+.card .ic svg{width:23px;height:23px}
+.card h3{font-size:17.5px}
+.card p{color:var(--ink2);font-size:14px;margin:0;flex:1}
+.card .meta{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;color:var(--ink3);font-weight:600}
+.card .meta .go{color:var(--accent);font-weight:700}
+.badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:3px 8px;border-radius:999px;background:var(--amber-soft);color:var(--amber)}
+.badge.new{background:var(--coral-soft);color:var(--coral)}
+.catgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
+.catcard{border-radius:var(--r-lg);padding:20px;text-decoration:none;border:1px solid var(--line);display:block;transition:transform .16s ease}
+.catcard:hover{transform:translateY(-3px)}
+.catcard h3{font-size:18px;margin:8px 0 4px}
+.catcard p{margin:0;font-size:13.5px;opacity:.85}
+.catcard .n{font-family:var(--mono);font-size:12px;font-weight:700;opacity:.75}
+.tint-a{background:var(--accent-soft)} .tint-b{background:var(--amber-soft)} .tint-c{background:var(--coral-soft)} .tint-d{background:var(--blue-soft)}
+/* ---------- Calculator shell ---------- */
+.crumbs{font-size:13.5px;color:var(--ink3);padding:22px 0 0;font-weight:600}
+.crumbs a{color:var(--ink2);text-decoration:none}
+.crumbs a:hover{color:var(--accent)}
+.calc-head h1{font-size:clamp(28px,3.6vw,40px);font-weight:800;margin:10px 0 8px}
+.calc-head p{color:var(--ink2);max-width:68ch;margin:0 0 24px;font-size:16.5px}
+.tool{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow-lg);padding:24px;margin-bottom:26px}
+.tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+@media(max-width:820px){.tool-grid{grid-template-columns:1fr}}
+label.f{display:block;font-size:13.5px;font-weight:700;margin:0 0 6px}
+label.f small{font-weight:500;color:var(--ink3)}
+.inp{width:100%;border:1.5px solid var(--line);background:var(--surface2);color:var(--ink);border-radius:var(--r-md);padding:12px 14px;font-size:16px;margin-bottom:14px}
+.inp:focus{border-color:var(--accent);outline:none;background:var(--surface)}
+textarea.inp{resize:vertical;min-height:84px;font-family:var(--mono);font-size:15px}
+select.inp{appearance:none}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media(max-width:560px){.row3{grid-template-columns:1fr}}
+.btn{background:var(--accent);color:var(--accent-ink);border:0;border-radius:var(--r-md);padding:13px 22px;font-weight:700;font-size:15.5px}
+.btn:hover{filter:brightness(1.07)}
+.btn.ghost{background:var(--surface);color:var(--ink);border:1.5px solid var(--line)}
+.btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
+.btn.sm{padding:9px 16px;font-size:14px}
+.btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
+.seg{display:inline-flex;background:var(--surface2);border:1.5px solid var(--line);border-radius:var(--r-md);padding:3px;gap:3px;margin-bottom:16px;flex-wrap:wrap}
+.seg button{border:0;background:transparent;color:var(--ink2);font-weight:700;font-size:13.5px;padding:8px 14px;border-radius:8px}
+.seg button.on{background:var(--accent);color:var(--accent-ink)}
+.result{background:var(--accent-soft);border-radius:var(--r-lg);padding:20px;min-height:120px}
+.result .rlabel{font-size:12.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink2)}
+.result .rbig{font-family:var(--mono);font-size:clamp(26px,3.4vw,36px);font-weight:700;line-height:1.15;margin:4px 0 6px;word-break:break-word}
+.result .rsub{color:var(--ink2);font-size:14.5px}
+.kv{display:flex;justify-content:space-between;gap:14px;padding:8px 0;border-bottom:1px dashed var(--line);font-size:14.5px}
+.kv:last-child{border-bottom:0}
+.kv b{font-family:var(--mono);text-align:right}
+.err{display:none;background:var(--coral-soft);color:var(--coral);border-radius:var(--r-md);padding:11px 14px;font-size:14px;font-weight:600;margin-bottom:14px}
+.err.show{display:block}
+.hint{font-size:13px;color:var(--ink3);margin:-8px 0 14px}
+/* keypad */
+.display{background:var(--ink);color:var(--bg);border-radius:var(--r-md);padding:16px;text-align:right;min-height:96px;margin-bottom:14px;overflow:hidden}
+.display .expr{font-family:var(--mono);font-size:14px;opacity:.65;min-height:20px;word-break:break-all}
+.display .val{font-family:var(--mono);font-size:34px;font-weight:700;word-break:break-all;line-height:1.2}
+.pad{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
+.pad.sci{grid-template-columns:repeat(5,1fr)}
+.pad button{border:1px solid var(--line);background:var(--surface2);color:var(--ink);border-radius:var(--r-md);padding:15px 4px;font-size:17px;font-weight:600;font-family:var(--mono)}
+.pad button:hover{border-color:var(--accent)}
+.pad button:active{transform:scale(.96)}
+.pad button.op{background:var(--accent-soft);color:var(--accent);font-weight:700}
+.pad button.eq{background:var(--accent);color:var(--accent-ink);font-weight:700}
+.pad button.fn{font-size:13.5px;background:var(--surface)}
+@media(max-width:480px){.pad.sci{grid-template-columns:repeat(5,1fr)} .pad button{padding:13px 2px;font-size:15px}}
+.hist{margin-top:16px}
+.hist h4{margin:0 0 8px;font-size:13px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink3)}
+.hist .hrow{display:flex;justify-content:space-between;gap:12px;font-family:var(--mono);font-size:13.5px;padding:6px 0;border-bottom:1px dashed var(--line);cursor:pointer}
+.hist .hrow:hover{color:var(--accent)}
+/* prose */
+.prose{max-width:780px}
+.prose h2{font-size:24px;font-weight:800;margin:34px 0 10px}
+.prose h3{font-size:18px;margin:22px 0 8px}
+.prose p,.prose li{color:var(--ink2);font-size:15.5px}
+.prose ul,.prose ol{padding-left:22px}
+.formula{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--r-md);padding:16px 18px;font-family:var(--mono);font-size:15.5px;margin:12px 0;overflow-x:auto;white-space:nowrap}
+details.faq{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);margin-bottom:10px}
+details.faq summary{cursor:pointer;font-weight:700;padding:15px 18px;font-size:15.5px;list-style:none}
+details.faq summary::-webkit-details-marker{display:none}
+details.faq p{margin:0;padding:0 18px 16px;color:var(--ink2);font-size:15px}
+table.plain{width:100%;border-collapse:collapse;font-size:14.5px;margin:10px 0}
+table.plain th,table.plain td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:left}
+table.plain td:last-child,table.plain th:last-child{text-align:right;font-family:var(--mono)}
+/* why / learn */
+.whygrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.why{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:20px}
+.why .ic{width:40px;height:40px;border-radius:11px;background:var(--amber-soft);color:var(--amber);display:grid;place-items:center;margin-bottom:10px}
+.why .ic svg{width:21px;height:21px}
+.why h3{font-size:16.5px;margin-bottom:5px}
+.why p{color:var(--ink2);font-size:14px;margin:0}
+.learn{background:var(--ink);color:var(--bg);border-radius:var(--r-lg);padding:30px;margin:10px 0 0}
+.learn h2{color:var(--bg)}
+.learn p{opacity:.8;max-width:60ch}
+.learn .formula{background:transparent;border-color:rgba(255,255,255,.25);color:var(--bg)}
+.learn-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin-top:18px}
+.learn-grid h3{font-size:16px;margin-bottom:6px}
+.learn-grid p{font-size:14px}
+/* filters */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.filters button{border:1.5px solid var(--line);background:var(--surface);color:var(--ink2);border-radius:999px;padding:9px 16px;font-weight:700;font-size:13.5px}
+.filters button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.empty{border:1.5px dashed var(--line);border-radius:var(--r-lg);padding:34px;text-align:center;color:var(--ink2)}
+/* footer */
+footer.site{margin-top:64px;border-top:1px solid var(--line);background:var(--surface2)}
+.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:28px;padding:42px 0 30px}
+@media(max-width:820px){.foot{grid-template-columns:1fr 1fr}}
+.foot h4{font-family:var(--disp);font-size:15px;margin:0 0 12px}
+.foot a{display:block;color:var(--ink2);text-decoration:none;font-size:14px;padding:3.5px 0}
+.foot a:hover{color:var(--accent)}
+.foot p{color:var(--ink3);font-size:13.5px;max-width:34ch}
+.footbar{border-top:1px solid var(--line);padding:16px 0 26px;font-size:13px;color:var(--ink3);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,80px);background:var(--ink);color:var(--bg);padding:11px 20px;border-radius:999px;font-weight:700;font-size:14px;z-index:99;transition:transform .25s ease;box-shadow:var(--shadow-lg)}
+.toast.show{transform:translate(-50%,0)}
+.note{background:var(--amber-soft);border-radius:var(--r-md);padding:14px 16px;font-size:14px;color:var(--ink2);margin:14px 0}
+.note b{color:var(--ink)}
+.gpa-row{display:grid;grid-template-columns:1.4fr .8fr .6fr auto;gap:10px;margin-bottom:10px;align-items:end}
+@media(max-width:560px){.gpa-row{grid-template-columns:1fr 1fr auto}}
+.gpa-row .inp{margin-bottom:0}
+.del{width:42px;height:48px;border-radius:var(--r-md);border:1.5px solid var(--line);background:var(--surface);color:var(--coral);font-size:16px}
+.bar{height:10px;border-radius:99px;background:var(--line);overflow:hidden;margin:8px 0 4px}
+.bar i{display:block;height:100%;background:var(--accent);border-radius:99px;transition:width .4s ease}
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap nav">
+    <a class="logo" href="#/"><span class="mark">∑</span>Num<em>era</em></a>
+    <nav id="mainnav" aria-label="Main">
+      <a href="#/">Home</a>
+      <a href="#/calculators">All Calculators</a>
+      <a href="#/categories">Categories</a>
+      <a href="#/calculators?filter=popular">Popular</a>
+      <a href="#/about">About</a>
+    </nav>
+    <div class="spacer"></div>
+    <div class="navsearch" role="search">
+      <span aria-hidden="true">⌕</span>
+      <input id="navSearch" type="search" placeholder="Search calculators…" aria-label="Search calculators" autocomplete="off" />
+    </div>
+    <button class="iconbtn" id="themeBtn" aria-label="Toggle light and dark theme">◐</button>
+    <button class="iconbtn burger" id="burger" aria-label="Open menu" aria-expanded="false">☰</button>
+  </div>
+</header>
+<main id="app" tabindex="-1"></main>
+<footer class="site">
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="logo" href="#/" style="margin-bottom:10px"><span class="mark">∑</span>Num<em>era</em></a>
+        <p>Free calculators that show their working — formula, steps and a worked example on every page, so you get the answer and understand it.</p>
+      </div>
+      <div><h4>Calculators</h4><a href="#/calculators">All Calculators</a><a href="#/calculators?filter=popular">Popular Calculators</a><a href="#/calculators?filter=new">Recently Added</a><a href="#/calculator/standard">Standard Calculator</a><a href="#/calculator/scientific">Scientific Calculator</a></div>
+      <div><h4>Categories</h4><a href="#/category/math">Math</a><a href="#/category/finance">Finance</a><a href="#/category/health">Health &amp; Fitness</a><a href="#/category/date-time">Date &amp; Time</a><a href="#/category/education">Education</a><a href="#/categories">All Categories</a></div>
+      <div><h4>Company</h4><a href="#/about">About Us</a><a href="#/contact">Contact Us</a><a href="#/privacy">Privacy Policy</a><a href="#/terms">Terms &amp; Conditions</a><a href="#/disclaimer">Disclaimer</a></div>
+    </div>
+    <div class="footbar"><span>© 2026 Numera. Results are estimates for guidance — verify important figures independently.</span><span>16 calculators · 9 categories · no sign-up</span></div>
+  </div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+"use strict";
+/* ============================== Data ============================== */
+var ICONS = {
+  calc:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8.5 7.5h7M8.5 12h.01M12 12h.01M15.5 12h.01M8.5 15.5h.01M12 15.5h.01M15.5 15.5h.01M8.5 19h.01M12 19h.01M15.5 19h.01"/></svg>',
+  sci:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M18 4H6l6 8-6 8h12"/></svg>',
+  pct:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M19 5L5 19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>',
+  avg:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg>',
+  frac:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M9 4h4M11 4v4M4 12h16M13 16h4M15 16v4M7 16h.01"/></svg>',
+  ratio:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="7" cy="7" r="2.2"/><circle cx="7" cy="17" r="2.2"/><circle cx="17" cy="7" r="2.2"/><circle cx="17" cy="17" r="2.2"/></svg>',
+  bmi:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 21s-7.5-4.6-9.3-9C1.4 8.9 3.3 5.5 6.6 5.5c2 0 3.4 1.1 5.4 3 2-1.9 3.4-3 5.4-3 3.3 0 5.2 3.4 3.9 6.5C19.5 16.4 12 21 12 21Z"/></svg>',
+  age:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 21h16M5 21v-8a7 5.5 0 0 1 14 0v8"/><path d="M12 8V5.5M12 3v.5"/><circle cx="12" cy="2.8" r=".6" fill="currentColor"/></svg>',
+  date:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="16" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>',
+  gpa:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2.5 9.5 12 4.5l9.5 5L12 14.5 2.5 9.5Z"/><path d="M6 12v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5M21.5 9.5V15"/></svg>',
+  loan:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 10.5 12 4l9 6.5M5.5 9.5V20h13V9.5"/><path d="M9.5 20v-5h5v5"/></svg>',
+  growth:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 20h18M5 20v-6M10 20V9M15 20V12M20 20V5"/><path d="M5 10l5-4 5 3 5-5"/></svg>',
+  tip:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 3h12v18l-2-1.4L14 21l-2-1.4L10 21l-2-1.4L6 21V3Z"/><path d="M9 8h6M9 12h6"/></svg>',
+  tag:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3.5 3.5H12L20.5 12 12 20.5 3.5 12V3.5Z"/><circle cx="8" cy="8" r="1.6"/></svg>',
+  conv:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 8h13M13.5 4.5 17 8l-3.5 3.5M20 16H7M10.5 12.5 7 16l3.5 3.5"/></svg>',
+  tri:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 20 20 20 4 5v15Z"/><path d="M4 15h5v5"/></svg>',
+  check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg>',
+  bolt:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M13 2.5 4.5 13.5H11L9.8 21.5 19 10h-6.5L13 2.5Z"/></svg>',
+  book:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v17.5H6.5A2.5 2.5 0 0 0 4 22V4.5Z"/><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/></svg>',
+  phone:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M11 18.5h2"/></svg>',
+  free:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 9.5h7M8.5 13h5"/></svg>'
+};
+var CATEGORIES = [
+  {slug:"math", name:"Math Calculators", tint:"tint-a", blurb:"Arithmetic, fractions, ratios, averages and percentages — the everyday number workhorses.", icon:"calc"},
+  {slug:"scientific", name:"Scientific Calculators", tint:"tint-d", blurb:"Trigonometry, logarithms, powers and geometry for students and engineers.", icon:"sci"},
+  {slug:"finance", name:"Financial Calculators", tint:"tint-b", blurb:"Loans, compound growth and discounts, with the true cost shown up front.", icon:"loan"},
+  {slug:"health", name:"Health & Fitness Calculators", tint:"tint-c", blurb:"Body mass index and related health metrics, clearly explained.", icon:"bmi"},
+  {slug:"date-time", name:"Date & Time Calculators", tint:"tint-d", blurb:"Exact ages, date differences and day counting without calendar guesswork.", icon:"date"},
+  {slug:"education", name:"Education Calculators", tint:"tint-a", blurb:"GPA and study tools that show how grades are really weighted.", icon:"gpa"},
+  {slug:"conversion", name:"Conversion Calculators", tint:"tint-b", blurb:"Length, weight and temperature conversions with exact factors.", icon:"conv"},
+  {slug:"everyday", name:"Everyday Calculators", tint:"tint-c", blurb:"Tips, splits and quick answers for daily life.", icon:"tip"},
+  {slug:"numbers", name:"Percentage & Average", tint:"tint-a", blurb:"The two most-searched number tools, done properly: percentages and averages in all their forms.", icon:"pct"}
+];
+var CALCS = [
+ {slug:"standard", name:"Standard Calculator", cat:"math", icon:"calc", popular:1, desc:"A fast, keyboard-friendly calculator with a visible history of everything you've worked out.",
+  intro:"A clean four-function calculator with memory of your session. Type with the keypad or your keyboard — every completed calculation is kept in the history below, and clicking a history row loads its result back in.",
+  formula:"Standard order of operations: parentheses first, then × and ÷, then + and −.",
+  steps:["Type or tap your expression — the running expression stays visible above the result.","Press = (or Enter) to evaluate.","Click any history entry to reuse its result.","C clears everything; ⌫ deletes the last character."],
+  example:{q:"What is 48 × 12 + 36?", a:"612", work:"48 × 12 = 576, then 576 + 36 = 612."},
+  faqs:[["Does it follow the order of operations?","Yes. Multiplication and division are evaluated before addition and subtraction, and parentheses override the default order — 2 + 3 × 4 gives 14, not 20."],["Can I use my keyboard?","Yes. Digits, + − * / . Enter, Backspace and Escape all work while the calculator page is open."],["What does % do here?","It divides the current value by 100, so 250 + 10% is not supported as a shopping shortcut — use the Percentage Calculator for that. Here % is a plain divide-by-100 key, which keeps results predictable."]]},
+ {slug:"scientific", name:"Scientific Calculator", cat:"scientific", icon:"sci", popular:1, desc:"Trigonometry, logarithms, roots, powers and factorials with DEG/RAD modes.",
+  intro:"A full scientific calculator: trig and inverse trig, natural and base-10 logs, square roots, powers, factorials and the constants π and e. Switch between degrees and radians depending on the problem you're solving.",
+  formula:"sin, cos, tan and their inverses · log₁₀(x) · ln(x) · xʸ · √x · n! · π ≈ 3.14159265 · e ≈ 2.71828183",
+  steps:["Choose DEG for school geometry or RAD for calculus and physics.","Build your expression with the function keys — functions wrap the current entry.","Press = to evaluate; invalid inputs (like log of a negative) show an error instead of a misleading number."],
+  example:{q:"What is sin(30°) in DEG mode?", a:"0.5", work:"The sine of 30 degrees is exactly one half — a result worth memorising."},
+  faqs:[["DEG or RAD — which should I use?","Use DEG when your angles are given in degrees (most school and everyday geometry). Use RAD when working with calculus, waves or physics formulas where angles are in radians. A full turn is 360° = 2π radians."],["Why did log(−5) show an error?","Logarithms are only defined for positive numbers, so the calculator refuses rather than inventing a value. The same applies to square roots of negatives and division by zero."]]},
+ {slug:"percentage", name:"Percentage Calculator", cat:"numbers", icon:"pct", popular:1, desc:"All three percentage questions: % of a number, what % one number is of another, and % change.",
+  intro:"Percentages come in three flavours and mixing them up is the most common number mistake people make. Pick the question you're actually asking and Numera shows the formula it used.",
+  formula:"Part = (P ÷ 100) × Whole · P% = (Part ÷ Whole) × 100 · Change = ((New − Old) ÷ Old) × 100",
+  steps:["Choose your question from the three tabs.","Enter the two numbers.","Read the answer plus the plain-English sentence underneath — it restates the result so you can sanity-check it."],
+  example:{q:"What is 18% of 240?", a:"43.2", work:"(18 ÷ 100) × 240 = 0.18 × 240 = 43.2."},
+  faqs:[["What is the difference between percentage change and percentage points?","Percentage change is relative: going from 10% to 12% is a 20% increase. Percentage points is the raw difference: 2 points. This calculator computes relative percentage change."],["Can the result be over 100%?","Yes — whenever the part is bigger than the whole, or a value more than doubles, percentages above 100 are correct."]]},
+ {slug:"average", name:"Average Calculator", cat:"numbers", icon:"avg", popular:1, featured:1, desc:"Mean, median, mode, range, sum and standard deviation for any list of numbers.",
+  intro:"Paste or type a list of numbers — separated by commas, spaces or line breaks — and get the full picture: mean, median, mode, range, sum, count and standard deviation, not just a single average.",
+  formula:"Mean = (sum of values) ÷ (count of values) · Median = middle value when sorted",
+  steps:["Enter your numbers in any order, separated by commas or spaces.","Results update instantly as you type.","Read the breakdown: the median tells you the typical value even when a few outliers drag the mean around."],
+  example:{q:"Average of 4, 8, 15, 16, 23, 42", a:"Mean 18 · Median 15.5", work:"Sum = 108, count = 6, so the mean is 108 ÷ 6 = 18. Sorted, the middle pair is 15 and 16, so the median is 15.5."},
+  faqs:[["Mean vs median — which should I report?","Report the median when your data has outliers (house prices, salaries). Report the mean when every value counts equally (test scores, temperatures). Showing both is best practice."],["What is standard deviation?","It measures spread: roughly how far values typically sit from the mean. This calculator uses the population formula (dividing by n); for a sample estimate, dividing by n−1 gives a slightly larger value."]]},
+ {slug:"fraction", name:"Fraction Calculator", cat:"math", icon:"frac", popular:1, desc:"Add, subtract, multiply and divide fractions with automatic simplifying and mixed numbers.",
+  intro:"Fraction arithmetic without the headache: enter two fractions, pick an operation, and see the simplified result as a proper fraction, a mixed number and a decimal.",
+  formula:"a/b ± c/d = (ad ± bc) / bd · a/b × c/d = ac/bd · a/b ÷ c/d = ad/bc — then divide top and bottom by their greatest common divisor.",
+  steps:["Enter the numerator and denominator of each fraction.","Choose +, −, × or ÷.","The result is simplified automatically and also shown as a mixed number and decimal."],
+  example:{q:"What is 3/4 + 2/3?", a:"1 5/12", work:"Common denominator 12: 9/12 + 8/12 = 17/12 = 1 5/12 ≈ 1.4167."},
+  faqs:[["Why simplify?","17/12 and 1 5/12 are the same value, but the mixed number is easier to picture. Simplifying divides numerator and denominator by their greatest common divisor so the fraction is in lowest terms."],["Can denominators be negative or zero?","Zero is never allowed — division by zero is undefined, and the calculator will say so. Negative denominators are normalised so the sign sits on the numerator."]]},
+ {slug:"ratio", name:"Ratio Calculator", cat:"math", icon:"ratio", popular:1, desc:"Simplify ratios to lowest terms and solve proportions — find the missing value in a : b = c : x.",
+  intro:"Two tools in one: simplify any ratio to its lowest terms (with the equivalent decimal split), and solve proportions to find a missing value — the classic scale, recipe and map problem.",
+  formula:"Simplify: divide both sides by gcd(a, b) · Proportion: if a : b = c : x, then x = (b × c) ÷ a",
+  steps:["For simplifying, enter both sides of the ratio.","For a proportion, fill in any three of the four boxes and leave the one you want empty.","Results update instantly."],
+  example:{q:"Simplify 24 : 36 and solve 3 : 5 = 12 : x", a:"2 : 3 and x = 20", work:"gcd(24, 36) = 12, so 24:36 = 2:3. For the proportion, x = (5 × 12) ÷ 3 = 20."},
+  faqs:[["Where are proportions used?","Scaling recipes, map and model scales, mixing paint or concrete, and converting currencies proportionally — anywhere two quantities grow together at a fixed rate."]]},
+ {slug:"bmi", name:"BMI Calculator", cat:"health", icon:"bmi", popular:1, desc:"Body mass index from height and weight in metric or imperial, with the WHO category and a healthy range.",
+  intro:"BMI is a screening measure that relates weight to height. Enter yours to see your index, its WHO category, and the healthy weight range for your height. It is a guide, not a diagnosis — muscle, age and build all matter.",
+  formula:"BMI = weight (kg) ÷ height (m)² · Imperial: BMI = 703 × weight (lb) ÷ height (in)²",
+  steps:["Choose metric (kg, cm) or imperial (lb, ft/in).","Enter your height and weight.","See your BMI, category and the healthy weight range for your height."],
+  example:{q:"BMI for 70 kg and 175 cm", a:"22.9 — Healthy", work:"70 ÷ 1.75² = 70 ÷ 3.0625 = 22.86, inside the healthy band of 18.5–24.9."},
+  faqs:[["What are the WHO categories?","Underweight below 18.5, healthy 18.5–24.9, overweight 25–29.9, and obese at 30 or above. These bands are for adults; children's BMI is interpreted differently."],["Why might BMI mislead?","BMI can't distinguish muscle from fat, so very muscular people can score 'overweight' with low body fat. Waist measurement and a clinician's view give a fuller picture."]]},
+ {slug:"age", name:"Age Calculator", cat:"date-time", icon:"age", popular:1, desc:"Exact age in years, months and days — plus total days lived and the weekday you were born.",
+  intro:"Calendars make exact ages surprisingly fiddly — months have different lengths and leap years intervene. This calculator does the borrowing correctly and reports your age three ways, plus fun totals.",
+  formula:"Age = (target date) − (date of birth), borrowing days from the previous month and months from the previous year as needed.",
+  steps:["Enter your date of birth.","Leave the 'age at' date as today, or pick any other date.","Read the exact breakdown and totals."],
+  example:{q:"Age on 30 Oct 2026 if born 15 Mar 2000", a:"26 years, 7 months, 15 days", work:"From 15 Mar 2000 to 15 Mar 2026 is 26 years; to 15 Oct adds 7 months; to 30 Oct adds 15 days."},
+  faqs:[["How are leap years handled?","By counting real calendar days between the two dates, so 29 February birthdays and leap years in between are handled exactly."],["What weekday was I born on?","It's shown in the results — computed from the actual calendar date, not an approximation."]]},
+ {slug:"date", name:"Date Calculator", cat:"date-time", icon:"date", popular:1, desc:"Days between two dates, or add and subtract days, weeks, months and years from a date.",
+  intro:"Two everyday date jobs: count the exact days between any two dates (with weeks, months and business-day context), or shift a date forward or back by days, weeks, months or years.",
+  formula:"Difference = target − start, counted in real calendar days · Adding months/years clamps to the last valid day of the target month (31 Jan + 1 month = 28/29 Feb).",
+  steps:["Pick the Difference or Add / Subtract tab.","Enter your dates and amounts.","Weekday names are shown with every result so deadlines are easy to sanity-check."],
+  example:{q:"Days from 1 Jan 2026 to 30 Oct 2026", a:"302 days", work:"Counting real calendar days across ten months of 2026 (not a leap year) gives 302."},
+  faqs:[["Is the end date included?","The difference counts the days you must add to the start date to reach the end date — the standard convention. A date to itself is 0 days."],["What is a business day here?","Monday to Friday. The counter reports how many of the days in your range fall on weekdays."]]},
+ {slug:"gpa", name:"GPA Calculator", cat:"education", icon:"gpa", popular:1, desc:"Weighted GPA on the 4.0 scale from letter grades and credit hours, course by course.",
+  intro:"Your GPA is a credit-weighted average: an A in a 4-credit course moves it more than an A in a 1-credit lab. Add your courses, pick grades and credits, and watch the weighted result build.",
+  formula:"GPA = Σ (grade points × credits) ÷ Σ credits · A = 4.0, A− = 3.7, B+ = 3.3, B = 3.0, B− = 2.7, C+ = 2.3, C = 2.0, C− = 1.7, D+ = 1.3, D = 1.0, F = 0.0",
+  steps:["Add a row per course with its letter grade and credit hours.","Results update instantly — unweighted average is shown too, for comparison.","Use 'Add course' for more rows; the trash button removes one."],
+  example:{q:"A (3 credits), B+ (4 credits), A− (3 credits)", a:"GPA 3.63", work:"(4.0×3 + 3.3×4 + 3.7×3) = 12 + 13.2 + 11.1 = 36.3 grade points over 10 credits; 36.3 ÷ 10 = 3.63."},
+  faqs:[["Why is my GPA not just the average of my grades?","Because courses carry different credit hours. Weighting by credits is how universities compute it — a grade in a heavy course counts proportionally more."],["Does this match my school's scale?","It uses the common US 4.0 scale shown in the formula. Some schools weight honours/AP courses up to 5.0 or use different plus/minus values — check your handbook for official figures."]]},
+ {slug:"loan", name:"Loan Calculator", cat:"finance", icon:"loan", popular:1, isNew:0, desc:"Monthly payment, total interest and payoff summary for any fixed-rate loan.",
+  intro:"See the three numbers that matter before you sign: the monthly payment, the total interest over the life of the loan, and the payoff date. Fixed-rate, monthly-compounded — the standard structure for car loans, personal loans and mortgages.",
+  formula:"M = P × r(1+r)ⁿ ÷ ((1+r)ⁿ − 1), where P = principal, r = monthly rate (annual % ÷ 1200), n = number of monthly payments.",
+  steps:["Enter the amount, annual interest rate and term.","Results update instantly, including an amortisation snapshot of the first year.","Try shortening the term: the payment rises, but total interest usually falls sharply."],
+  example:{q:"$20,000 at 6% over 5 years", a:"$386.66 / month", work:"r = 0.005, n = 60. M = 20000 × 0.005 × 1.005⁶⁰ ÷ (1.005⁶⁰ − 1) ≈ $386.66. Total interest ≈ $3,199."},
+  faqs:[["What does APR include that interest rate doesn't?","APR folds in lender fees, so it is usually slightly higher than the note rate. This calculator uses the rate you enter as the borrowing rate — enter the APR for a closer-to-true cost."],["Why is early interest so high?","Each payment first covers interest on the remaining balance, which is largest at the start. That's amortisation — the interest share shrinks as the balance falls."]]},
+ {slug:"compound-interest", name:"Compound Interest Calculator", cat:"finance", icon:"growth", isNew:1, desc:"How savings and investments grow with compound interest and optional monthly contributions.",
+  intro:"Compounding means earning interest on your interest — the reason starting early beats saving more later. Model an initial amount, a monthly contribution, a rate and a time horizon, and see the growth split between your money and the interest it earned.",
+  formula:"A = P(1 + r/n)ⁿᵗ + contribution growth, compounded monthly by default.",
+  steps:["Enter the starting amount and monthly contribution (0 is fine).","Set the annual rate and years.","The breakdown shows exactly how much of the final pot is interest."],
+  example:{q:"$5,000 plus $200/month at 7% for 20 years", a:"≈ $124,400", work:"Your contributions total $53,000; compounding monthly at 7% grows the pot to roughly $124,400 — about $71,400 of it is earned interest, more than half the final balance."},
+  faqs:[["Is this a prediction?","No — it's arithmetic at a fixed assumed rate. Real investments vary year to year, and inflation and tax aren't included. Use it to compare scenarios, not to forecast."],["How often is interest compounded?","Monthly in this calculator, which is typical for savings accounts and a reasonable model for long-run investment growth."]]},
+ {slug:"tip", name:"Tip Calculator", cat:"everyday", icon:"tip", desc:"Tip amount, grand total and the per-person split for any bill.",
+  intro:"Bill, tip percentage, party size — done. Preset buttons for common tip levels, a custom percentage field, and an honest per-person split rounded sensibly.",
+  formula:"Tip = bill × (tip% ÷ 100) · Per person = (bill + tip) ÷ people",
+  steps:["Enter the bill amount.","Tap a preset tip or type your own percentage.","Set the number of people splitting."],
+  example:{q:"$86 bill, 18% tip, split 4 ways", a:"$25.37 each", work:"Tip = $15.48, total = $101.48, ÷ 4 = $25.37 per person."},
+  faqs:[["Should the tip be on the pre-tax amount?","Traditionally yes — tipping on the subtotal before tax. This calculator applies the percentage to the amount you enter, so enter the subtotal if that's your custom."]]},
+ {slug:"discount", name:"Discount Calculator", cat:"finance", icon:"tag", desc:"Sale price after a percentage or fixed discount, what you save, and stacked discounts done right.",
+  intro:"Work out the real price after a discount — including the classic trap: two stacked discounts are not additive. 20% off then 10% off is 28% off, not 30%, and this calculator shows why.",
+  formula:"Sale price = original × (1 − d/100) · Stacked: apply each discount in turn to the already-reduced price.",
+  steps:["Enter the original price and the discount percentage.","Optionally add a second, stacked discount or a fixed amount off.","See the final price and total saved."],
+  example:{q:"$120 jacket at 25% off, then an extra 10% off", a:"$81.00", work:"$120 × 0.75 = $90, then $90 × 0.90 = $81. Total saved $39 — an effective 32.5% off, not 35%."},
+  faqs:[["Why aren't stacked discounts additive?","The second discount applies to the already-reduced price, so its absolute value is smaller. Percentages of different bases never simply add."]]},
+ {slug:"unit-converter", name:"Unit Converter", cat:"conversion", icon:"conv", isNew:1, desc:"Length, weight and temperature conversions with exact factors — metres, miles, kilos, pounds, °C and °F.",
+  intro:"Convert between metric and imperial units with exact defined factors (1 inch = 25.4 mm exactly). Temperature uses the standard formulas, and results update as you type.",
+  formula:"Length via metres · Weight via kilograms · °F = °C × 9/5 + 32 · K = °C + 273.15",
+  steps:["Choose a quantity: length, weight or temperature.","Pick From and To units — the swap button flips them.","Enter a value; the conversion updates instantly."],
+  example:{q:"Convert 10 km to miles", a:"6.2137 miles", work:"10,000 m ÷ 1609.344 m per mile = 6.2137 miles."},
+  faqs:[["Are these factors exact?","The international inch (25.4 mm), foot, mile and pound are exact by definition since 1959, so length and weight conversions are exact to the precision shown."]]},
+ {slug:"triangle", name:"Triangle Calculator", cat:"scientific", icon:"tri", isNew:1, desc:"Hypotenuse, missing sides, area and angles for right-angled triangles via Pythagoras.",
+  intro:"For right-angled triangles: give any two sides and get the third, the area, the perimeter and both acute angles. Built on Pythagoras' theorem, shown in the working.",
+  formula:"a² + b² = c² · Area = (a × b) ÷ 2 · angle A = atan(a ÷ b) in degrees",
+  steps:["Enter any two of the three sides (leave one blank).","Results update instantly with area, perimeter and angles.","The hypotenuse must be the longest side — the calculator checks."],
+  example:{q:"Legs of 3 and 4", a:"Hypotenuse 5", work:"√(3² + 4²) = √25 = 5. Area = 6, angles ≈ 36.87° and 53.13°."},
+  faqs:[["What if I enter all three sides?","Enter exactly two — with three, the calculator can't tell which one you want solved. Clear one field and it computes instantly."]]}
+];
+var recentUsed = [];
+function calcBySlug(s){ for(var i=0;i<CALCS.length;i++) if(CALCS[i].slug===s) return CALCS[i]; return null; }
+function catBySlug(s){ for(var i=0;i<CATEGORIES.length;i++) if(CATEGORIES[i].slug===s) return CATEGORIES[i]; return null; }
+function catName(s){ var c=catBySlug(s); return c?c.name.replace(" Calculators",""):""; }
+function calcsInCat(s){ return CALCS.filter(function(c){return c.cat===s;}); }
+function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+function fmt(n, dp){ if(!isFinite(n)) return "—"; if(dp===undefined) dp=6; var a=Math.abs(n); var d = a!==0 && (a>=1e12||a<1e-7) ? 10 : dp; var s=Number(n.toFixed(d)).toString(); if(s.indexOf("e")>=0) return n.toExponential(6); var parts=s.split("."); parts[0]=parts[0].replace(/\B(?=(\d{3})+(?!\d))/g,","); return parts.join("."); }
+function money(n){ return "$" + fmt(n,2); }
+function num(id){ var el=document.getElementById(id); if(!el) return NaN; var v=parseFloat(String(el.value).replace(/,/g,"")); return v; }
+function toast(msg){ var t=document.getElementById("toast"); t.textContent=msg; t.classList.add("show"); setTimeout(function(){t.classList.remove("show");},1800); }
+function copyText(txt, label){ function done(){ toast((label||"Result")+" copied: "+txt); } if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(done, function(){ fallback(); }); } else fallback(); function fallback(){ var ta=document.createElement("textarea"); ta.value=txt; document.body.appendChild(ta); ta.select(); try{document.execCommand("copy"); done();}catch(e){ toast("Copy failed — select the result manually"); } document.body.removeChild(ta); } }
+function gcd(a,b){ a=Math.abs(Math.round(a)); b=Math.abs(Math.round(b)); while(b){ var t=a%b; a=b; b=t; } return a||1; }
+function parseDateLocal(str){ if(!str) return null; var p=str.split("-"); if(p.length!==3) return null; var d=new Date(Number(p[0]), Number(p[1])-1, Number(p[2])); return isNaN(d.getTime())?null:d; }
+function toISODate(d){ var m=("0"+(d.getMonth()+1)).slice(-2), day=("0"+d.getDate()).slice(-2); return d.getFullYear()+"-"+m+"-"+day; }
+function todayISO(){ return toISODate(new Date()); }
+var WEEKDAYS=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+var MONTHS=["January","February","March","April","May","June","July","August","September","October","November","December"];
+function prettyDate(d){ return WEEKDAYS[d.getDay()]+", "+d.getDate()+" "+MONTHS[d.getMonth()]+" "+d.getFullYear(); }
+/* ============ Expression engine (no eval) ============ */
+function tokenize(src){
+  var toks=[], i=0;
+  while(i<src.length){
+    var ch=src[i];
+    if(ch===" "||ch==="\t"){ i++; continue; }
+    if(/[0-9.]/.test(ch)){ var j=i, dot=0; while(j<src.length && /[0-9.]/.test(src[j])){ if(src[j]===".") dot++; j++; } if(dot>1) throw new Error("Invalid number"); toks.push({t:"num", v:parseFloat(src.slice(i,j))}); i=j; continue; }
+    if(/[a-zA-Z]/.test(ch)){ var k=i; while(k<src.length && /[a-zA-Z]/.test(src[k])) k++; toks.push({t:"id", v:src.slice(i,k).toLowerCase()}); i=k; continue; }
+    if("+-*/%^!(),".indexOf(ch)>=0){ toks.push({t:"op", v:ch}); i++; continue; }
+    throw new Error("Unexpected character: "+ch);
+  }
+  return toks;
+}
+var FUNCS=["sin","cos","tan","asin","acos","atan","log","ln","sqrt","abs"];
+function evaluate(src, degMode){
+  var toks=tokenize(src), pos=0;
+  function peek(){ return toks[pos]; }
+  function next(){ return toks[pos++]; }
+  function expect(v){ var tk=next(); if(!tk||tk.v!==v) throw new Error("Expected '"+v+"'");
+  }
+  function toRad(x){ return degMode ? x*Math.PI/180 : x; }
+  function toDeg(x){ return degMode ? x*180/Math.PI : x; }
+  function fact(n){ if(n<0||Math.round(n)!==n) throw new Error("Factorial needs a whole number ≥ 0"); if(n>170) throw new Error("Number too large"); var r=1; for(var i=2;i<=n;i++) r*=i; return r; }
+  function parseExpr(){ var v=parseTerm(); while(peek()&&peek().t==="op"&&(peek().v==="+"||peek().v==="-")){ var op=next().v; var r=parseTerm(); v = op==="+"? v+r : v-r; } return v; }
+  function parseTerm(){ var v=parsePow(); while(peek()&&peek().t==="op"&&(peek().v==="*"||peek().v==="/"||peek().v==="%")){ var op=next().v; var r=parsePow(); if(op==="*") v*=r; else if(op==="/"){ if(r===0) throw new Error("Division by zero"); v/=r; } else v%=r; } return v; }
+  function parsePow(){ var base=parseUnary(); if(peek()&&peek().t==="op"&&peek().v==="^"){ next(); var exp=parsePow(); base=Math.pow(base,exp); } return base; }
+  function parseUnary(){ if(peek()&&peek().t==="op"&&peek().v==="-"){ next(); return -parseUnary(); } if(peek()&&peek().t==="op"&&peek().v==="+"){ next(); return parseUnary(); } return parsePostfix(); }
+  function parsePostfix(){ var v=parseAtom(); while(peek()&&peek().t==="op"&&peek().v==="!"){ next(); v=fact(v); } return v; }
+  function parseAtom(){
+    var tk=next(); if(!tk) throw new Error("Incomplete expression");
+    if(tk.t==="num") return tk.v;
+    if(tk.t==="op"&&tk.v==="("){ var v=parseExpr(); expect(")"); return v; }
+    if(tk.t==="id"){
+      if(tk.v==="pi"||tk.v==="π") return Math.PI;
+      if(tk.v==="e") return Math.E;
+      if(FUNCS.indexOf(tk.v)>=0){ expect("("); var x=parseExpr(); expect(")"); return applyFn(tk.v,x); }
+      throw new Error("Unknown name: "+tk.v);
+    }
+    throw new Error("Unexpected: "+tk.v);
+  }
+  function applyFn(name,x){
+    switch(name){
+      case "sin": return Math.sin(toRad(x));
+      case "cos": return Math.cos(toRad(x));
+      case "tan": return Math.tan(toRad(x));
+      case "asin": if(x<-1||x>1) throw new Error("asin needs −1 to 1"); return toDeg(Math.asin(x));
+      case "acos": if(x<-1||x>1) throw new Error("acos needs −1 to 1"); return toDeg(Math.acos(x));
+      case "atan": return toDeg(Math.atan(x));
+      case "log": if(x<=0) throw new Error("log needs a positive number"); return Math.log10(x);
+      case "ln": if(x<=0) throw new Error("ln needs a positive number"); return Math.log(x);
+      case "sqrt": if(x<0) throw new Error("√ of a negative number"); return Math.sqrt(x);
+      case "abs": return Math.abs(x);
+    }
+    throw new Error("Unknown function");
+  }
+  var result=parseExpr();
+  if(pos<toks.length) throw new Error("Couldn't parse the whole expression");
+  if(!isFinite(result)) throw new Error("Result is not a finite number");
+  return result;
+}
+</script>
+<script>
+"use strict";
+/* ================= Keypad calculators ================= */
+function keypadHTML(sci){
+  var keys;
+  if(sci){
+    keys=[["fn","sin(","sin"],["fn","cos(","cos"],["fn","tan(","tan"],["fn","π","pi"],["op","⌫","back"],
+      ["fn","asin(","asin"],["fn","acos(","acos"],["fn","atan(","atan"],["fn","e","e"],["op","C","clear"],
+      ["fn","log(","log"],["fn","ln(","ln"],["fn","√(","sqrt"],["fn","xʸ","^"],["op","÷","/"],
+      ["fn","x²","^2"],["","7","7"],["","8","8"],["","9","9"],["op","×","*"],
+      ["fn","n!","!"],["","4","4"],["","5","5"],["","6","6"],["op","−","-"],
+      ["fn","(","("],["","1","1"],["","2","2"],["","3","3"],["op","+","+"],
+      ["fn",")",")"],["","0","0"],["",".","."],["fn","Ans","ans"],["eq","=","="]];
+  } else {
+    keys=[["op","C","clear"],["op","(","("],["op",")",")"],["op","÷","/"],
+      ["","7","7"],["","8","8"],["","9","9"],["op","×","*"],
+      ["","4","4"],["","5","5"],["","6","6"],["op","−","-"],
+      ["","1","1"],["","2","2"],["","3","3"],["op","+","+"],
+      ["","%","%"],["","0","0"],["",".","."],["eq","=","="]];
+  }
+  var h='<div class="display" aria-live="polite"><div class="expr" id="kpExpr">&nbsp;</div><div class="val" id="kpVal">0</div></div>';
+  if(sci) h+='<div class="seg" role="group" aria-label="Angle mode"><button type="button" id="degBtn" class="on">DEG</button><button type="button" id="radBtn">RAD</button></div>';
+  h+='<div class="pad'+(sci?" sci":"")+'" id="kpPad">';
+  keys.forEach(function(k){ h+='<button type="button" class="'+k[0]+'" data-k="'+esc(k[2])+'">'+esc(k[1])+'</button>'; });
+  h+='</div><div class="hist" id="kpHist" style="display:none"><h4>History this session</h4><div id="kpHistRows"></div></div>';
+  return h;
+}
+function initKeypad(sci){
+  var expr="", ans=0, deg=true, hist=[];
+  var exprEl=document.getElementById("kpExpr"), valEl=document.getElementById("kpVal");
+  function render(){ exprEl.textContent=expr||" "; if(!expr){ valEl.textContent=fmt(ans); return; } try{ valEl.textContent=fmt(evaluate(expr.replace(/ans/gi,String(ans)), deg)); }catch(e){ valEl.textContent="…"; } }
+  function pushHist(e2, v){ hist.unshift({e:e2, v:v}); if(hist.length>12) hist.pop(); var box=document.getElementById("kpHist"); box.style.display="block"; document.getElementById("kpHistRows").innerHTML=hist.map(function(hh,i){ return '<div class="hrow" data-i="'+i+'"><span>'+esc(hh.e)+'</span><b>= '+fmt(hh.v)+'</b></div>'; }).join(""); Array.prototype.forEach.call(box.querySelectorAll(".hrow"), function(r){ r.addEventListener("click", function(){ expr=String(hist[Number(r.getAttribute("data-i"))].v); render(); }); }); }
+  function press(k){
+    if(k==="clear"){ expr=""; }
+    else if(k==="back"){ expr=expr.slice(0,-1); }
+    else if(k==="="){ if(!expr) return; try{ var v=evaluate(expr.replace(/ans/gi,String(ans)), deg); pushHist(expr, v); ans=v; expr=""; valEl.textContent=fmt(v); exprEl.textContent=hist[0].e+" ="; return; }catch(err){ valEl.textContent="Error"; exprEl.textContent=err.message; return; } }
+    else { expr+=k; }
+    render();
+  }
+  document.getElementById("kpPad").addEventListener("click", function(ev){ var b=ev.target.closest("button"); if(b) press(b.getAttribute("data-k")); });
+  if(sci){ document.getElementById("degBtn").addEventListener("click", function(){ deg=true; this.classList.add("on"); document.getElementById("radBtn").classList.remove("on"); render(); }); document.getElementById("radBtn").addEventListener("click", function(){ deg=false; this.classList.add("on"); document.getElementById("degBtn").classList.remove("on"); render(); }); }
+  document.addEventListener("keydown", keyHandler);
+  function keyHandler(ev){
+    if(!document.getElementById("kpPad")){ document.removeEventListener("keydown", keyHandler); return; }
+    var tag=(ev.target.tagName||"").toLowerCase(); if(tag==="input"||tag==="textarea"||tag==="select") return;
+    var k=ev.key;
+    if(/^[0-9.]$/.test(k)||"+-*/%^!(),".indexOf(k)>=0){ press(k); ev.preventDefault(); }
+    else if(k==="Enter"||k==="="){ press("="); ev.preventDefault(); }
+    else if(k==="Backspace"){ press("back"); ev.preventDefault(); }
+    else if(k==="Escape"){ press("clear"); }
+    else if(k==="p"){ press("pi"); }
+  }
+  render();
+}
+/* ================= Average widget (shared: featured + page) ================= */
+function avgWidgetHTML(idp, defaults){
+  return '<label class="f" for="'+idp+'Nums">Your numbers <small>— commas, spaces or line breaks all work</small></label>'
+    +'<textarea class="inp" id="'+idp+'Nums" placeholder="e.g. 12, 45, 7, 89, 23">'+esc(defaults)+'</textarea>'
+    +'<div class="err" id="'+idp+'Err" role="alert"></div>'
+    +'<div class="result" id="'+idp+'Res" aria-live="polite"></div>';
+}
+function parseNumList(str){ return String(str).split(/[\s,;]+/).filter(function(s){return s.length;}).map(Number); }
+function avgCompute(str){
+  var vals=parseNumList(str);
+  if(!vals.length) return {error:"Enter at least one number to see results."};
+  if(vals.some(function(v){return isNaN(v);})) return {error:"One of those entries isn't a number — check for stray letters."};
+  var sorted=vals.slice().sort(function(a,b){return a-b;});
+  var sum=vals.reduce(function(a,b){return a+b;},0), n=vals.length, mean=sum/n;
+  var median = n%2 ? sorted[(n-1)/2] : (sorted[n/2-1]+sorted[n/2])/2;
+  var freq={}, modeVal=null, modeCount=0;
+  vals.forEach(function(v){ freq[v]=(freq[v]||0)+1; if(freq[v]>modeCount){modeCount=freq[v]; modeVal=v;} });
+  var variance=vals.reduce(function(a,b){return a+(b-mean)*(b-mean);},0)/n;
+  return {n:n, sum:sum, mean:mean, median:median, min:sorted[0], max:sorted[n-1], range:sorted[n-1]-sorted[0],
+    mode: modeCount>1? modeVal : null, sd: Math.sqrt(variance),
+    sorted: sorted};
+}
+function avgRender(idp){
+  var ta=document.getElementById(idp+"Nums"), err=document.getElementById(idp+"Err"), res=document.getElementById(idp+"Res");
+  var r=avgCompute(ta.value);
+  if(r.error){ err.textContent=r.error; err.classList.add("show"); res.innerHTML='<div class="rlabel">Average (mean)</div><div class="rbig">—</div><div class="rsub">Results appear here as soon as the numbers are valid.</div>'; return; }
+  err.classList.remove("show");
+  res.innerHTML='<div class="rlabel">Average (mean)</div><div class="rbig">'+fmt(r.mean,4)+'</div>'
+    +'<div class="rsub">Sum '+fmt(r.sum,4)+' ÷ count '+r.n+'</div>'
+    +'<div style="margin-top:10px"><div class="kv"><span>Median</span><b>'+fmt(r.median,4)+'</b></div>'
+    +'<div class="kv"><span>Mode</span><b>'+(r.mode===null?"None":fmt(r.mode,4))+'</b></div>'
+    +'<div class="kv"><span>Range</span><b>'+fmt(r.range,4)+' ('+fmt(r.min,4)+' to '+fmt(r.max,4)+')</b></div>'
+    +'<div class="kv"><span>Standard deviation</span><b>'+fmt(r.sd,4)+'</b></div></div>'
+    +'<div class="btnrow" style="margin-top:12px"><button type="button" class="btn ghost sm" data-copy="'+fmt(r.mean,4)+'">Copy mean</button></div>';
+  var b=res.querySelector("[data-copy]"); if(b) b.addEventListener("click", function(){ copyText(b.getAttribute("data-copy"), "Mean"); });
+}
+function initAvg(idp){ var ta=document.getElementById(idp+"Nums"); ta.addEventListener("input", function(){ avgRender(idp); }); avgRender(idp); }
+/* ================= Individual calculators ================= */
+var RENDER = {}, INIT = {};
+RENDER.standard = function(){ return '<div style="max-width:520px">'+keypadHTML(false)+'</div>'; };
+INIT.standard = function(){ initKeypad(false); };
+RENDER.scientific = function(){ return '<div style="max-width:560px">'+keypadHTML(true)+'</div><p class="hint" style="margin-top:12px">Tip: functions wrap your entry — tap sin, then a number, then ). Factorial (n!) needs a whole number. Division by zero, log of a negative and √ of a negative return an error, never a fake value.</p>'; };
+INIT.scientific = function(){ initKeypad(true); };
+
+RENDER.percentage = function(){
+  return '<div class="seg" role="tablist" aria-label="Percentage question"><button type="button" class="on" data-m="0">What is X% of Y?</button><button type="button" data-m="1">X is what % of Y?</button><button type="button" data-m="2">% change</button></div>'
+  +'<div class="row2"><div><label class="f" id="pctL1" for="pctA">Percentage (X)</label><input class="inp" id="pctA" type="number" inputmode="decimal" value="18"></div>'
+  +'<div><label class="f" id="pctL2" for="pctB">Number (Y)</label><input class="inp" id="pctB" type="number" inputmode="decimal" value="240"></div></div>'
+  +'<div class="err" id="pctErr" role="alert"></div>'
+  +'<div class="result" id="pctRes" aria-live="polite"></div>';
+};
+INIT.percentage = function(){
+  var mode=0, labels=[["Percentage (X)","Number (Y)"],["Part (X)","Whole (Y)"],["From (old value)","To (new value)"]];
+  function go(){
+    var a=num("pctA"), b=num("pctB"), err=document.getElementById("pctErr"), res=document.getElementById("pctRes");
+    function fail(m){ err.textContent=m; err.classList.add("show"); res.innerHTML='<div class="rlabel">Result</div><div class="rbig">—</div>'; }
+    if(isNaN(a)||isNaN(b)) return fail("Enter both numbers to calculate.");
+    err.classList.remove("show");
+    if(mode===0){ var v=a/100*b; res.innerHTML='<div class="rlabel">Result</div><div class="rbig">'+fmt(v,4)+'</div><div class="rsub">'+fmt(a,4)+'% of '+fmt(b,4)+' is <b>'+fmt(v,4)+'</b>. Formula: ('+fmt(a,4)+' ÷ 100) × '+fmt(b,4)+'.</div><div class="btnrow" style="margin-top:12px"><button type="button" class="btn ghost sm" id="pctCopy">Copy result</button></div>'; }
+    else if(mode===1){ if(b===0) return fail("The whole (Y) can't be zero — that would be division by zero."); var p=a/b*100; res.innerHTML='<div class="rlabel">Result</div><div class="rbig">'+fmt(p,4)+'%</div><div class="rsub">'+fmt(a,4)+' is <b>'+fmt(p,4)+'%</b> of '+fmt(b,4)+'. Formula: ('+fmt(a,4)+' ÷ '+fmt(b,4)+') × 100.</div><div class="btnrow" style="margin-top:12px"><button type="button" class="btn ghost sm" id="pctCopy">Copy result</button></div>'; }
+    else { if(a===0) return fail("Percentage change from zero is undefined — any move from 0 is not a meaningful %."); var c=(b-a)/Math.abs(a)*100; var dir=c>0?"increase":(c<0?"decrease":"no change"); res.innerHTML='<div class="rlabel">Result</div><div class="rbig">'+(c>0?"+":"")+fmt(c,4)+'%</div><div class="rsub">From '+fmt(a,4)+' to '+fmt(b,4)+' is a <b>'+fmt(Math.abs(c),4)+'% '+dir+'</b>. Formula: (('+fmt(b,4)+' − '+fmt(a,4)+') ÷ '+fmt(Math.abs(a),4)+') × 100.</div><div class="btnrow" style="margin-top:12px"><button type="button" class="btn ghost sm" id="pctCopy">Copy result</button></div>'; }
+    var cp=document.getElementById("pctCopy"); if(cp) cp.addEventListener("click", function(){ copyText(res.querySelector(".rbig").textContent, "Result"); });
+  }
+  Array.prototype.forEach.call(document.querySelectorAll("[data-m]"), function(btn){ btn.addEventListener("click", function(){ mode=Number(btn.getAttribute("data-m")); Array.prototype.forEach.call(document.querySelectorAll("[data-m]"), function(x){x.classList.remove("on");}); btn.classList.add("on"); document.getElementById("pctL1").textContent=labels[mode][0]; document.getElementById("pctL2").textContent=labels[mode][1]; go(); }); });
+  ["pctA","pctB"].forEach(function(id){ document.getElementById(id).addEventListener("input", go); });
+  go();
+};
+
+RENDER.average = function(){ return avgWidgetHTML("av", "12, 45, 7, 89, 23, 45, 67"); };
+INIT.average = function(){ initAvg("av"); };
+
+RENDER.fraction = function(){
+  function fr(p){ return '<div class="row2"><div><label class="f" for="'+p+'N">Numerator</label><input class="inp" id="'+p+'N" type="number" value="'+(p==="f1"?"3":"2")+'"></div><div><label class="f" for="'+p+'D">Denominator</label><input class="inp" id="'+p+'D" type="number" value="'+(p==="f1"?"4":"3")+'"></div></div>'; }
+  return '<div class="row2"><div><h3 style="margin-bottom:10px;font-size:16px">First fraction</h3>'+fr("f1")+'</div><div><h3 style="margin-bottom:10px;font-size:16px">Second fraction</h3>'+fr("f2")+'</div></div>'
+  +'<label class="f" for="frOp">Operation</label><div class="seg" id="frOps"><button type="button" class="on" data-op="+">Add +</button><button type="button" data-op="-">Subtract −</button><button type="button" data-op="*">Multiply ×</button><button type="button" data-op="/">Divide ÷</button></div>'
+  +'<div class="err" id="frErr" role="alert"></div><div class="result" id="frRes" aria-live="polite"></div>';
+};
+INIT.fraction = function(){
+  var op="+";
+  function go(){
+    var n1=num("f1N"), d1=num("f1D"), n2=num("f2N"), d2=num("f2D"), err=document.getElementById("frErr"), res=document.getElementById("frRes");
+    function fail(m){ err.textContent=m; err.classList.add("show"); res.innerHTML='<div class="rlabel">Result</div><div class="rbig">—</div>'; }
+    if([n1,d1,n2,d2].some(isNaN)) return fail("Fill in all four boxes with whole numbers.");
+    if(d1===0||d2===0) return fail("A denominator can't be zero — that fraction is undefined.");
+    if(op==="/"&&n2===0) return fail("You can't divide by a fraction whose numerator is zero.");
+    err.classList.remove("show");
+    var n, d;
+    if(op==="+"){ n=n1*d2+n2*d1; d=d1*d2; } else if(op==="-"){ n=n1*d2-n2*d1; d=d1*d2; } else if(op==="*"){ n=n1*n2; d=d1*d2; } else { n=n1*d2; d=d1*n2; }
+    if(d<0){ d=-d; n=-n; }
+    var g=gcd(n,d); var sn=n/g, sd=d/g;
+    var whole=Math.trunc(sn/sd), rem=Math.abs(sn%sd);
+    var mixed = sd===1 ? String(sn) : (whole!==0 && rem!==0 ? (whole<0?"−":"")+Math.abs(whole)+" "+rem+"/"+sd : sn+"/"+sd);
+    var dec=sn/sd;
+    res.innerHTML='<div class="rlabel">Result</div><div class="rbig">'+sn+"/"+sd+'</div><div class="rsub">As a mixed number: <b>'+mixed+'</b> · As a decimal: <b>'+fmt(dec,6)+'</b><br>Working: '+n1+"/"+d1+" "+(op==="*"?"×":op==="/"?"÷":op)+" "+n2+"/"+d2+" = "+n+"/"+d+" before simplifying; dividing top and bottom by "+g+" gives "+sn+"/"+sd+".</div>"
+    +'<div class="btnrow" style="margin-top:12px"><button type="button" class="btn ghost sm" id="frCopy">Copy result</button></div>';
+    document.getElementById("frCopy").addEventListener("click", function(){ copyText(sn+"/"+sd, "Fraction"); });
+  }
+  Array.prototype.forEach.call(document.querySelectorAll("#frOps button"), function(b){ b.addEventListener("click", function(){ op=b.getAttribute("data-op"); Array.prototype.forEach.call(document.querySelectorAll("#frOps button"), function(x){x.classList.remove("on");}); b.classList.add("on"); go(); }); });
+  ["f1N","f1D","f2N","f2D"].forEach(function(id){ document.getElementById(id).addEventListener("input", go); });
+  go();
+};
+
+RENDER.ratio = function(){
+  return '<h3 style="font-size:16px;margin-bottom:10px">Simplify a ratio</h3><div class="row2"><div><label class="f" for="rA">Left side (a)</label><input class="inp" id="rA" type="number" value="24"></div><div><label class="f" for="rB">Right side (b)</label><input class="inp" id="rB" type="number" value="36"></div></div><div class="result" id="rRes1" aria-live="polite" style="margin-bottom:22px"></div>'
+  +'<h3 style="font-size:16px;margin-bottom:10px">Solve a proportion &nbsp;<span class="mono" style="font-size:14px;color:var(--ink3)">a : b = c : x</span></h3><div class="row2"><div><label class="f" for="pA">a</label><input class="inp" id="pA" type="number" value="3"></div><div><label class="f" for="pB">b</label><input class="inp" id="pB" type="number" value="5"></div></div><div class="row2"><div><label class="f" for="pC">c</label><input class="inp" id="pC" type="number" value="12"></div><div><label class="f" for="pX">x <small>— leave empty to solve, or fill any one box empty</small></label><input class="inp" id="pX" type="number" placeholder="solve for x"></div></div><div class="err" id="rErr" role="alert"></div><div class="result" id="rRes2" aria-live="polite"></div>';
+};
+INIT.ratio = function(){
+  function go1(){
+    var a=num("rA"), b=num("rB"), res=document.getElementById("rRes1");
+    if(isNaN(a)||isNaN(b)||b===0){ res.innerHTML='<div class="rlabel">Simplified ratio</div><div class="rbig">—</div><div class="rsub">Enter both sides (b can\'t be zero).</div>'; return; }
+    var g=gcd(a,b), sa=a/g, sb=b/g, total=a+b;
+    res.innerHTML='<div class="rlabel">Simplified ratio</div><div class="rbig">'+fmt(sa,4)+' : '+fmt(sb,4)+'</div><div class="rsub">Divided both sides by gcd = '+g+'. Split of a whole: <b>'+fmt(a/total*100,2)+'%</b> / <b>'+fmt(b/total*100,2)+'%</b> · As a decimal, a ÷ b = '+fmt(a/b,4)+'.</div>';
+  }
+  function go2(){
+    var a=num("pA"), b=num("pB"), c=num("pC"), x=num("pX"), err=document.getElementById("rErr"), res=document.getElementById("rRes2");
+    var vals=[["a",a],["b",b],["c",c],["x",x]], missing=vals.filter(function(v){return isNaN(v[1]);});
+    err.classList.remove("show");
+    if(missing.length!==1){ err.textContent="Leave exactly one of the four boxes empty — that's the value to solve for."; err.classList.add("show"); res.innerHTML='<div class="rlabel">Solution</div><div class="rbig">—</div>'; return; }
+    var m=missing[0][0], out, formula;
+    if(m==="x"){ if(a===0){ err.textContent="a can't be zero."; err.classList.add("show"); return; } out=b*c/a; formula="x = (b × c) ÷ a = ("+fmt(b,4)+" × "+fmt(c,4)+") ÷ "+fmt(a,4); }
+    if(m==="c"){ if(b===0){ err.textContent="b can't be zero."; err.classList.add("show"); return; } out=a*x/b; formula="c = (a × x) ÷ b = ("+fmt(a,4)+" × "+fmt(x,4)+") ÷ "+fmt(b,4); }
+    if(m==="b"){ if(c===0){ err.textContent="c can't be zero when solving for b."; err.classList.add("show"); return; } out=(a*x)/c; formula="b = (a × x) ÷ c = ("+fmt(a,4)+" × "+fmt(x,4)+") ÷ "+fmt(c,4); }
+    if(m==="a"){ if(x===0){ err.textContent="x can't be zero when solving for a."; err.classList.add("show"); return; } out=b*c/x; formula="a = (b × c) ÷ x = ("+fmt(b,4)+" × "+fmt(c,4)+") ÷ "+fmt(x,4); }
+    res.innerHTML='<div class="rlabel">Solution</div><div class="rbig">'+m+' = '+fmt(out,5)+'</div><div class="rsub">'+formula+' = <b>'+fmt(out,5)+'</b>. Check: cross-multiplying a × x and b × c gives the same product.</div>';
+  }
+  ["rA","rB"].forEach(function(id){ document.getElementById(id).addEventListener("input", go1); });
+  ["pA","pB","pC","pX"].forEach(function(id){ document.getElementById(id).addEventListener("input", go2); });
+  go1(); go2();
+};
+
+RENDER.bmi = function(){
+  return '<div class="seg" id="bmiSeg"><button type="button" class="on" data-u="m">Metric (kg · cm)</button><button type="button" data-u="i">Imperial (lb · ft/in)</button></div>'
+  +'<div id="bmiMetric"><div class="row2"><div><label class="f" for="bH">Height (cm)</label><input class="inp" id="bH" type="number" inputmode="decimal" value="175"></div><div><label class="f" for="bW">Weight (kg)</label><input class="inp" id="bW" type="number" inputmode="decimal" value="70"></div></div></div>'
+  +'<div id="bmiImp" style="display:none"><div class="row3"><div><label class="f" for="bFt">Feet</label><input class="inp" id="bFt" type="number" value="5"></div><div><label class="f" for="bIn">Inches</label><input class="inp" id="bIn" type="number" value="9"></div><div><label class="f" for="bLb">Weight (lb)</label><input class="inp" id="bLb" type="number" value="154"></div></div></div>'
+  +'<div class="err" id="bmiErr" role="alert"></div><div class="result" id="bmiRes" aria-live="polite"></div>'
+  +'<div class="note"><b>Please note:</b> BMI is a population screening tool, not a diagnosis. It does not account for muscle mass, bone density, age or body composition. Talk to a clinician for personal health advice.</div>';
+};
+INIT.bmi = function(){
+  var unit="m";
+  function go(){
+    var err=document.getElementById("bmiErr"), res=document.getElementById("bmiRes"), kg, m;
+    if(unit==="m"){ var cm=num("bH"); kg=num("bW"); m=cm/100; if(isNaN(cm)||isNaN(kg)||cm<=0||kg<=0){ err.textContent="Enter a height and weight greater than zero."; err.classList.add("show"); res.innerHTML='<div class="rlabel">Your BMI</div><div class="rbig">—</div>'; return; } }
+    else { var inches=(num("bFt")||0)*12+(num("bIn")||0); kg=(num("bLb")||0)*0.45359237; m=inches*0.0254; if(!(inches>0)||!(num("bLb")>0)){ err.textContent="Enter a height and weight greater than zero."; err.classList.add("show"); res.innerHTML='<div class="rlabel">Your BMI</div><div class="rbig">—</div>'; return; } }
+    err.classList.remove("show");
+    var bmi=kg/(m*m);
+    var cat = bmi<18.5?["Underweight","var(--blue)"] : bmi<25?["Healthy weight","var(--accent)"] : bmi<30?["Overweight","var(--amber)"] : ["Obese","var(--coral)"];
+    var pos=Math.max(0, Math.min(100, (bmi-14)/(40-14)*100));
+    var lo=18.5*m*m, hi=24.9*m*m;
+    res.innerHTML='<div class="rlabel">Your BMI</div><div class="rbig">'+bmi.toFixed(1)+' <span style="font-size:19px;color:'+cat[1]+'">'+cat[0]+'</span></div>'
+    +'<div class="bar" aria-hidden="true"><i style="width:'+pos+'%"></i></div><div class="rsub">Scale shown from 14 to 40. Healthy range for your height ('+(unit==="m"? fmt(m*100,0)+" cm" : fmt(m/0.0254,1)+" in")+'): <b>'+fmt(lo,1)+'–'+fmt(hi,1)+' kg</b> ('+fmt(lo/0.45359237,0)+'–'+fmt(hi/0.45359237,0)+' lb). Formula: '+fmt(kg,1)+' ÷ '+fmt(m,2)+'² = '+bmi.toFixed(2)+'.</div>'
+    +'<div class="btnrow" style="margin-top:12px"><button type="button" class="btn ghost sm" id="bmiCopy">Copy BMI</button></div>';
+    document.getElementById("bmiCopy").addEventListener("click", function(){ copyText(bmi.toFixed(1), "BMI"); });
+  }
+  Array.prototype.forEach.call(document.querySelectorAll("#bmiSeg button"), function(b){ b.addEventListener("click", function(){ unit=b.getAttribute("data-u"); Array.prototype.forEach.call(document.querySelectorAll("#bmiSeg button"), function(x){x.classList.remove("on");}); b.classList.add("on"); document.getElementById("bmiMetric").style.display=unit==="m"?"block":"none"; document.getElementById("bmiImp").style.display=unit==="i"?"block":"none"; go(); }); });
+  ["bH","bW","bFt","bIn","bLb"].forEach(function(id){ var el=document.getElementById(id); if(el) el.addEventListener("input", go); });
+  go();
+};
+</script>
+<script>
+"use strict";
+RENDER.age = function(){
+  return '<div class="row2"><div><label class="f" for="dob">Date of birth</label><input class="inp" id="dob" type="date" value="2000-03-15"></div>'
+  +'<div><label class="f" for="ageAt">Age at date</label><input class="inp" id="ageAt" type="date" value="'+todayISO()+'"></div></div>'
+  +'<div class="err" id="ageErr" role="alert"></div><div class="result" id="ageRes" aria-live="polite"></div>';
+};
+INIT.age = function(){
+  function go(){
+    var dob=parseDateLocal(document.getElementById("dob").value), at=parseDateLocal(document.getElementById("ageAt").value);
+    var err=document.getElementById("ageErr"), res=document.getElementById("ageRes");
+    if(!dob||!at){ err.textContent="Pick both dates."; err.classList.add("show"); res.innerHTML='<div class="rlabel">Exact age</div><div class="rbig">—</div>'; return; }
+    if(at<dob){ err.textContent="The 'age at' date is before the date of birth."; err.classList.add("show"); res.innerHTML='<div class="rlabel">Exact age</div><div class="rbig">—</div>'; return; }
+    err.classList.remove("show");
+    var y=at.getFullYear()-dob.getFullYear(), mo=at.getMonth()-dob.getMonth(), d=at.getDate()-dob.getDate();
+    if(d<0){ mo--; var prev=new Date(at.getFullYear(), at.getMonth(), 0); d+=prev.getDate(); }
+    if(mo<0){ y--; mo+=12; }
+    var totalDays=Math.round((at-dob)/86400000);
+    var nbYear = at.getFullYear() + ((new Date(at.getFullYear(), dob.getMonth(), dob.getDate()) >= at) ? 0 : 1);
+    var nextBday=new Date(nbYear, dob.getMonth(), dob.getDate());
+    if(dob.getMonth()===1&&dob.getDate()===29){ var leap=(nbYear%4===0&&nbYear%100!==0)||nbYear%400===0; if(!leap) nextBday=new Date(nbYear,2,1); }
+    var daysTo=Math.round((nextBday-at)/86400000);
+    res.innerHTML='<div class="rlabel">Exact age</div><div class="rbig">'+y+' years, '+mo+' months, '+d+' days</div>'
+    +'<div class="rsub">Born on a <b>'+WEEKDAYS[dob.getDay()]+'</b>.</div>'
+    +'<div style="margin-top:8px"><div class="kv"><span>Total days lived</span><b>'+fmt(totalDays,0)+'</b></div>'
+    +'<div class="kv"><span>Total weeks</span><b>'+fmt(totalDays/7,1)+'</b></div>'
+    +'<div class="kv"><span>Total hours</span><b>'+fmt(totalDays*24,0)+'</b></div>'
+    +'<div class="kv"><span>Next birthday</span><b>'+prettyDate(nextBday)+' (in '+daysTo+' days)</b></div></div>'
+    +'<div class="btnrow" style="margin-top:12px"><button type="button" class="btn ghost sm" id="ageCopy">Copy age</button></div>';
+    document.getElementById("ageCopy").addEventListener("click", function(){ copyText(y+" years, "+mo+" months, "+d+" days", "Age"); });
+  }
+  ["dob","ageAt"].forEach(function(id){ document.getElementById(id).addEventListener("change", go); document.getElementById(id).addEventListener("input", go); });
+  go();
+};
+
+RENDER.date = function(){
+  return '<div class="seg" id="dateSeg"><button type="button" class="on" data-dm="diff">Days between dates</button><button type="button" data-dm="add">Add / subtract from a date</button></div>'
+  +'<div id="diffBox"><div class="row2"><div><label class="f" for="dFrom">Start date</label><input class="inp" id="dFrom" type="date" value="2026-01-01"></div><div><label class="f" for="dTo">End date</label><input class="inp" id="dTo" type="date" value="'+todayISO()+'"></div></div></div>'
+  +'<div id="addBox" style="display:none"><div class="row2"><div><label class="f" for="aFrom">Start date</label><input class="inp" id="aFrom" type="date" value="'+todayISO()+'"></div><div><label class="f" for="aDir">Direction</label><select class="inp" id="aDir"><option value="1">Add</option><option value="-1">Subtract</option></select></div></div>'
+  +'<div class="row3"><div><label class="f" for="aY">Years</label><input class="inp" id="aY" type="number" value="0"></div><div><label class="f" for="aMo">Months</label><input class="inp" id="aMo" type="number" value="0"></div><div><label class="f" for="aW">Weeks</label><input class="inp" id="aW" type="number" value="2"></div></div>'
+  +'<div><label class="f" for="aD">Days</label><input class="inp" id="aD" type="number" value="0"></div></div>'
+  +'<div class="err" id="dateErr" role="alert"></div><div class="result" id="dateRes" aria-live="polite"></div>';
+};
+INIT.date = function(){
+  var mode="diff";
+  function go(){
+    var err=document.getElementById("dateErr"), res=document.getElementById("dateRes"); err.classList.remove("show");
+    if(mode==="diff"){
+      var f=parseDateLocal(document.getElementById("dFrom").value), t=parseDateLocal(document.getElementById("dTo").value);
+      if(!f||!t){ err.textContent="Pick both dates."; err.classList.add("show"); return; }
+      var days=Math.round((t-f)/86400000), dir=days<0?" (end is before start)":"";
+      var lo=f<t?f:t, hi=f<t?t:f, biz=0, cur=new Date(lo);
+      while(cur<hi){ var wd=cur.getDay(); if(wd!==0&&wd!==6) biz++; cur.setDate(cur.getDate()+1); }
+      var yy=Math.floor(Math.abs(days)/365.25), mm=Math.floor((Math.abs(days)-yy*365.25)/30.44);
+      res.innerHTML='<div class="rlabel">Difference</div><div class="rbig">'+fmt(Math.abs(days),0)+' days'+dir+'</div>'
+      +'<div class="rsub">'+prettyDate(f)+' → '+prettyDate(t)+'</div>'
+      +'<div style="margin-top:8px"><div class="kv"><span>In weeks</span><b>'+fmt(Math.abs(days)/7,2)+'</b></div>'
+      +'<div class="kv"><span>Weekdays (Mon–Fri) in the span</span><b>'+biz+'</b></div>'
+      +'<div class="kv"><span>Roughly</span><b>'+yy+' years, '+mm+' months</b></div></div>';
+    } else {
+      var s=parseDateLocal(document.getElementById("aFrom").value);
+      if(!s){ err.textContent="Pick a start date."; err.classList.add("show"); return; }
+      var dirN=Number(document.getElementById("aDir").value);
+      var out=new Date(s.getFullYear(), s.getMonth(), s.getDate());
+      out.setFullYear(out.getFullYear()+dirN*(num("aY")||0));
+      out.setMonth(out.getMonth()+dirN*(num("aMo")||0));
+      out.setDate(out.getDate()+dirN*((num("aW")||0)*7+(num("aD")||0)));
+      var moved=Math.round((out-s)/86400000);
+      res.innerHTML='<div class="rlabel">Resulting date</div><div class="rbig" style="font-size:26px">'+prettyDate(out)+'</div>'
+      +'<div class="rsub">'+(dirN>0?"Adding to ":"Subtracting from ")+prettyDate(s)+' lands on '+toISODate(out)+' — a shift of '+fmt(Math.abs(moved),0)+' calendar days. Month/year shifts clamp to the last valid day of the month.</div>'
+      +'<div class="btnrow" style="margin-top:12px"><button type="button" class="btn ghost sm" id="dateCopy">Copy date</button></div>';
+      document.getElementById("dateCopy").addEventListener("click", function(){ copyText(prettyDate(out), "Date"); });
+    }
+  }
+  Array.prototype.forEach.call(document.querySelectorAll("#dateSeg button"), function(b){ b.addEventListener("click", function(){ mode=b.getAttribute("data-dm"); Array.prototype.forEach.call(document.querySelectorAll("#dateSeg button"), function(x){x.classList.remove("on");}); b.classList.add("on"); document.getElementById("diffBox").style.display=mode==="diff"?"block":"none"; document.getElementById("addBox").style.display=mode==="add"?"block":"none"; go(); }); });
+  ["dFrom","dTo","aFrom","aDir","aY","aMo","aW","aD"].forEach(function(id){ var el=document.getElementById(id); el.addEventListener("input", go); el.addEventListener("change", go); });
+  go();
+};
+
+var GRADE_PTS={"A":4.0,"A-":3.7,"B+":3.3,"B":3.0,"B-":2.7,"C+":2.3,"C":2.0,"C-":1.7,"D+":1.3,"D":1.0,"F":0.0};
+RENDER.gpa = function(){
+  return '<div id="gpaRows"></div><div class="btnrow"><button type="button" class="btn ghost sm" id="gpaAdd">+ Add course</button><button type="button" class="btn ghost sm" id="gpaReset">Reset</button></div>'
+  +'<div class="result" id="gpaRes" aria-live="polite" style="margin-top:18px"></div>';
+};
+INIT.gpa = function(){
+  var grades=Object.keys(GRADE_PTS);
+  function rowHTML(name, grade, credits){
+    var opts=grades.map(function(g){ return '<option '+(g===grade?"selected":"")+'>'+g+'</option>'; }).join("");
+    return '<div class="gpa-row"><div><label class="f">Course</label><input class="inp g-name" type="text" placeholder="e.g. Biology 101" value="'+esc(name||"")+'"></div>'
+    +'<div><label class="f">Grade</label><select class="inp g-grade">'+opts+'</select></div>'
+    +'<div><label class="f">Credits</label><input class="inp g-cred" type="number" min="0" step="0.5" value="'+(credits||3)+'"></div>'
+    +'<button type="button" class="del" aria-label="Remove course">✕</button></div>';
+  }
+  var box=document.getElementById("gpaRows");
+  function go(){
+    var pts=0, cred=0, simple=0, count=0;
+    Array.prototype.forEach.call(box.querySelectorAll(".gpa-row"), function(r){
+      var g=r.querySelector(".g-grade").value, c=parseFloat(r.querySelector(".g-cred").value);
+      if(isNaN(c)||c<0) c=0;
+      pts+=GRADE_PTS[g]*c; cred+=c; simple+=GRADE_PTS[g]; count++;
+    });
+    var res=document.getElementById("gpaRes");
+    if(cred<=0){ res.innerHTML='<div class="rlabel">Your GPA</div><div class="rbig">—</div><div class="rsub">Add credit hours to see the weighted result.</div>'; return; }
+    var gpa=pts/cred;
+    res.innerHTML='<div class="rlabel">Your GPA (4.0 scale)</div><div class="rbig">'+gpa.toFixed(2)+'</div>'
+    +'<div class="rsub">'+fmt(pts,1)+' grade points over '+fmt(cred,1)+' credits across '+count+' course'+(count===1?"":"s")+'. Simple unweighted average of grades: '+(simple/count).toFixed(2)+' — the difference is the credit weighting.</div>'
+    +'<div class="btnrow" style="margin-top:12px"><button type="button" class="btn ghost sm" id="gpaCopy">Copy GPA</button></div>';
+    document.getElementById("gpaCopy").addEventListener("click", function(){ copyText(gpa.toFixed(2), "GPA"); });
+  }
+  function bind(){ Array.prototype.forEach.call(box.querySelectorAll("input,select"), function(el){ el.addEventListener("input", go); el.addEventListener("change", go); });
+    Array.prototype.forEach.call(box.querySelectorAll(".del"), function(b){ b.addEventListener("click", function(){ b.closest(".gpa-row").remove(); if(!box.querySelector(".gpa-row")) addRow("","A",3); bind(); go(); }); }); }
+  function addRow(n,g,c){ box.insertAdjacentHTML("beforeend", rowHTML(n,g,c)); bind(); }
+  box.innerHTML=""; addRow("","A",3); addRow("","B+",4); addRow("","A-",3);
+  document.getElementById("gpaAdd").addEventListener("click", function(){ addRow("","B",3); go(); });
+  document.getElementById("gpaReset").addEventListener("click", function(){ box.innerHTML=""; addRow("","A",3); go(); });
+  bind(); go();
+};
+
+RENDER.loan = function(){
+  return '<div><label class="f" for="lAmt">Loan amount ($)</label><input class="inp" id="lAmt" type="number" inputmode="decimal" value="20000"></div>'
+  +'<div class="row2"><div><label class="f" for="lRate">Annual interest rate (%)</label><input class="inp" id="lRate" type="number" inputmode="decimal" step="0.01" value="6"></div>'
+  +'<div><label class="f" for="lYears">Term (years)</label><input class="inp" id="lYears" type="number" inputmode="decimal" step="0.5" value="5"></div></div>'
+  +'<div class="err" id="loanErr" role="alert"></div><div class="result" id="loanRes" aria-live="polite"></div><div id="loanTable"></div>';
+};
+INIT.loan = function(){
+  function go(){
+    var P=num("lAmt"), apr=num("lRate"), yrs=num("lYears"), err=document.getElementById("loanErr"), res=document.getElementById("loanRes"), tbl=document.getElementById("loanTable");
+    if(isNaN(P)||isNaN(apr)||isNaN(yrs)||P<=0||apr<0||yrs<=0){ err.textContent="Enter an amount above zero, a rate of 0% or more, and a term above zero."; err.classList.add("show"); res.innerHTML='<div class="rlabel">Monthly payment</div><div class="rbig">—</div>'; tbl.innerHTML=""; return; }
+    err.classList.remove("show");
+    var r=apr/1200, n=Math.round(yrs*12);
+    var M = r===0 ? P/n : P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
+    var total=M*n, interest=total-P;
+    var bal=P, rows="", yearInt=0;
+    for(var i=1;i<=Math.min(n,12);i++){ var intr=bal*r; var prin=M-intr; bal-=prin; yearInt+=intr; rows+='<tr><td>'+i+'</td><td>'+money(M)+'</td><td>'+money(intr)+'</td><td>'+money(Math.max(bal,0))+'</td></tr>'; }
+    var payoff=new Date(); payoff.setMonth(payoff.getMonth()+n);
+    res.innerHTML='<div class="rlabel">Monthly payment</div><div class="rbig">'+money(M)+'</div>'
+    +'<div style="margin-top:6px"><div class="kv"><span>Total interest</span><b>'+money(interest)+'</b></div>'
+    +'<div class="kv"><span>Total cost of loan</span><b>'+money(total)+'</b></div>'
+    +'<div class="kv"><span>Payments</span><b>'+n+' monthly</b></div>'
+    +'<div class="kv"><span>Payoff date</span><b>'+MONTHS[payoff.getMonth()]+' '+payoff.getFullYear()+'</b></div>'
+    +'<div class="kv"><span>Interest share of total cost</span><b>'+fmt(interest/total*100,1)+'%</b></div></div>'
+    +'<div class="btnrow" style="margin-top:12px"><button type="button" class="btn ghost sm" id="loanCopy">Copy payment</button></div>';
+    document.getElementById("loanCopy").addEventListener("click", function(){ copyText(money(M)+" per month", "Payment"); });
+    tbl.innerHTML='<h3 style="font-size:16px;margin:20px 0 4px">First year of amortisation</h3><p class="hint">Interest is charged on the remaining balance, so it shrinks each month while the principal share grows. Interest paid in year 1: <b>'+money(yearInt)+'</b>.</p><div style="overflow-x:auto"><table class="plain"><thead><tr><th>Month</th><th style="text-align:right">Payment</th><th style="text-align:right">Interest</th><th style="text-align:right">Balance</th></tr></thead><tbody>'+rows+'</tbody></table></div>';
+  }
+  ["lAmt","lRate","lYears"].forEach(function(id){ document.getElementById(id).addEventListener("input", go); });
+  go();
+};
+
+RENDER["compound-interest"] = function(){
+  return '<div class="row2"><div><label class="f" for="cP">Starting amount ($)</label><input class="inp" id="cP" type="number" value="5000"></div><div><label class="f" for="cM">Monthly contribution ($)</label><input class="inp" id="cM" type="number" value="200"></div></div>'
+  +'<div class="row2"><div><label class="f" for="cR">Annual return / rate (%)</label><input class="inp" id="cR" type="number" step="0.1" value="7"></div><div><label class="f" for="cY">Years</label><input class="inp" id="cY" type="number" value="20"></div></div>'
+  +'<div class="err" id="ciErr" role="alert"></div><div class="result" id="ciRes" aria-live="polite"></div>';
+};
+INIT["compound-interest"] = function(){
+  function go(){
+    var P=num("cP"), M=num("cM"), rate=num("cR"), yrs=num("cY"), err=document.getElementById("ciErr"), res=document.getElementById("ciRes");
+    if(isNaN(P)||isNaN(M)||isNaN(rate)||isNaN(yrs)||P<0||M<0||yrs<=0||rate<=-100){ err.textContent="Enter amounts of 0 or more, a rate above −100%, and at least 1 year (fractions allowed)."; err.classList.add("show"); res.innerHTML='<div class="rlabel">Final balance</div><div class="rbig">—</div>'; return; }
+    err.classList.remove("show");
+    var r=rate/100/12, months=Math.round(yrs*12), bal=P;
+    for(var i=0;i<months;i++){ bal=bal*(1+r)+M; }
+    var contributed=P+M*months, earned=bal-contributed;
+    res.innerHTML='<div class="rlabel">Final balance after '+fmt(yrs,1)+' years</div><div class="rbig">'+money(bal)+'</div>'
+    +'<div style="margin-top:6px"><div class="kv"><span>You put in</span><b>'+money(contributed)+'</b></div>'
+    +'<div class="kv"><span>Interest earned</span><b>'+money(earned)+'</b></div>'
+    +'<div class="kv"><span>Interest share of final pot</span><b>'+fmt(bal>0?earned/bal*100:0,1)+'%</b></div></div>'
+    +'<div class="rsub" style="margin-top:8px">Compounded monthly at a constant '+fmt(rate,2)+'% per year. Real returns vary — treat this as scenario arithmetic, not a forecast.</div>'
+    +'<div class="btnrow" style="margin-top:12px"><button type="button" class="btn ghost sm" id="ciCopy">Copy balance</button></div>';
+    document.getElementById("ciCopy").addEventListener("click", function(){ copyText(money(bal), "Final balance"); });
+  }
+  ["cP","cM","cR","cY"].forEach(function(id){ document.getElementById(id).addEventListener("input", go); });
+  go();
+};
+
+RENDER.tip = function(){
+  return '<div><label class="f" for="tBill">Bill amount ($)</label><input class="inp" id="tBill" type="number" inputmode="decimal" value="86"></div>'
+  +'<label class="f">Tip percentage</label><div class="seg" id="tipSeg"><button type="button" data-t="10">10%</button><button type="button" data-t="15">15%</button><button type="button" class="on" data-t="18">18%</button><button type="button" data-t="20">20%</button><button type="button" data-t="25">25%</button></div>'
+  +'<div class="row2"><div><label class="f" for="tPct">Custom tip (%)</label><input class="inp" id="tPct" type="number" placeholder="Overrides presets"></div><div><label class="f" for="tPpl">Split between (people)</label><input class="inp" id="tPpl" type="number" min="1" value="4"></div></div>'
+  +'<div class="err" id="tipErr" role="alert"></div><div class="result" id="tipRes" aria-live="polite"></div>';
+};
+INIT.tip = function(){
+  var preset=18;
+  function go(){
+    var bill=num("tBill"), custom=num("tPct"), ppl=num("tPpl"), err=document.getElementById("tipErr"), res=document.getElementById("tipRes");
+    var pct = isNaN(custom) ? preset : custom;
+    if(isNaN(bill)||bill<0||isNaN(ppl)||ppl<1||pct<0){ err.textContent="Enter a bill of 0 or more, at least 1 person, and a tip of 0% or more."; err.classList.add("show"); res.innerHTML='<div class="rlabel">Per person</div><div class="rbig">—</div>'; return; }
+    err.classList.remove("show");
+    var tip=bill*pct/100, total=bill+tip, each=total/Math.floor(ppl);
+    res.innerHTML='<div class="rlabel">'+(Math.floor(ppl)>1?"Per person":"Total to pay")+'</div><div class="rbig">'+money(each)+'</div>'
+    +'<div style="margin-top:6px"><div class="kv"><span>Tip ('+fmt(pct,1)+'%)</span><b>'+money(tip)+'</b></div>'
+    +'<div class="kv"><span>Grand total</span><b>'+money(total)+'</b></div>'
+    +(Math.floor(ppl)>1?'<div class="kv"><span>Tip per person</span><b>'+money(tip/Math.floor(ppl))+'</b></div>':"")+'</div>';
+  }
+  Array.prototype.forEach.call(document.querySelectorAll("#tipSeg button"), function(b){ b.addEventListener("click", function(){ preset=Number(b.getAttribute("data-t")); document.getElementById("tPct").value=""; Array.prototype.forEach.call(document.querySelectorAll("#tipSeg button"), function(x){x.classList.remove("on");}); b.classList.add("on"); go(); }); });
+  ["tBill","tPct","tPpl"].forEach(function(id){ document.getElementById(id).addEventListener("input", go); });
+  go();
+};
+
+RENDER.discount = function(){
+  return '<div class="row2"><div><label class="f" for="dcPrice">Original price ($)</label><input class="inp" id="dcPrice" type="number" inputmode="decimal" value="120"></div><div><label class="f" for="dcPct">Discount (%)</label><input class="inp" id="dcPct" type="number" inputmode="decimal" value="25"></div></div>'
+  +'<div class="row2"><div><label class="f" for="dcPct2">Extra stacked discount (%) <small>— optional</small></label><input class="inp" id="dcPct2" type="number" placeholder="e.g. 10"></div><div><label class="f" for="dcOff">Fixed amount off ($) <small>— optional</small></label><input class="inp" id="dcOff" type="number" placeholder="e.g. 5"></div></div>'
+  +'<div class="err" id="dcErr" role="alert"></div><div class="result" id="dcRes" aria-live="polite"></div>';
+};
+INIT.discount = function(){
+  function go(){
+    var price=num("dcPrice"), p1=num("dcPct"), p2=num("dcPct2"), off=num("dcOff"), err=document.getElementById("dcErr"), res=document.getElementById("dcRes");
+    if(isNaN(price)||price<0||isNaN(p1)||p1<0||p1>100){ err.textContent="Enter a price of 0 or more and a first discount between 0% and 100%."; err.classList.add("show"); res.innerHTML='<div class="rlabel">You pay</div><div class="rbig">—</div>'; return; }
+    if((!isNaN(p2)&&(p2<0||p2>100))||(!isNaN(off)&&off<0)){ err.textContent="Extra discounts must be between 0% and 100%, and the fixed amount 0 or more."; err.classList.add("show"); return; }
+    err.classList.remove("show");
+    var steps=[["Original price", price]];
+    var cur=price*(1-p1/100); steps.push(["After "+fmt(p1,1)+"% off", cur]);
+    if(!isNaN(p2)&&p2>0){ cur=cur*(1-p2/100); steps.push(["After extra "+fmt(p2,1)+"% off", cur]); }
+    if(!isNaN(off)&&off>0){ cur=Math.max(0, cur-off); steps.push(["After "+money(off)+" off", cur]); }
+    var saved=price-cur, eff=price>0?saved/price*100:0;
+    var rows=steps.map(function(s){ return '<div class="kv"><span>'+esc(s[0])+'</span><b>'+money(s[1])+'</b></div>'; }).join("");
+    res.innerHTML='<div class="rlabel">You pay</div><div class="rbig">'+money(cur)+'</div><div style="margin-top:6px">'+rows
+    +'<div class="kv"><span>Total saved</span><b>'+money(saved)+'</b></div><div class="kv"><span>Effective total discount</span><b>'+fmt(eff,1)+'%</b></div></div>'
+    +((!isNaN(p2)&&p2>0)?'<div class="rsub" style="margin-top:8px">Note: '+fmt(p1,1)+'% then '+fmt(p2,1)+'% off is not '+(fmt(p1+p2,1))+'% off — the second percentage applies to the already-reduced price.</div>':"")
+    +'<div class="btnrow" style="margin-top:12px"><button type="button" class="btn ghost sm" id="dcCopy">Copy final price</button></div>';
+    document.getElementById("dcCopy").addEventListener("click", function(){ copyText(money(cur), "Final price"); });
+  }
+  ["dcPrice","dcPct","dcPct2","dcOff"].forEach(function(id){ document.getElementById(id).addEventListener("input", go); });
+  go();
+};
+
+var UNITS = {
+  length: { base:"metres", units:{ "Millimetres":0.001, "Centimetres":0.01, "Metres":1, "Kilometres":1000, "Inches":0.0254, "Feet":0.3048, "Yards":0.9144, "Miles":1609.344 } },
+  weight: { base:"kilograms", units:{ "Grams":0.001, "Kilograms":1, "Ounces":0.028349523125, "Pounds":0.45359237, "Stones":6.35029318, "US tons":907.18474, "Metric tonnes":1000 } }
+};
+RENDER["unit-converter"] = function(){
+  return '<div class="seg" id="ucSeg"><button type="button" class="on" data-q="length">Length</button><button type="button" data-q="weight">Weight</button><button type="button" data-q="temp">Temperature</button></div>'
+  +'<div><label class="f" for="ucVal">Value</label><input class="inp" id="ucVal" type="number" inputmode="decimal" value="10"></div>'
+  +'<div class="row2"><div><label class="f" for="ucFrom">From</label><select class="inp" id="ucFrom"></select></div><div><label class="f" for="ucTo">To</label><select class="inp" id="ucTo"></select></div></div>'
+  +'<div class="btnrow" style="margin-bottom:16px"><button type="button" class="btn ghost sm" id="ucSwap">⇅ Swap units</button></div>'
+  +'<div class="result" id="ucRes" aria-live="polite"></div>';
+};
+INIT["unit-converter"] = function(){
+  var q="length";
+  var TEMP=["Celsius (°C)","Fahrenheit (°F)","Kelvin (K)"];
+  function opts(list, sel){ return list.map(function(u){ return '<option '+(u===sel?"selected":"")+'>'+u+'</option>'; }).join(""); }
+  function fill(){
+    var from=document.getElementById("ucFrom"), to=document.getElementById("ucTo");
+    if(q==="temp"){ from.innerHTML=opts(TEMP,"Celsius (°C)"); to.innerHTML=opts(TEMP,"Fahrenheit (°F)"); }
+    else { var keys=Object.keys(UNITS[q].units); from.innerHTML=opts(keys, q==="length"?"Kilometres":"Kilograms"); to.innerHTML=opts(keys, q==="length"?"Miles":"Pounds"); }
+  }
+  function toC(v, u){ return u.indexOf("Celsius")===0? v : u.indexOf("Fahrenheit")===0? (v-32)*5/9 : v-273.15; }
+  function fromC(c, u){ return u.indexOf("Celsius")===0? c : u.indexOf("Fahrenheit")===0? c*9/5+32 : c+273.15; }
+  function go(){
+    var v=num("ucVal"), f=document.getElementById("ucFrom").value, t=document.getElementById("ucTo").value, res=document.getElementById("ucRes");
+    if(isNaN(v)){ res.innerHTML='<div class="rlabel">Result</div><div class="rbig">—</div><div class="rsub">Enter a value to convert.</div>'; return; }
+    var out, via;
+    if(q==="temp"){ out=fromC(toC(v,f), t); via="via Celsius: "+fmt(toC(v,f),4)+" °C"; }
+    else { var base=v*UNITS[q].units[f]; out=base/UNITS[q].units[t]; via="= "+fmt(base,6)+" "+UNITS[q].base+" ÷ "+fmt(UNITS[q].units[t],6); }
+    res.innerHTML='<div class="rlabel">Result</div><div class="rbig" style="font-size:27px">'+fmt(v,6)+' '+esc(f)+' = '+fmt(out,6)+' '+esc(t)+'</div><div class="rsub">'+via+'</div>'
+    +'<div class="btnrow" style="margin-top:12px"><button type="button" class="btn ghost sm" id="ucCopy">Copy result</button></div>';
+    document.getElementById("ucCopy").addEventListener("click", function(){ copyText(fmt(out,6)+" "+t, "Conversion"); });
+  }
+  Array.prototype.forEach.call(document.querySelectorAll("#ucSeg button"), function(b){ b.addEventListener("click", function(){ q=b.getAttribute("data-q"); Array.prototype.forEach.call(document.querySelectorAll("#ucSeg button"), function(x){x.classList.remove("on");}); b.classList.add("on"); fill(); go(); }); });
+  document.getElementById("ucSwap").addEventListener("click", function(){ var f=document.getElementById("ucFrom"), t=document.getElementById("ucTo"); var tmp=f.value; f.value=t.value; t.value=tmp; go(); });
+  ["ucVal","ucFrom","ucTo"].forEach(function(id){ var el=document.getElementById(id); el.addEventListener("input", go); el.addEventListener("change", go); });
+  fill(); go();
+};
+
+RENDER.triangle = function(){
+  return '<p class="hint">Enter any <b>two</b> sides of a right-angled triangle and leave the third blank.</p>'
+  +'<div class="row3"><div><label class="f" for="trA">Leg a</label><input class="inp" id="trA" type="number" value="3"></div><div><label class="f" for="trB">Leg b</label><input class="inp" id="trB" type="number" value="4"></div><div><label class="f" for="trC">Hypotenuse c</label><input class="inp" id="trC" type="number" placeholder="blank"></div></div>'
+  +'<div class="err" id="trErr" role="alert"></div><div class="result" id="trRes" aria-live="polite"></div>';
+};
+INIT.triangle = function(){
+  function go(){
+    var a=num("trA"), b=num("trB"), c=num("trC"), err=document.getElementById("trErr"), res=document.getElementById("trRes");
+    var given=[!isNaN(a),!isNaN(b),!isNaN(c)].filter(Boolean).length;
+    function fail(m){ err.textContent=m; err.classList.add("show"); res.innerHTML='<div class="rlabel">Triangle</div><div class="rbig">—</div>'; }
+    if(given!==2) return fail("Enter exactly two sides — "+(given<2?"one more is needed":"clear one so there is something to solve")+".");
+    if((!isNaN(a)&&a<=0)||(!isNaN(b)&&b<=0)||(!isNaN(c)&&c<=0)) return fail("Sides must be greater than zero.");
+    err.classList.remove("show");
+    var solved="";
+    if(isNaN(c)){ c=Math.sqrt(a*a+b*b); solved="hypotenuse c = √("+fmt(a,4)+"² + "+fmt(b,4)+"²) = √"+fmt(a*a+b*b,4); }
+    else if(isNaN(a)){ if(c<=b) return fail("The hypotenuse must be the longest side — c must be greater than b."); a=Math.sqrt(c*c-b*b); solved="leg a = √("+fmt(c,4)+"² − "+fmt(b,4)+"²) = √"+fmt(c*c-b*b,4); }
+    else { if(c<=a) return fail("The hypotenuse must be the longest side — c must be greater than a."); b=Math.sqrt(c*c-a*a); solved="leg b = √("+fmt(c,4)+"² − "+fmt(a,4)+"²) = √"+fmt(c*c-a*a,4); }
+    var area=a*b/2, per=a+b+c, angA=Math.atan2(a,b)*180/Math.PI, angB=90-angA;
+    res.innerHTML='<div class="rlabel">Solved triangle</div><div class="rbig" style="font-size:25px">a = '+fmt(a,5)+' · b = '+fmt(b,5)+' · c = '+fmt(c,5)+'</div>'
+    +'<div class="rsub">Working: '+solved+' = <b>'+fmt(isNaN(num("trC"))?c:(isNaN(num("trA"))?a:b),5)+'</b></div>'
+    +'<div style="margin-top:8px"><div class="kv"><span>Area</span><b>'+fmt(area,5)+'</b></div><div class="kv"><span>Perimeter</span><b>'+fmt(per,5)+'</b></div>'
+    +'<div class="kv"><span>Angle opposite a</span><b>'+fmt(angA,2)+'°</b></div><div class="kv"><span>Angle opposite b</span><b>'+fmt(angB,2)+'°</b></div></div>';
+  }
+  ["trA","trB","trC"].forEach(function(id){ document.getElementById(id).addEventListener("input", go); });
+  go();
+};
+</script>
+<script>
+"use strict";
+/* ================= Views ================= */
+var app=document.getElementById("app");
+function cardHTML(c){
+  return '<a class="card" href="#/calculator/'+c.slug+'"><span class="ic">'+ICONS[c.icon]+'</span><h3>'+esc(c.name)+'</h3><p>'+esc(c.desc)+'</p>'
+  +'<span class="meta"><span>'+catName(c.cat)+(c.isNew?' &nbsp;<span class="badge new">New</span>':"")+'</span><span class="go">Open →</span></span></a>';
+}
+function searchCalcs(q){
+  q=String(q||"").trim().toLowerCase(); if(!q) return CALCS.slice();
+  return CALCS.filter(function(c){ return (c.name+" "+c.desc+" "+catName(c.cat)).toLowerCase().indexOf(q)>=0; });
+}
+function homeView(){
+  var popular=CALCS.filter(function(c){return c.popular;});
+  var fresh=CALCS.filter(function(c){return c.isNew;});
+  var h='<div class="hero"><div class="wrap"><div class="hero-grid"><div>'
+  +'<h1>Every calculation,<br><span class="hl">worked out properly.</span></h1>'
+  +'<p class="lede">Numera is a free calculator suite that does more than hand you a number — every tool shows its formula, its steps and a worked example, so you can trust the answer and learn the method.</p>'
+  +'<div class="searchbox"><div class="field"><span aria-hidden="true" style="font-size:19px;color:var(--ink3)">⌕</span><input id="heroSearch" type="search" placeholder="Try “BMI”, “loan”, “average”…" aria-label="Search calculators" autocomplete="off"><button class="go" id="heroGo" type="button">Search</button></div><div class="suggest" id="heroSuggest" role="listbox"></div></div>'
+  +'<div class="chips"><span class="lbl">Popular:</span>'+["percentage","average","bmi","loan","age"].map(function(s){ var c=calcBySlug(s); return '<a class="chip" href="#/calculator/'+s+'">'+esc(c.name.replace(" Calculator",""))+'</a>'; }).join("")+'</div>'
+  +'<div class="statrow"><div class="stat"><b>16</b><span>working calculators</span></div><div class="stat"><b>9</b><span>organised categories</span></div><div class="stat"><b>0</b><span>sign-ups, fees or ads in the tools</span></div></div>'
+  +'</div>'
+  +'<div class="hero-card"><h3>Featured · Average Calculator</h3><p>Mean, median, mode, range and standard deviation — live as you type.</p>'+avgWidgetHTML("ft","85, 92, 78, 92, 64")+'<p style="margin-top:12px"><a href="#/calculator/average" style="color:var(--accent);font-weight:700;text-decoration:none">Open the full Average Calculator →</a></p></div>'
+  +'</div></div></div>';
+
+  h+='<section class="block"><div class="wrap"><div class="sec-head"><div><h2>Popular calculators</h2><p>The tools people reach for daily — each one fully working, with its method explained on its own page.</p></div><a class="more" href="#/calculators">Browse all 16 →</a></div><div class="grid">'
+  +popular.map(cardHTML).join("")+'</div></div></section>';
+
+  h+='<section class="block"><div class="wrap"><div class="sec-head"><div><h2>Browse by category</h2><p>Nine shelves, no duplicates — every calculator lives in exactly one category, so nothing gets lost as the collection grows.</p></div><a class="more" href="#/categories">All categories →</a></div><div class="catgrid">'
+  +CATEGORIES.map(function(cat){ var n=calcsInCat(cat.slug).length; return '<a class="catcard '+cat.tint+'" href="#/category/'+cat.slug+'"><span class="n">'+n+' calculator'+(n===1?"":"s")+'</span><h3>'+esc(cat.name)+'</h3><p>'+esc(cat.blurb)+'</p></a>'; }).join("")+'</div></div></section>';
+
+  h+='<section class="block"><div class="wrap"><div class="sec-head"><div><h2>Recently added</h2><p>The newest tools in the suite.</p></div></div><div class="grid">'
+  +fresh.map(cardHTML).join("")
+  +(recentUsed.length?'</div><div class="sec-head" style="margin-top:34px"><div><h2>Recently used by you</h2><p>From this session — nothing is stored or tracked.</p></div></div><div class="grid">'+recentUsed.map(function(s){return cardHTML(calcBySlug(s));}).join(""):"")
+  +'</div></div></section>';
+
+  h+='<section class="block"><div class="wrap"><div class="sec-head"><div><h2>Why Numera?</h2></div></div><div class="whygrid">'
+  +[["bolt","Instant, accurate results","Calculations run the moment you type, using tested logic with proper error handling — division by zero and invalid inputs are called out, never silently fudged."],
+    ["free","Free, no sign-up","Every calculator is free to use with no account, no email wall and nothing to install. Open a page and calculate."],
+    ["book","The method, not just the answer","Each page carries the formula, step-by-step instructions and a worked example you can check by hand."],
+    ["phone","Built for every screen","Keypads, forms and results are designed for thumbs first, then scaled up — the same tools work identically on phone, tablet and desktop."],
+    ["check","Honest by design","Where a result is an estimate — a loan APR, a compounded return, a BMI band — the page says so and states its assumptions."],
+    ["sci","Keyboard friendly","The standard and scientific calculators take full keyboard input, and every control on the site is reachable and labelled for assistive tech."]]
+    .map(function(w){ return '<div class="why"><span class="ic">'+ICONS[w[0]]+'</span><h3>'+w[1]+'</h3><p>'+w[2]+'</p></div>'; }).join("")
+  +'</div></div></section>';
+
+  h+='<section class="block"><div class="wrap"><div class="learn"><h2>Learn the maths behind the answer</h2><p>Three ideas unlock most everyday calculations. They are the same methods our calculators use — no black boxes.</p><div class="learn-grid">'
+  +'<div><h3>Percentages are hundredths</h3><div class="formula">P% of Y = (P ÷ 100) × Y</div><p>“Per cent” means per hundred. 18% of 240 is 0.18 × 240 = 43.2 — the same move powers tips, discounts and tax.</p></div>'
+  +'<div><h3>An average is a fair share</h3><div class="formula">Mean = total ÷ count</div><p>Pool everything, share it equally. When a few huge values distort the mean, the median — the middle value — is the fairer “typical”.</p></div>'
+  +'<div><h3>Compounding feeds on itself</h3><div class="formula">A = P(1 + r)ᵗ</div><p>Interest earns interest, so growth curves upward. At 7%, money roughly doubles every 10 years — the rule of 72 in action.</p></div>'
+  +'</div><p style="margin-top:18px"><a href="#/calculator/percentage" style="font-weight:700">Try the Percentage Calculator →</a> &nbsp;·&nbsp; <a href="#/calculator/compound-interest" style="font-weight:700">See compounding live →</a></p></div></div></section>';
+
+  h+='<section class="block"><div class="wrap"><div class="sec-head"><div><h2>From the product notes</h2><p>Honest recommendations that shaped this site — what we built first, what we deliberately left for later, and the traps we avoided.</p></div></div><div class="whygrid">'
+  +'<div class="why"><h3>Essential at launch</h3><p>Correct maths with visible working, instant results, search that understands plain words, and pages that teach. Fancy extras never outrank a wrong answer.</p></div>'
+  +'<div class="why"><h3>Deliberately postponed</h3><p>Accounts, saved history in the cloud and hundreds of thin category pages. They add weight without helping anyone calculate — and near-duplicate pages hurt search trust.</p></div>'
+  +'<div class="why"><h3>The trap we avoided</h3><p>Decorative calculators that look finished but compute nothing, and “zombie” tools with no formula or example. If a tool is listed here, it works and explains itself.</p></div>'
+  +'</div></div></section>';
+  return h;
+}
+function calculatorsView(filter, q){
+  var list=CALCS.slice();
+  var title="All Calculators", sub="Every tool in the suite — all fully functional. Filter by category or search by name.";
+  if(filter==="popular"){ list=list.filter(function(c){return c.popular;}); title="Popular Calculators"; sub="The most-used tools on Numera."; }
+  if(filter==="new"){ list=list.filter(function(c){return c.isNew;}); title="Recently Added"; sub="The newest calculators in the suite."; }
+  if(q){ list=searchCalcs(q); title='Results for “'+esc(q)+'”'; sub=list.length? list.length+" calculator"+(list.length===1?"":"s")+" match your search." : "Nothing matched — try a shorter word like “percent”, “date” or “loan”."; }
+  var cats='<div class="filters" role="group" aria-label="Filter by category"><button type="button" data-f="" class="'+(!filter&&!q?"on":"")+'">All</button>'
+    +CATEGORIES.map(function(cat){ return '<button type="button" data-f="cat:'+cat.slug+'">'+esc(cat.name.replace(" Calculators",""))+'</button>'; }).join("")+'</div>';
+  var h='<div class="wrap"><div class="crumbs"><a href="#/">Home</a> › Calculators</div><div class="calc-head"><h1>'+title+'</h1><p>'+sub+'</p></div>'
+  +'<div class="searchbox" style="margin-bottom:18px;max-width:520px"><div class="field"><span aria-hidden="true" style="color:var(--ink3)">⌕</span><input id="listSearch" type="search" placeholder="Filter calculators…" value="'+esc(q||"")+'" aria-label="Filter calculators"><button class="go" id="listGo" type="button">Search</button></div></div>'
+  +cats+'<div class="grid" id="listGrid">'
+  +(list.length? list.map(cardHTML).join("") : '<div class="empty">No calculators found. <a href="#/calculators" style="color:var(--accent);font-weight:700">View all calculators</a></div>')
+  +'</div></div>';
+  return h;
+}
+function categoriesView(){
+  var h='<div class="wrap"><div class="crumbs"><a href="#/">Home</a> › Categories</div><div class="calc-head"><h1>Calculator Categories</h1><p>Nine categories, one home per calculator. Pick a shelf to see its tools.</p></div><div class="catgrid">'
+  +CATEGORIES.map(function(cat){ var list=calcsInCat(cat.slug); return '<a class="catcard '+cat.tint+'" href="#/category/'+cat.slug+'"><span class="n">'+list.length+' calculator'+(list.length===1?"":"s")+'</span><h3>'+esc(cat.name)+'</h3><p>'+esc(cat.blurb)+'</p><p style="margin-top:8px;font-weight:600">'+list.map(function(c){return esc(c.name.replace(" Calculator",""));}).join(" · ")+'</p></a>'; }).join("")
+  +'</div></div>';
+  return h;
+}
+function categoryView(slug){
+  var cat=catBySlug(slug); if(!cat) return notFound();
+  var list=calcsInCat(slug);
+  return '<div class="wrap"><div class="crumbs"><a href="#/">Home</a> › <a href="#/categories">Categories</a> › '+esc(cat.name)+'</div><div class="calc-head"><h1>'+esc(cat.name)+'</h1><p>'+esc(cat.blurb)+'</p></div><div class="grid">'
+  +list.map(cardHTML).join("")+'</div>'
+  +'<div class="prose"><h2>About this category</h2><p>Every tool above is fully working and explains its method on its own page — formula, steps and a worked example included. If a calculator you need is missing, it belongs on our roadmap, not in a list of promises: we only publish tools that compute correctly.</p></div></div>';
+}
+function calculatorView(slug){
+  var c=calcBySlug(slug); if(!c||!RENDER[slug]) return notFound();
+  if(recentUsed.indexOf(slug)<0){ recentUsed.unshift(slug); recentUsed=recentUsed.slice(0,4); }
+  var cat=catBySlug(c.cat);
+  var related=CALCS.filter(function(x){ return x.slug!==slug && (x.cat===c.cat); }).slice(0,3);
+  CALCS.forEach(function(x){ if(x.slug!==slug && x.cat!==c.cat && related.length<3 && ["percentage","average","standard"].indexOf(x.slug)>=0) related.push(x); });
+  related=related.slice(0,3);
+  var h='<div class="wrap"><div class="crumbs"><a href="#/">Home</a> › <a href="#/category/'+c.cat+'">'+esc(cat.name)+'</a> › '+esc(c.name)+'</div>'
+  +'<div class="calc-head"><h1>'+esc(c.name)+'</h1><p>'+esc(c.intro)+'</p></div>'
+  +'<div class="tool" id="toolBox">'+RENDER[slug]()+'</div>'
+  +'<div class="prose"><h2>How it works</h2><div class="formula">'+esc(c.formula)+'</div>'
+  +'<h3>Step by step</h3><ol>'+c.steps.map(function(s){ return '<li>'+esc(s)+'</li>'; }).join("")+'</ol>'
+  +'<h2>Worked example</h2><p><b>'+esc(c.example.q)+'</b></p><div class="formula">Answer: '+esc(c.example.a)+'</div><p>'+esc(c.example.work)+'</p>'
+  +'<h2>Frequently asked questions</h2>'
+  +c.faqs.map(function(f){ return '<details class="faq"><summary>'+esc(f[0])+'</summary><p>'+esc(f[1])+'</p></details>'; }).join("")
+  +'</div>'
+  +'<section class="block" style="padding-top:26px"><div class="sec-head"><div><h2>Related calculators</h2></div><a class="more" href="#/category/'+c.cat+'">More in '+esc(cat.name)+' →</a></div><div class="grid">'
+  +related.map(cardHTML).join("")+'</div></section></div>';
+  return h;
+}
+var STATIC = {
+  about:{t:"About Numera", b:'<p>Numera is a free calculator suite built on one editorial rule: <b>a calculator must show its working</b>. Every tool here publishes its formula, a step-by-step method and a worked example you can verify by hand, because an unexplained number is only half an answer.</p><h2>How the suite is organised</h2><p>Calculators live in nine categories — math, scientific, finance, health, date &amp; time, education, conversion, everyday, and percentage &amp; average. Each tool has exactly one home, one page and one job, which keeps search honest and stops near-duplicate pages from crowding out the useful ones.</h2><h2>Accuracy policy</h2><p>All logic runs in your browser and is tested against known results (a 3-4-5 triangle, sin 30° = 0.5, a $20,000 loan at 6% over 5 years = $386.66/month, and so on). Invalid inputs produce plain-English errors rather than misleading numbers. Where a figure is an estimate, the page states its assumptions.</p><h2>What Numera is not</h2><p>Not a homework mill, not a lead-generation form, and not financial or medical advice. Results are for guidance — verify important figures independently.</p>'},
+  contact:{t:"Contact Us", b:'<p>Questions, corrections or a calculator you would like us to build? The fastest route is email — a real person reads every message, and accuracy reports jump the queue.</p><p><a class="btn" href="mailto:hello@numera.example?subject=Numera%20feedback" style="display:inline-block;text-decoration:none">Email hello@numera.example</a></p><h2>Reporting a wrong result</h2><p>If a calculator gives an answer you believe is wrong, include the calculator name, the exact inputs you used and the result you expected, with your working if you have it. Verified errors are fixed and the worked example on the page is updated to cover the case.</p><h2>Suggesting a calculator</h2><p>Tell us the problem it solves and who it is for. We prioritise tools with a clear formula and a real audience over list-padding novelties.</p>'},
+  privacy:{t:"Privacy Policy", b:'<p><b>Last updated: 30 October 2026.</b></p><h2>The short version</h2><p>Numera calculators run entirely in your browser. The numbers you type are never sent to a server, never stored by us, and never sold or shared — there is no account system and no tracking of your calculations.</p><h2>What happens on your device</h2><p>Your session history on keypad calculators and your recently used tools exist only in the page memory and disappear when you close the tab. Your light/dark theme choice, if you set one, is kept only for the current view in this build.</p><h2>Analytics</h2><p>If aggregate, privacy-respecting analytics are added in future, this policy will be updated first, and they will never include the values entered into calculators.</p><h2>Contact</h2><p>Privacy questions: <a href="mailto:hello@numera.example">hello@numera.example</a>.</p>'},
+  terms:{t:"Terms & Conditions", b:'<p><b>Last updated: 30 October 2026.</b></p><h2>Using Numera</h2><p>Numera provides free online calculators for personal and educational use. By using the site you accept these terms.</p><h2>Accuracy</h2><p>We work hard to keep every calculation correct and test against known results, but results are provided “as is” without warranty. Always verify figures that affect money, health, grades or legal deadlines with an authoritative source or a qualified professional.</p><h2>Acceptable use</h2><p>Do not attempt to disrupt the site, misrepresent its results as professional advice, or republish its worked examples and explanations as your own content.</p><h2>Changes</h2><p>We may update calculators, content and these terms; material changes will be noted on this page with a new date.</p>'},
+  disclaimer:{t:"Disclaimer", b:'<h2>General</h2><p>Numera is an educational tool. Its results are estimates produced from the inputs you provide and the standard formulas shown on each page.</p><h2>Financial calculators</h2><p>Loan and compound interest results assume fixed rates and regular payments or contributions. They are scenario arithmetic, not financial advice, offers or forecasts. Real products include fees, variable rates and tax treatment that change outcomes.</p><h2>Health calculators</h2><p>BMI is a population screening measure with known limitations. It is not a diagnosis. Consult a qualified clinician about your own health.</p><h2>Education calculators</h2><p>GPA results use the common 4.0 scale shown on the page; your institution’s official scale governs your transcript.</p>'}
+};
+function staticView(key){
+  var s=STATIC[key]; if(!s) return notFound();
+  return '<div class="wrap"><div class="crumbs"><a href="#/">Home</a> › '+esc(s.t)+'</div><div class="calc-head"><h1>'+esc(s.t)+'</h1></div><div class="prose">'+s.b+'</div></div>';
+}
+function notFound(){
+  return '<div class="wrap"><div class="calc-head" style="padding-top:36px"><h1>Page not found</h1><p>That page does not exist. Try searching, or browse the full collection.</p></div><p><a class="btn" href="#/calculators" style="display:inline-block;text-decoration:none">Browse all calculators</a></p></div>';
+}
+/* ================= Router ================= */
+function parseRoute(){
+  var h=location.hash.replace(/^#\/?/, "");
+  var parts=h.split("?"); var path=parts[0]; var params={};
+  if(parts[1]) parts[1].split("&").forEach(function(kv){ var p=kv.split("="); params[decodeURIComponent(p[0])]=decodeURIComponent(p[1]||""); });
+  return {path:path, params:params};
+}
+function render(){
+  var r=parseRoute(), p=r.path;
+  document.getElementById("mainnav").classList.remove("open");
+  if(p==="" ){ app.innerHTML=homeView(); initAvg("ft"); wireSearch(); }
+  else if(p==="calculators"){ app.innerHTML=calculatorsView(r.params.filter||"", r.params.q||""); wireList(); }
+  else if(p==="categories"){ app.innerHTML=categoriesView(); }
+  else if(p.indexOf("category/")===0){ app.innerHTML=categoryView(p.slice(9)); }
+  else if(p.indexOf("calculator/")===0){ var slug=p.slice(11); app.innerHTML=calculatorView(slug); if(INIT[slug]) INIT[slug](); document.title=(calcBySlug(slug)?calcBySlug(slug).name:"Calculator")+" — Numera"; window.scrollTo(0,0); return; }
+  else if(STATIC[p]){ app.innerHTML=staticView(p); }
+  else { app.innerHTML=notFound(); }
+  document.title="Numera — Free Online Calculators That Show Their Working";
+  window.scrollTo(0,0);
+}
+function wireSearch(){
+  var input=document.getElementById("heroSearch"), sug=document.getElementById("heroSuggest");
+  if(!input) return;
+  function show(){
+    var q=input.value.trim();
+    var list=q? searchCalcs(q) : CALCS.filter(function(c){return c.popular;});
+    if(!list.length){ sug.innerHTML='<a href="#/calculators"><b>No matches</b><span>Browse all →</span></a>'; }
+    else sug.innerHTML=list.slice(0,6).map(function(c){ return '<a href="#/calculator/'+c.slug+'" role="option"><b>'+esc(c.name)+'</b><span>'+catName(c.cat)+'</span></a>'; }).join("");
+    sug.classList.add("open");
+  }
+  input.addEventListener("focus", show);
+  input.addEventListener("input", show);
+  input.addEventListener("keydown", function(ev){ if(ev.key==="Enter"){ location.hash="#/calculators?q="+encodeURIComponent(input.value.trim()); } if(ev.key==="Escape"){ sug.classList.remove("open"); } });
+  document.getElementById("heroGo").addEventListener("click", function(){ location.hash="#/calculators?q="+encodeURIComponent(input.value.trim()); });
+  document.addEventListener("click", docClose);
+  function docClose(ev){ if(!ev.target.closest(".searchbox")){ sug.classList.remove("open"); document.removeEventListener("click", docClose); } }
+}
+function wireList(){
+  var input=document.getElementById("listSearch");
+  if(input){ var go=function(){ location.hash="#/calculators?q="+encodeURIComponent(input.value.trim()); }; document.getElementById("listGo").addEventListener("click", go); input.addEventListener("keydown", function(ev){ if(ev.key==="Enter") go(); }); }
+  Array.prototype.forEach.call(document.querySelectorAll(".filters button"), function(b){ b.addEventListener("click", function(){ var f=b.getAttribute("data-f"); if(!f){ location.hash="#/calculators"; } else if(f.indexOf("cat:")===0){ location.hash="#/category/"+f.slice(4); } }); });
+}
+/* nav search + theme + menu */
+document.getElementById("navSearch").addEventListener("keydown", function(ev){ if(ev.key==="Enter"){ location.hash="#/calculators?q="+encodeURIComponent(this.value.trim()); this.value=""; } });
+document.getElementById("burger").addEventListener("click", function(){ var n=document.getElementById("mainnav"); var open=n.classList.toggle("open"); this.setAttribute("aria-expanded", open?"true":"false"); });
+document.getElementById("themeBtn").addEventListener("click", function(){
+  var root=document.documentElement;
+  var dark = root.getAttribute("data-theme")==="dark" || (!root.getAttribute("data-theme") && window.matchMedia("(prefers-color-scheme: dark)").matches);
+  root.setAttribute("data-theme", dark?"light":"dark");
+  toast(dark?"Light theme":"Dark theme");
+});
+window.addEventListener("hashchange", render);
+render();
+</script>
+</body>
+</html>
