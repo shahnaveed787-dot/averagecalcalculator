@@ -566,7 +566,7 @@ var CATEGORIES = [
   {slug:"education", name:"Education Calculators", tint:"tint-a", blurb:"GPA and study tools that show how grades are really weighted.", icon:"gpa"},
   {slug:"conversion", name:"Conversion Calculators", tint:"tint-b", blurb:"Length, weight and temperature conversions with exact factors.", icon:"conv"},
   {slug:"everyday", name:"Everyday Calculators", tint:"tint-c", blurb:"Tips, splits and quick answers for daily life.", icon:"tip"},
-  {slug:"numbers", name:"Percentage & Average", tint:"tint-a", blurb:"The two most-searched number tools, done properly: percentages and averages in all their forms.", icon:"pct"}
+  {slug:"numbers", name:"Percentage & Average", tint:"tint-a", blurb:"The two most-searched number tools, done properly: the Percentage Calculator for percent questions, and the Average Calculator for standard, weighted and geometric averages.", icon:"pct"}
 ];
 var CALCS = [
  {slug:"standard", name:"Standard Calculator", cat:"math", icon:"calc", popular:1, desc:"A fast, keyboard-friendly calculator with a visible history of everything you've worked out.",
@@ -806,9 +806,10 @@ var AVG_MODES=[
  {name:"Weighted", label:"Value : weight pairs", hint:"— separated by commas, spaces or line breaks", ph:"e.g. 80:3, 90:1", fmt:"Write each pair as value:weight — 80:3 means the value 80 counts three times as heavily as a weight of 1."},
  {name:"Geometric", label:"Your numbers (positive only)", hint:"— commas, spaces or line breaks all work", ph:"e.g. 4, 16, 64", fmt:"The geometric mean is built for growth rates and returns. It uses positive numbers only — zero or negative values show a clear error."}
 ];
-function avgWidgetHTML(idp, defaults){
+function avgWidgetHTML(idp, defaults, includePct){
+  var modes=AVG_MODES.map(function(m,i){ return {m:m,i:i}; }).filter(function(o){ return includePct===false ? o.i!==1 : true; });
   return '<div class="seg avg-modes" id="'+idp+'Modes" role="tablist" aria-label="Average mode">'
-    + AVG_MODES.map(function(m,i){ return '<button type="button" data-amode="'+i+'"'+(i===0?' class="on"':"")+'>'+m.name+'</button>'; }).join("")+'</div>'
+    + modes.map(function(o){ return '<button type="button" data-amode="'+o.i+'"'+(o.i===0?' class="on"':"")+'>'+o.m.name+'</button>'; }).join("")+'</div>'
     +'<label class="f" for="'+idp+'Nums"><span id="'+idp+'Lab">'+AVG_MODES[0].label+'</span> <small id="'+idp+'Hint">'+AVG_MODES[0].hint+'</small></label>'
     +'<textarea class="inp" id="'+idp+'Nums" placeholder="'+AVG_MODES[0].ph+'">'+esc(defaults)+'</textarea>'
     +'<p class="hint" id="'+idp+'Fmt">'+AVG_MODES[0].fmt+'</p>'
@@ -949,7 +950,7 @@ INIT.percentage = function(){
   go();
 };
 
-RENDER.average = function(){ return avgWidgetHTML("av", "12, 45, 7, 89, 23, 45, 67"); };
+RENDER.average = function(){ return avgWidgetHTML("av", "12, 45, 7, 89, 23, 45, 67", false); };
 INIT.average = function(){ initAvg("av"); };
 
 RENDER.fraction = function(){
@@ -1426,7 +1427,7 @@ function guideHTML(){
   /* § 01 */
   +'<section class="block guide" id="how-to-use"><div class="wrap"><div class="sec-head"><div><h2><span class="ch-no">§ 01</span>How to Use the Average Calculator</h2><p>Four steps and you have your answer — with the working shown, so you can follow it, check it, and use the same method on paper.</p></div></div><div class="prose">'
   +'<h3>Enter Your Numbers (Comma, Space, or Line Separated)</h3><p>Type or paste your numbers into the box at the top of this page. Commas, spaces, semicolons and line breaks all work as separators, so a column copied from a spreadsheet drops straight in. In Standard mode decimals and negative numbers are fine; if an entry is not a number, the calculator flags it instead of quietly guessing.</p>'
-  +'<h3>Choose Your Mode (Standard, Percentage, Weighted, or Geometric)</h3><p><b>Standard</b> gives you the mean, median, mode, range and standard deviation of a list. <b>Percentage</b> averages a list of percentages. <b>Weighted</b> accepts value:weight pairs such as <code>80:3, 90:1</code> for when some values count more than others. <b>Geometric</b> works out the geometric mean of positive numbers — the right average for growth rates and returns.</p>'
+  +'<h3>Choose Your Mode (Standard, Weighted, or Geometric)</h3><p><b>Standard</b> gives you the mean, median, mode, range and standard deviation of a list. <b>Weighted</b> accepts value:weight pairs such as <code>80:3, 90:1</code> for when some values count more than others. <b>Geometric</b> works out the geometric mean of positive numbers — the right average for growth rates and returns. To average percentages, use the Percentage mode in the Average tool on the homepage.</p>'
   +'<h3>Understand Your Results</h3><p>The large number is the main average for the mode you picked. Underneath it, the calculator prints the checkable working — the sum and the count in Standard mode, the weighted sum and total weight in Weighted mode — followed by a breakdown of the other measures. A copy button sits under the result so you can paste the answer straight into your work.</p>'
   +'<h3>Calculate an Average Step by Step</h3><ol><li style="--d:0">Enter your numbers in the box above, in any order.</li><li style="--d:1">Pick the mode that matches your question — Standard is the everyday choice.</li><li style="--d:2">Read the large result: that is your average.</li><li style="--d:3">Check the breakdown underneath — the sum and count show exactly how the answer was reached.</li></ol><p>Try it with 12, 15 and 21: the worked example in “How to Calculate an Average” below walks through this exact set, and the answer is 16.</p>'
   +'</div></div></section>'
