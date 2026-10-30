@@ -283,6 +283,64 @@ footer.site .foot a{color:rgba(245,241,232,.75)} footer.site .foot a:hover{color
 .del{width:44px;height:48px;border-radius:var(--r-md);border:1px solid var(--line);background:var(--surface);color:var(--coral);font-size:16px;font-weight:700}
 .bar{height:10px;border-radius:99px;background:var(--line);overflow:hidden;margin:10px 0 5px}
 .bar i{display:block;height:100%;background:var(--green);border-radius:99px;transition:width .4s ease}
+/* ---------- Interactive & Alive ---------- */
+.formula-strip .trackwrap{display:flex;width:max-content;animation:marquee 34s linear infinite}
+.formula-strip:hover .trackwrap{animation-play-state:paused}
+@keyframes marquee{to{transform:translateX(-50%)}}
+.pill-badge::before{animation:pulseDot 1.6s ease-in-out infinite}
+@keyframes pulseDot{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.55);opacity:.5}}
+.card{animation:cardIn .55s cubic-bezier(.2,.7,.3,1) both;animation-delay:calc(var(--i,0)*45ms);position:relative;overflow:hidden}
+@keyframes cardIn{from{opacity:0;transform:translateY(14px) scale(.985)}to{opacity:1;transform:none}}
+.card .ic{transition:transform .25s ease}
+.card:hover .ic{transform:rotate(-7deg) scale(1.1)}
+.card::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 32%,rgba(255,255,255,.32) 48%,transparent 62%);transform:translateX(-130%);transition:transform .65s ease;pointer-events:none}
+.card:hover::after{transform:translateX(130%)}
+.reveal.in{animation:sectionIn .65s cubic-bezier(.2,.7,.3,1)}
+@keyframes sectionIn{from{opacity:.2;transform:translateY(16px)}to{opacity:1;transform:none}}
+.btn{transition:transform .15s ease,background .15s ease,box-shadow .15s ease,border-color .15s ease}
+.btn:active{transform:scale(.96)}
+.chip{transition:transform .15s ease,background .15s ease,border-color .15s ease,color .15s ease}
+.chip:hover{transform:translateY(-2px)}
+.catcard .cat-no{transition:color .25s ease,transform .25s ease}
+.catcard:hover .cat-no{color:var(--accent);transform:translateY(-3px)}
+.pad button{transition:transform .1s ease,background .15s ease,border-color .15s ease}
+.pad button:active{transform:scale(.93)}
+.result .rbig{animation:resultPop .38s cubic-bezier(.2,.7,.3,1)}
+@keyframes resultPop{0%{transform:scale(.96);opacity:.35}60%{transform:scale(1.015)}100%{transform:scale(1);opacity:1}}
+.tool{animation:toolIn .45s cubic-bezier(.2,.7,.3,1)}
+@keyframes toolIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.prose ol li{animation:stepIn .5s ease both;animation-delay:calc(var(--d,0)*150ms + 200ms)}
+@keyframes stepIn{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:none}}
+.ticker{display:flex;gap:10px;align-items:center;margin-top:16px;background:var(--surface2);border:1px dashed var(--line2);border-radius:6px;padding:9px 13px;font-family:var(--mono);font-size:13.5px;max-width:640px;color:var(--ink2)}
+.ticker .dot{width:8px;height:8px;border-radius:50%;background:var(--green);flex:none;animation:pulseDot 1.6s ease-in-out infinite}
+.ticker .live{font-weight:700;color:var(--accent);letter-spacing:.05em;font-size:11.5px;flex:none}
+#tickTxt{transition:opacity .3s ease}
+#tickTxt.fade{opacity:0}
+/* live playground */
+.playground{background:var(--surface);border:1.5px solid var(--ink);border-radius:6px;box-shadow:7px 7px 0 var(--ink);padding:24px;position:relative}
+.pg-live{display:inline-flex;align-items:center;gap:8px;background:var(--green-soft);color:var(--green-deep);font-family:var(--mono);font-weight:700;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;padding:5px 11px;border-radius:3px;margin-bottom:14px}
+.pg-live::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulseDot 1.6s ease-in-out infinite}
+.playground h3.pg-title{font-size:21px;margin-bottom:4px}
+.playground p.pg-sub{color:var(--ink2);font-size:14.5px;margin:0 0 16px;max-width:62ch}
+.pg-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:26px;align-items:start}
+@media(max-width:820px){.pg-grid{grid-template-columns:1fr}}
+.pg-row{margin-bottom:15px}
+.pg-row .pg-lab{display:flex;justify-content:space-between;gap:10px;font-weight:600;font-size:14.5px;margin-bottom:1px}
+.pg-val{font-family:var(--mono);color:var(--accent);font-weight:700}
+.pg-bar{height:12px;border:1px solid var(--line2);border-radius:99px;background:var(--surface2);overflow:hidden;margin-top:6px}
+.pg-bar i{display:block;height:100%;background:var(--accent);border-radius:99px;transition:width .35s ease}
+.pg-bar.b2 i{background:var(--blue)} .pg-bar.b3 i{background:var(--green)}
+input[type="range"]{accent-color:var(--accent);width:100%;height:30px;cursor:pointer;margin:0}
+.pg-result{background:var(--ink);color:#F5F1E8;border:1px solid var(--ink);border-radius:6px;padding:20px;min-height:150px}
+.pg-result .rlabel{font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#FF8A5C;font-family:var(--mono)}
+.pg-big{font-family:var(--mono);font-size:clamp(30px,3.4vw,40px);font-weight:700;line-height:1.15;margin:6px 0 7px;color:#fff}
+.pg-big.bump{animation:resultPop .35s cubic-bezier(.2,.7,.3,1)}
+.pg-result .rsub{color:rgba(245,241,232,.85);font-size:14.5px}
+.pg-result .rsub b{color:#FFD9A8}
+.pg-view{display:none}
+.pg-view.on{display:block;animation:toolIn .35s ease}
+.cel-star{position:absolute;bottom:16px;font-size:18px;color:#FFB08A;pointer-events:none;animation:celFloat 1.05s ease-out forwards;z-index:3}
+@keyframes celFloat{to{transform:translateY(-95px) rotate(45deg);opacity:0}}
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{animation-duration:.001s !important;transition-duration:.001s !important}
   html{scroll-behavior:auto}
@@ -1049,9 +1107,9 @@ var activeCalc="average";
 var gridFilter="";
 var gridQuery="";
 
-function cardHTML(c){
+function cardHTML(c, idx){
   var fx=String(c.formula||"").split("·")[0].trim(); if(fx.length>52) fx=fx.slice(0,52)+"…";
-  return '<a class="card" href="#calculator-'+c.slug+'" data-calc="'+c.slug+'"><span class="ic">'+ICONS[c.icon]+'</span><h3>'+esc(c.name)+'</h3><p>'+esc(c.desc)+'</p>'
+  return '<a class="card" style="--i:'+(idx||0)+'" href="#calculator-'+c.slug+'" data-calc="'+c.slug+'"><span class="ic">'+ICONS[c.icon]+'</span><h3>'+esc(c.name)+'</h3><p>'+esc(c.desc)+'</p>'
   +'<span class="fx"><b>ƒx</b> &nbsp;'+esc(fx)+'</span>'
   +'<span class="meta"><span>'+catName(c.cat)+(c.isNew?' &nbsp;<span class="badge new">New</span>':"")+'</span><span class="go">Use tool ↓</span></span></a>';
 }
@@ -1072,7 +1130,7 @@ function calculatorDetailHTML(c){
   +'<p class="kid-note"><b>Learning tip —</b> results update as you type. Below the tool you will find the formula, a step-by-step method and a worked example, so you can check any answer by hand.</p>'
   +'<div class="tool" id="toolBox">'+RENDER[c.slug]()+'</div>'
   +'<div class="prose"><h2>Formula and method</h2><div class="formula">'+esc(c.formula)+'</div>'
-  +'<h3>How to use it</h3><ol>'+c.steps.map(function(s){ return '<li>'+esc(s)+'</li>'; }).join("")+'</ol>'
+  +'<h3>How to use it</h3><ol>'+c.steps.map(function(s, si){ return '<li style="--d:'+si+'">'+esc(s)+'</li>'; }).join("")+'</ol>'
   +'<h2>Worked example</h2><p><b>'+esc(c.example.q)+'</b></p><div class="formula">Answer: '+esc(c.example.a)+'</div><p>'+esc(c.example.work)+'</p>'
   +'<h2>Frequently asked questions</h2>'
   +c.faqs.map(function(f){ return '<details class="faq"><summary>'+esc(f[0])+'</summary><p>'+esc(f[1])+'</p></details>'; }).join("")
@@ -1105,16 +1163,36 @@ function renderGrid(){
 function homeView(){
   var popular=CALCS.filter(function(c){return c.popular;});
   var fresh=CALCS.filter(function(c){return c.isNew;});
-  var h='<div class="hero" id="top"><div class="formula-strip" aria-hidden="true"><span class="track"><span><b>Mean</b> = total ÷ count</span><span><b>BMI</b> = kg ÷ m²</span><span><b>a² + b²</b> = c²</span><span><b>% of Y</b> = (P ÷ 100) × Y</span><span><b>A</b> = P(1 + r)ᵗ</span><span><b>sin 30°</b> = 0.5</span></span></div><div class="wrap"><div class="hero-grid"><div>'
+  var FS='<span><b>Mean</b> = total ÷ count</span><span><b>BMI</b> = kg ÷ m²</span><span><b>a² + b²</b> = c²</span><span><b>% of Y</b> = (P ÷ 100) × Y</span><span><b>A</b> = P(1 + r)ᵗ</span><span><b>sin 30°</b> = 0.5</span>';
+  var h='<div class="hero" id="top"><div class="formula-strip" aria-hidden="true"><div class="trackwrap"><span class="track">'+FS+'</span><span class="track">'+FS+'</span></div></div><div class="wrap"><div class="hero-grid"><div>'
   +'<span class="pill-badge">The method-first calculator library · Est. for learners</span>'
   +'<h1>Don\'t just get the answer. <span class="hl">See how it works.</span></h1>'
   +'<p class="lede">Most calculator sites hand you a number and stop. Numera is built differently — every tool prints its formula on the card, shows its working step by step, and checks itself with a worked example. All 16 calculators live on this one homepage. Free, in plain language, for students, teachers and everyday use. No sign-up.</p>'
   +'<div class="searchbox"><div class="field"><span aria-hidden="true" style="font-size:20px;color:var(--ink3)">⌕</span><input id="heroSearch" type="search" placeholder="Search calculators — try “BMI”, “loan” or “average”…" aria-label="Search calculators" autocomplete="off"><button class="go" id="heroGo" type="button">Search</button></div><div class="suggest" id="heroSuggest" role="listbox"></div></div>'
   +'<div class="chips"><span class="lbl">Popular:</span>'+["percentage","average","bmi","loan","age"].map(function(s){ var c=calcBySlug(s); return '<a class="chip" href="#calculator-'+s+'" data-calc="'+s+'">'+esc(c.name.replace(" Calculator",""))+'</a>'; }).join("")+'</div>'
-  +'<div class="statrow"><div class="stat"><b>16</b><span>calculators, all free</span></div><div class="stat"><b>9</b><span>clear categories</span></div><div class="stat"><b>100%</b><span>no sign-up required</span></div></div>'
+  +'<div class="ticker" aria-hidden="true"><span class="dot"></span><span class="live">Live</span><span id="tickTxt">18% of 240 = 43.2 — watch the Playground below do this with sliders</span></div>'
+  +'<div class="statrow"><div class="stat"><b data-count="16">0</b><span>calculators, all free</span></div><div class="stat"><b data-count="9">0</b><span>clear categories</span></div><div class="stat"><b data-count="100" data-suffix="%">0</b><span>no sign-up required</span></div></div>'
   +'</div>'
   +'<div class="hero-card"><h3>Featured · Average Calculator</h3><p>Try it now: enter a set of numbers — test scores work well — and see the mean, median and more, calculated instantly.</p>'+avgWidgetHTML("ft","85, 92, 78, 92, 64")+'<p style="margin-top:12px"><a href="#calculator-average" data-calc="average" style="color:var(--accent);font-weight:900;text-decoration:none">Use the full Average Calculator below ↓</a></p></div>'
   +'</div></div></div>';
+
+  h+='<section class="block" style="padding-top:36px"><div class="wrap"><div class="playground" id="playground"><span class="pg-live">Live playground</span><h3 class="pg-title">Don\'t read about it — play with it.</h3><p class="pg-sub">Three tiny live demos. Drag a slider and watch the answer, the bars and the working update instantly — exactly how every full calculator on this page behaves. No “calculate” button needed.</p>'
+  +'<div class="seg" role="tablist" aria-label="Playground demos"><button type="button" class="on" data-pg="avg">Test-score average</button><button type="button" data-pg="pct">Percent of a number</button><button type="button" data-pg="tri">Build a triangle</button></div>'
+  +'<div class="pg-view on" id="pgView-avg"><div class="pg-grid"><div>'
+  +'<div class="pg-row"><div class="pg-lab"><span>Maths score</span><span class="pg-val" id="pgAv1">80</span></div><input type="range" id="pgA1" min="0" max="100" value="80" aria-label="Maths score"><div class="pg-bar"><i id="pgAb1" style="width:80%"></i></div></div>'
+  +'<div class="pg-row"><div class="pg-lab"><span>English score</span><span class="pg-val" id="pgAv2">65</span></div><input type="range" id="pgA2" min="0" max="100" value="65" aria-label="English score"><div class="pg-bar b2"><i id="pgAb2" style="width:65%"></i></div></div>'
+  +'<div class="pg-row"><div class="pg-lab"><span>Science score</span><span class="pg-val" id="pgAv3">90</span></div><input type="range" id="pgA3" min="0" max="100" value="90" aria-label="Science score"><div class="pg-bar b3"><i id="pgAb3" style="width:90%"></i></div></div>'
+  +'</div><div class="pg-result"><div class="rlabel">Your average</div><div class="pg-big" id="pgAvgBig">78.3</div><div class="rsub" id="pgAvgSub">(80 + 65 + 90) ÷ 3 = <b>78.3</b></div><div class="rsub" id="pgAvgMsg" style="margin-top:8px">Strong work — keep it up.</div><div class="btnrow" style="margin-top:12px"><button type="button" class="btn ghost sm" data-calc="average">Open the full Average Calculator ↓</button></div></div></div></div>'
+  +'<div class="pg-view" id="pgView-pct"><div class="pg-grid"><div>'
+  +'<div class="pg-row"><div class="pg-lab"><span>Percentage</span><span class="pg-val" id="pgPctV">18%</span></div><input type="range" id="pgPct" min="0" max="100" value="18" aria-label="Percentage"></div>'
+  +'<div class="pg-row"><div class="pg-lab"><span>Of this amount</span><span class="pg-val" id="pgAmtV">240</span></div><input type="range" id="pgAmt" min="0" max="500" step="10" value="240" aria-label="Amount"><div class="pg-bar"><i id="pgPctBar" style="width:18%"></i></div><p class="hint" style="margin:6px 0 0">The bar fills with the percentage you choose.</p></div>'
+  +'</div><div class="pg-result"><div class="rlabel">Result</div><div class="pg-big" id="pgPctBig">43.2</div><div class="rsub" id="pgPctSub">(18 ÷ 100) × 240 = <b>43.2</b> — “per cent” simply means out of every 100.</div><div class="btnrow" style="margin-top:12px"><button type="button" class="btn ghost sm" data-calc="percentage">Open the full Percentage Calculator ↓</button></div></div></div></div>'
+  +'<div class="pg-view" id="pgView-tri"><div class="pg-grid"><div>'
+  +'<svg viewBox="0 0 200 142" role="img" aria-label="Right-angled triangle that reshapes as you drag the sliders" style="width:100%;max-width:340px;display:block;margin:4px auto 10px"><polygon id="pgTriPoly" points="20,120 140,120 20,60" fill="var(--accent-soft)" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round"/><polyline points="20,106 34,106 34,120" fill="none" stroke="var(--ink)" stroke-width="1.6"/><text id="pgTriLA" x="80" y="137" text-anchor="middle" font-family="var(--mono)" font-size="12" fill="var(--ink2)">a = 6</text><text id="pgTriLB" x="10" y="92" text-anchor="middle" font-size="12" fill="var(--ink2)" transform="rotate(-90 10 92)">b = 8</text><text id="pgTriLC" x="88" y="82" font-size="12" fill="var(--accent)" font-weight="700">c</text></svg>'
+  +'<div class="pg-row"><div class="pg-lab"><span>Side a (along the bottom)</span><span class="pg-val" id="pgTaV">6</span></div><input type="range" id="pgTa" min="1" max="12" value="6" aria-label="Side a"></div>'
+  +'<div class="pg-row"><div class="pg-lab"><span>Side b (up the side)</span><span class="pg-val" id="pgTbV">8</span></div><input type="range" id="pgTb" min="1" max="12" value="8" aria-label="Side b"></div>'
+  +'</div><div class="pg-result"><div class="rlabel">Hypotenuse (longest side)</div><div class="pg-big" id="pgTriBig">10</div><div class="rsub" id="pgTriSub">Pythagoras: √(6² + 8²) = √100 = <b>10</b>. Area = (6 × 8) ÷ 2 = <b>24</b>.</div><div class="btnrow" style="margin-top:12px"><button type="button" class="btn ghost sm" data-calc="triangle">Open the full Triangle Calculator ↓</button></div></div></div></div>'
+  +'</div></div></section>';
 
   h+='<section class="block" id="popular"><div class="wrap"><div class="sec-head"><div><h2><span class="ch-no">§ 01</span>Popular calculators</h2><p>The tools people use most — note the formula printed on every card. Select any card and the tool opens right here on this homepage, below the full collection.</p></div><a class="more" href="#all-calculators">Browse all 16 ↓</a></div><div class="grid">'
   +popular.map(cardHTML).join("")+'</div></div></section>';
@@ -1162,6 +1240,87 @@ function homeView(){
   h+='<section class="block" id="about"><div class="wrap"><div class="sec-head"><div><h2><span class="ch-no">§ 07</span>About Numera</h2><p>Numera is a free calculator suite built on one editorial rule: a calculator must show its working. Every tool publishes its formula, a step-by-step method and a worked example you can verify by hand. Results are estimates for guidance — verify important figures independently. Questions or a correction? Email <a href="mailto:hello@numera.example" style="color:var(--accent);font-weight:700">hello@numera.example</a>.</p></div></div></div></section>';
   return h;
 }
+function pgTween(el, to, dp){
+  if(!el) return;
+  var RM=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var from=parseFloat(el.getAttribute("data-v")||"0");
+  el.setAttribute("data-v", String(to));
+  if(RM || from===to){ el.textContent=fmt(to,dp); return; }
+  var t0=null;
+  function frame(ts){ if(!t0) t0=ts; var p=Math.min(1,(ts-t0)/420); var e=1-Math.pow(1-p,3); el.textContent=fmt(from+(to-from)*e, dp); if(p<1) requestAnimationFrame(frame); }
+  requestAnimationFrame(frame);
+  el.classList.remove("bump"); void el.offsetWidth; el.classList.add("bump");
+}
+function initPlayground(){
+  var root=document.getElementById("playground"); if(!root) return;
+  Array.prototype.forEach.call(root.querySelectorAll("[data-pg]"), function(btn){
+    btn.addEventListener("click", function(){
+      Array.prototype.forEach.call(root.querySelectorAll("[data-pg]"), function(x){ x.classList.remove("on"); });
+      btn.classList.add("on");
+      Array.prototype.forEach.call(root.querySelectorAll(".pg-view"), function(v){ v.classList.remove("on"); });
+      var v=document.getElementById("pgView-"+btn.getAttribute("data-pg")); if(v) v.classList.add("on");
+    });
+  });
+  function avgGo(){
+    var s=[1,2,3].map(function(i){ return Number(document.getElementById("pgA"+i).value); });
+    s.forEach(function(v,i){ document.getElementById("pgAv"+(i+1)).textContent=v; document.getElementById("pgAb"+(i+1)).style.width=v+"%"; });
+    var mean=(s[0]+s[1]+s[2])/3;
+    pgTween(document.getElementById("pgAvgBig"), mean, 1);
+    document.getElementById("pgAvgSub").innerHTML="("+s.join(" + ")+") ÷ 3 = <b>"+fmt(mean,1)+"</b>";
+    document.getElementById("pgAvgMsg").textContent = mean>=90 ? "Outstanding — top-marks territory." : mean>=75 ? "Strong work — keep it up." : mean>=50 ? "Getting there — a little practice lifts every score." : "Every expert started somewhere — keep practising.";
+  }
+  ["pgA1","pgA2","pgA3"].forEach(function(id){ document.getElementById(id).addEventListener("input", avgGo); });
+  var avgBig=document.getElementById("pgAvgBig"); avgBig.setAttribute("data-v","78.3"); avgGo();
+  function pctGo(){
+    var p=Number(document.getElementById("pgPct").value), amt=Number(document.getElementById("pgAmt").value);
+    document.getElementById("pgPctV").textContent=p+"%";
+    document.getElementById("pgAmtV").textContent=amt;
+    document.getElementById("pgPctBar").style.width=p+"%";
+    var v=p/100*amt;
+    pgTween(document.getElementById("pgPctBig"), v, 1);
+    document.getElementById("pgPctSub").innerHTML="("+p+" ÷ 100) × "+amt+" = <b>"+fmt(v,1)+"</b> — “per cent” simply means out of every 100.";
+  }
+  ["pgPct","pgAmt"].forEach(function(id){ document.getElementById(id).addEventListener("input", pctGo); });
+  var pctBig=document.getElementById("pgPctBig"); pctBig.setAttribute("data-v","43.2"); pctGo();
+  function triGo(){
+    var a=Number(document.getElementById("pgTa").value), b=Number(document.getElementById("pgTb").value);
+    document.getElementById("pgTaV").textContent=a; document.getElementById("pgTbV").textContent=b;
+    var k=140/Math.max(a,b), x2=20+a*k, y2=120-b*k;
+    document.getElementById("pgTriPoly").setAttribute("points", "20,120 "+x2+",120 20,"+y2);
+    var la=document.getElementById("pgTriLA"); la.textContent="a = "+a; la.setAttribute("x", String(20+a*k/2));
+    var lb=document.getElementById("pgTriLB"); lb.textContent="b = "+b;
+    var lc=document.getElementById("pgTriLC"); lc.textContent="c"; lc.setAttribute("x", String(24+a*k/2)); lc.setAttribute("y", String(112-b*k/2));
+    var hyp=Math.sqrt(a*a+b*b), area=a*b/2;
+    pgTween(document.getElementById("pgTriBig"), hyp, 2);
+    document.getElementById("pgTriSub").innerHTML="Pythagoras: √("+a+"² + "+b+"²) = √"+(a*a+b*b)+" = <b>"+fmt(hyp,2)+"</b>. Area = ("+a+" × "+b+") ÷ 2 = <b>"+fmt(area,1)+"</b>.";
+  }
+  ["pgTa","pgTb"].forEach(function(id){ document.getElementById(id).addEventListener("input", triGo); });
+  var triBig=document.getElementById("pgTriBig"); triBig.setAttribute("data-v","10"); triGo();
+}
+function initHeroMotion(){
+  var RM=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  /* count-up stats */
+  Array.prototype.forEach.call(document.querySelectorAll(".stat b[data-count]"), function(el){
+    var target=Number(el.getAttribute("data-count")), suf=el.getAttribute("data-suffix")||"";
+    if(RM){ el.textContent=target+suf; return; }
+    var t0=null;
+    function frame(ts){ if(!t0) t0=ts; var p=Math.min(1,(ts-t0)/900); var e=1-Math.pow(1-p,3); el.textContent=Math.round(target*e)+suf; if(p<1) requestAnimationFrame(frame); }
+    requestAnimationFrame(frame);
+  });
+  /* rotating live ticker */
+  var tick=document.getElementById("tickTxt");
+  if(tick && !RM){
+    var lines=["18% of 240 = 43.2 — try it in the Playground below","Average of 80, 65 and 90 = 78.3 — drag the sliders and watch it move","A 3–4–5 triangle: √(3² + 4²) = 5 — Pythagoras, live","$20,000 at 6% over 5 years = $386.66 a month","Born 15 Mar 2000? On 30 Oct 2026 you are 26 years, 7 months, 15 days old"];
+    var i=0;
+    setInterval(function(){ tick.classList.add("fade"); setTimeout(function(){ i=(i+1)%lines.length; tick.textContent=lines[i]; tick.classList.remove("fade"); }, 320); }, 3400);
+  }
+  /* scroll reveal for sections */
+  var secs=document.querySelectorAll("section.block");
+  if(!("IntersectionObserver" in window) || RM){ Array.prototype.forEach.call(secs, function(s){ s.classList.add("in"); }); return; }
+  Array.prototype.forEach.call(secs, function(s){ s.classList.add("reveal"); });
+  var io=new IntersectionObserver(function(entries){ entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); } }); }, {threshold:.08});
+  Array.prototype.forEach.call(secs, function(s){ io.observe(s); });
+}
 function initChallenge(){
   var qEl=document.getElementById("chQ"), inp=document.getElementById("chInp"), fb=document.getElementById("chFb");
   if(!qEl||!inp) return;
@@ -1177,10 +1336,23 @@ function initChallenge(){
     else if(kind==="pct"){ var p=pick([10,20,25,50]), base=pick([40,60,80,120,200,240]); answer=p/100*base; qEl.textContent="What is "+p+"% of "+base+"?"; explain="Per cent means out of every 100: ("+p+" ÷ 100) × "+base+" = "+answer+"."; }
     else { var x=ri(4,20), y=ri(4,20), z=ri(4,20); while((x+y+z)%3!==0){ z=ri(4,20); } answer=(x+y+z)/3; qEl.textContent="What is the average of "+x+", "+y+" and "+z+"?"; explain="Add them up ("+(x+y+z)+") and share by 3: the average is "+answer+"."; }
   }
+  function spawnStars(){
+    if(window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var box=document.querySelector(".challenge"); if(!box) return;
+    for(var i=0;i<10;i++){
+      var s=document.createElement("span");
+      s.className="cel-star"; s.textContent="★";
+      s.style.left=(6+Math.random()*86)+"%";
+      s.style.fontSize=(13+Math.random()*13)+"px";
+      s.style.animationDelay=(Math.random()*0.25)+"s";
+      box.appendChild(s);
+      (function(el){ setTimeout(function(){ if(el.parentNode) el.parentNode.removeChild(el); }, 1500); })(s);
+    }
+  }
   function check(){
     var v=parseFloat(inp.value);
     if(isNaN(v)){ fb.textContent="Enter your answer in the box first, then select Check answer."; fb.className="ch-fb try"; return; }
-    if(Math.abs(v-answer)<0.001){ fb.textContent='Correct — well done. '+explain; fb.className="ch-fb good"; }
+    if(Math.abs(v-answer)<0.001){ fb.textContent='Correct — well done. '+explain; fb.className="ch-fb good"; spawnStars(); }
     else { tries++; fb.textContent = tries>=2 ? "Not quite — here is the method: "+explain+" Select “New question” to try another." : "Not quite — keep going. Hint: "+explain.split(":")[0]+(explain.indexOf(":")>=0?"… Try again, then check your answer.":""); fb.className="ch-fb try"; }
   }
   document.getElementById("chCheck").addEventListener("click", check);
@@ -1195,7 +1367,7 @@ function applySearch(q){
   var sec=document.getElementById("all-calculators"); if(sec) sec.scrollIntoView({behavior:"smooth", block:"start"});
 }
 function wireHome(){
-  initAvg("ft"); initChallenge(); renderGrid(); showCalculator("average", false);
+  initAvg("ft"); initChallenge(); initPlayground(); initHeroMotion(); renderGrid(); showCalculator("average", false);
   // Card / chip / link clicks open the tool on this same page
   document.addEventListener("click", function(ev){
     var cat=ev.target.closest("[data-catfilter]");
