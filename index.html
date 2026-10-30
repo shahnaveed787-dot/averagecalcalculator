@@ -4,14 +4,14 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="color-scheme" content="light dark" />
-<meta name="description" content="Free Average Calculator — mean, median, mode, percentage, weighted and geometric averages with the formula, step-by-step method and worked examples, plus 15 more calculators on the same homepage." />
+<meta name="description" content="Free online calculators, each on its own page with its formula, step-by-step method and a worked example — 16 calculators across 9 categories, including the Average Calculator with its full guide to mean, median, mode, percentage, weighted and geometric averages." />
 <link rel="icon" href="data:," />
-<title>Average Calculator — Mean, Median, Mode &amp; More | Numera</title>
+<title>Free Online Calculators — Formula, Steps &amp; Worked Examples | Numera</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","name":"Numera","description":"Free online calculators with formulas, steps and worked examples — all on one homepage."}
+{"@context":"https://schema.org","@type":"WebSite","name":"Numera","description":"Free online calculators with formulas, steps and worked examples — every calculator and category has its own page."}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
@@ -476,14 +476,22 @@ details.faq summary h3{display:inline;font-size:16px;font-family:var(--body);fon
   .formula-strip .track{display:inline-block;max-width:100%;overflow:hidden}
   .formula-strip .track + .track{display:none}
 }
+/* ---------- Separate calculator & category pages ---------- */
+a.btn{text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+.calc-head{padding-top:4px}
+.calc-head .pill-badge{margin-bottom:14px}
+.crumbs .sep{margin:0 7px;color:var(--line2)}
+.catcard .go-link{display:inline-block;margin-top:12px;font-weight:800;color:var(--accent);font-size:14px}
+.page-actions{display:flex;gap:10px;flex-wrap:wrap;margin:6px 0 22px}
+.empty-cat{border:1px dashed var(--line2);border-radius:var(--r-lg);padding:28px;background:var(--surface);color:var(--ink2)}
 </style>
 </head>
 <body>
 <header class="site">
   <div class="wrap nav">
-    <a class="logo" href="#top"><span class="mark">∑</span>Num<em>era</em></a>
+    <a class="logo" href="#/"><span class="mark">∑</span>Num<em>era</em></a>
     <nav id="mainnav" aria-label="Main">
-      <a href="#top">Home</a>
+      <a href="#/">Home</a>
       <a href="#all-calculators">All Calculators</a>
       <a href="#categories">Categories</a>
       <a href="#popular">Popular</a>
@@ -503,11 +511,11 @@ details.faq summary h3{display:inline;font-size:16px;font-family:var(--body);fon
   <div class="wrap">
     <div class="foot">
       <div>
-        <a class="logo" href="#top" style="margin-bottom:10px"><span class="mark">∑</span>Num<em>era</em></a>
+        <a class="logo" href="#/" style="margin-bottom:10px"><span class="mark">∑</span>Num<em>era</em></a>
         <p>Free calculators that show their working. Every tool explains its formula and method in clear, simple steps, with a worked example — so you get the answer and understand how it was reached.</p>
       </div>
-      <div><h4>Calculators</h4><a href="#all-calculators">All Calculators</a><a href="#popular">Popular Calculators</a><a href="#all-calculators">Recently Added</a><a href="#calculator-standard" data-calc="standard">Standard Calculator</a><a href="#calculator-scientific" data-calc="scientific">Scientific Calculator</a></div>
-      <div><h4>Categories</h4><a href="#categories">Math</a><a href="#categories">Finance</a><a href="#categories">Health &amp; Fitness</a><a href="#categories">Date &amp; Time</a><a href="#categories">Education</a><a href="#categories">All Categories</a></div>
+      <div><h4>Calculators</h4><a href="#all-calculators">All Calculators</a><a href="#popular">Popular Calculators</a><a href="#/calculator/average">Average Calculator</a><a href="#/calculator/percentage">Percentage Calculator</a><a href="#/calculator/standard">Standard Calculator</a><a href="#/calculator/scientific">Scientific Calculator</a><a href="#/calculator/loan">Loan Calculator</a><a href="#/calculator/bmi">BMI Calculator</a></div>
+      <div><h4>Categories</h4><a href="#/category/math">Math</a><a href="#/category/scientific">Scientific</a><a href="#/category/finance">Finance</a><a href="#/category/health">Health &amp; Fitness</a><a href="#/category/date-time">Date &amp; Time</a><a href="#/category/education">Education</a><a href="#/category/conversion">Conversion</a><a href="#/category/everyday">Everyday</a><a href="#/category/numbers">Percentage &amp; Average</a><a href="#categories">All Categories</a></div>
       <div><h4>About</h4><a href="#about">About Numera</a><a href="#about">Contact: hello@numera.example</a><a href="#about">Results are estimates — verify important figures independently.</a></div>
     </div>
     <div class="footbar"><span>© 2026 Numera. Results are estimates for guidance — verify important figures independently.</span><span>16 calculators · 9 categories · No sign-up required</span></div>
@@ -1322,9 +1330,13 @@ var gridQuery="";
 
 function cardHTML(c, idx){
   var fx=String(c.formula||"").split("·")[0].trim(); if(fx.length>52) fx=fx.slice(0,52)+"…";
-  return '<a class="card" style="--i:'+(idx||0)+'" href="#calculator-'+c.slug+'" data-calc="'+c.slug+'"><span class="ic">'+ICONS[c.icon]+'</span><h3>'+esc(c.name)+'</h3><p>'+esc(c.desc)+'</p>'
+  return '<a class="card" style="--i:'+(idx||0)+'" href="#/calculator/'+c.slug+'" aria-label="'+esc(c.name)+' page"><span class="ic">'+ICONS[c.icon]+'</span><h3>'+esc(c.name)+'</h3><p>'+esc(c.desc)+'</p>'
   +'<span class="fx"><b>ƒx</b> &nbsp;'+esc(fx)+'</span>'
-  +'<span class="meta"><span>'+catName(c.cat)+(c.isNew?' &nbsp;<span class="badge new">New</span>':"")+'</span><span class="go">Use tool ↓</span></span></a>';
+  +'<span class="meta"><span>'+catName(c.cat)+(c.isNew?' &nbsp;<span class="badge new">New</span>':"")+'</span><span class="go">Open calculator \u2192</span></span></a>';
+}
+function catCardHTML(cat, idx){
+  var n=calcsInCat(cat.slug).length;
+  return '<a class="catcard '+cat.tint+'" href="#/category/'+cat.slug+'" aria-label="'+esc(cat.name)+' page"><span class="cat-no">'+("0"+(idx+1))+'</span><span class="n">Chapter '+("0"+(idx+1))+' · '+n+' calculator'+(n===1?"":"s")+'</span><h3>'+esc(cat.name)+'</h3><p>'+esc(cat.blurb)+'</p><span class="go-link">View category \u2192</span></a>';
 }
 function searchCalcs(q){
   q=String(q||"").trim().toLowerCase(); if(!q) return CALCS.slice();
@@ -1338,28 +1350,38 @@ function filteredCalcs(){
   if(gridQuery) list=searchCalcs(gridQuery).filter(function(c){ return list.indexOf(c)>=0; });
   return list;
 }
-function calculatorDetailHTML(c){
-  return '<div class="calc-head"><h2 style="font-size:clamp(28px,3.6vw,38px);font-family:var(--disp);margin:0 0 10px">'+esc(c.name)+'</h2><p>'+esc(c.intro)+'</p></div>'
-  +'<p class="kid-note"><b>Learning tip —</b> results update as you type. Below the tool you will find the formula, a step-by-step method and a worked example, so you can check any answer by hand.</p>'
+function calcPageHTML(c){
+  var cat=catBySlug(c.cat);
+  var related=calcsInCat(c.cat).filter(function(x){ return x.slug!==c.slug; });
+  CALCS.filter(function(x){ return x.popular && x.slug!==c.slug; }).forEach(function(x){ if(related.length<4 && related.indexOf(x)<0) related.push(x); });
+  var h='<div class="wrap"><nav class="crumbs" aria-label="Breadcrumb"><a href="#/">Home</a><span class="sep">\u203a</span><a href="#/category/'+c.cat+'">'+esc(cat?cat.name:"")+'</a><span class="sep">\u203a</span><span aria-current="page">'+esc(c.name)+'</span></nav>'
+  +'<div class="calc-head"><span class="pill-badge">'+esc(catName(c.cat))+' · Calculator page</span><h1>'+esc(c.name)+'</h1><p>'+esc(c.intro)+'</p></div>'
+  +'<div class="page-actions"><a class="btn ghost sm" href="#/category/'+c.cat+'">More in '+esc(cat?cat.name:"this category")+' \u2192</a><a class="btn ghost sm" href="#all-calculators">All 16 calculators</a></div>'
+  +'<p class="kid-note"><b>Learning tip \u2014</b> results update as you type. Below the tool you will find the formula, a step-by-step method and a worked example, so you can check any answer by hand.</p>'
   +'<div class="tool" id="toolBox">'+RENDER[c.slug]()+'</div>'
   +'<div class="prose"><h2>Formula and method</h2><div class="formula">'+esc(c.formula)+'</div>'
-  +'<h3>How to use it</h3><ol>'+c.steps.map(function(s, si){ return '<li style="--d:'+si+'">'+esc(s)+'</li>'; }).join("")+'</ol>'
+  +'<h3>How to use it</h3><ol>'+c.steps.map(function(st, si){ return '<li style="--d:'+si+'">'+esc(st)+'</li>'; }).join("")+'</ol>'
   +'<h2>Worked example</h2><p><b>'+esc(c.example.q)+'</b></p><div class="formula">Answer: '+esc(c.example.a)+'</div><p>'+esc(c.example.work)+'</p>'
   +'<h2>Frequently asked questions</h2>'
   +c.faqs.map(function(f){ return '<details class="faq"><summary>'+esc(f[0])+'</summary><p>'+esc(f[1])+'</p></details>'; }).join("")
-  +'</div>';
+  +'</div></div>';
+  if(c.slug==="average") h+=guideHTML();
+  h+='<section class="block"><div class="wrap"><div class="sec-head"><div><h2>Related calculators</h2><p>More tools from the same category, plus the most popular calculators \u2014 every card opens that calculator\u2019s own page.</p></div><a class="more" href="#all-calculators">All 16 calculators</a></div><div class="grid">'
+  +related.map(cardHTML).join("")+'</div></div></section>';
+  return h;
 }
-function showCalculator(slug, scroll){
-  var c=calcBySlug(slug); if(!c||!RENDER[slug]) return;
-  activeCalc=slug;
-  if(recentUsed.indexOf(slug)<0){ recentUsed.unshift(slug); recentUsed=recentUsed.slice(0,4); }
-  var ws=document.getElementById("workspace");
-  if(!ws) return;
-  ws.innerHTML=calculatorDetailHTML(c);
-  if(INIT[slug]) INIT[slug]();
-  Array.prototype.forEach.call(document.querySelectorAll("[data-calc]"), function(el){ el.style.outline = el.getAttribute("data-calc")===slug ? "2px solid var(--accent)" : ""; });
-  var sel=document.getElementById("calcSelect"); if(sel) sel.value=slug;
-  if(scroll){ ws.scrollIntoView({behavior:"smooth", block:"start"}); }
+function catPageHTML(cat){
+  var list=calcsInCat(cat.slug);
+  var others=CATEGORIES.filter(function(x){ return x.slug!==cat.slug; });
+  var idx=CATEGORIES.indexOf(cat);
+  var h='<div class="wrap"><nav class="crumbs" aria-label="Breadcrumb"><a href="#/">Home</a><span class="sep">\u203a</span><a href="#categories">Categories</a><span class="sep">\u203a</span><span aria-current="page">'+esc(cat.name)+'</span></nav>'
+  +'<div class="calc-head"><span class="pill-badge">Category · Chapter '+("0"+(idx+1))+'</span><h1>'+esc(cat.name)+'</h1><p>'+esc(cat.blurb)+' This page lists every calculator in this category \u2014 each one opens on its own page with its formula, method and worked example.</p></div>'
+  +'<p class="kid-note"><b>'+list.length+' calculator'+(list.length===1?"":"s")+' in this category \u2014</b> pick any card below to open that calculator\u2019s own page.</p>';
+  h+= list.length ? '<div class="grid" style="margin-bottom:10px">'+list.map(cardHTML).join("")+'</div>' : '<div class="empty-cat">No calculators live in this category yet.</div>';
+  h+='</div>'
+  +'<section class="block"><div class="wrap"><div class="sec-head"><div><h2>Other categories</h2><p>Every category has its own page \u2014 jump to another chapter of the collection.</p></div><a class="more" href="#categories">All categories</a></div><div class="catgrid">'
+  +others.map(function(o){ return catCardHTML(o, CATEGORIES.indexOf(o)); }).join("")+'</div></div></section>';
+  return h;
 }
 function renderGrid(){
   var grid=document.getElementById("allGrid"); if(!grid) return;
@@ -1368,9 +1390,6 @@ function renderGrid(){
   Array.prototype.forEach.call(document.querySelectorAll(".filters button"), function(b){
     b.classList.toggle("on", (b.getAttribute("data-f")||"")===gridFilter);
   });
-  var sel=document.getElementById("calcSelect");
-  // keep workspace outline in sync
-  Array.prototype.forEach.call(grid.querySelectorAll("[data-calc]"), function(el){ el.style.outline = el.getAttribute("data-calc")===activeCalc ? "2px solid var(--accent)" : ""; });
 }
 
 function guideHTML(){
@@ -1464,7 +1483,7 @@ function guideHTML(){
   +'</div></div></section>'
   /* § 11 */
   +'<section class="block guide" id="applications"><div class="wrap"><div class="sec-head"><div><h2><span class="ch-no">§ 11</span>Real-World Applications of Averages</h2><p>Where averages earn their keep — and which type each job quietly depends on.</p></div></div><div class="prose">'
-  +'<h3>Averages in Education and Grade Calculations</h3><p>Term grades average tests and assignments; GPA is a weighted mean, weighting each grade by the course’s credit hours; class averages help teachers spot a question everyone missed. The weighting is the part students most often miss — an A in a 4-credit course moves a GPA more than an A in a 1-credit lab. Numera’s GPA Calculator in the collection below does this weighting for you.</p>'
+  +'<h3>Averages in Education and Grade Calculations</h3><p>Term grades average tests and assignments; GPA is a weighted mean, weighting each grade by the course’s credit hours; class averages help teachers spot a question everyone missed. The weighting is the part students most often miss — an A in a 4-credit course moves a GPA more than an A in a 1-credit lab. Numera’s <a href="#/calculator/gpa" style="color:var(--accent);font-weight:700">GPA Calculator</a> does this weighting for you.</p>'
   +'<h3>Averages in Business and Finance</h3><p>Average order value, average revenue per customer and average handling time run daily business decisions, while growth is averaged geometrically: an investment that rises 20% one year and falls 10% the next has a geometric mean return of √(1.20 × 0.90) − 1 = √1.08 − 1 ≈ <b>3.9% per year</b> — not the misleading 5% a simple average suggests. Average cost per unit, computed from totals, is the same totals-first thinking as average speed.</p>'
   +'<h3>Averages in Sports and Performance Analysis</h3><p>Batting averages, scoring averages and average lap times summarise a season in one number, while judged sports protect their averages with trimming — dropping the highest and lowest marks before averaging. Pace in running is a rate, so coaches build it from total distance and total time rather than averaging split paces, for the harmonic-mean reason shown earlier.</p>'
   +'<h3>Averages in Research and Statistics</h3><p>Research runs on sample means: measure a sample, average it, and use that average to estimate the whole population. The larger the sample, the steadier the estimate tends to be — and honest reporting pairs the mean with a measure of spread, because a mean without a spread can describe data that never actually occurs near it.</p>'
@@ -1504,38 +1523,37 @@ function homeView(){
   var h='<div class="hero" id="top"><div class="formula-strip" aria-hidden="true"><div class="trackwrap"><span class="track">'+FS+'</span><span class="track">'+FS+'</span></div></div><div class="wrap"><div class="hero-grid"><div>'
   +'<div class="float-symbols" aria-hidden="true"><span style="--lx:44%;--ty:64px;--fs:32px;--fc:var(--accent);--dl:0s">+</span><span style="--lx:90%;--ty:96px;--fs:30px;--fc:var(--sunny);--dl:.7s">×</span><span style="--lx:56%;--ty:400px;--fs:26px;--fc:var(--sky);--dl:1.3s">÷</span><span style="--lx:6%;--ty:470px;--fs:30px;--fc:var(--berry);--dl:.4s">π</span><span style="--lx:94%;--ty:430px;--fs:26px;--fc:var(--mint);--dl:1.8s">√</span><span style="--lx:38%;--ty:520px;--fs:24px;--fc:var(--grape);--dl:2.2s">%</span><span style="--lx:84%;--ty:250px;--fs:24px;--fc:var(--berry);--dl:1s">=</span><span style="--lx:3%;--ty:180px;--fs:24px;--fc:var(--mint);--dl:2.6s">−</span></div>'
   +'<span class="pill-badge">For curious learners of every age · Method-first calculators</span>'
-  +'<h1>Average Calculator</h1>'
+  +'<h1>Free calculators that <span class="hl">show their working</span></h1>'
   +'<p class="hero-tag">Don\'t just get the answer. <span class="hl">See how it works.</span></p>'
-  +'<p class="lede">Work out the mean, median, mode and more for any list of numbers — in Standard, Percentage, Weighted or Geometric mode — with the formula and the working shown, not just the answer. The full guide below explains every kind of average step by step, and all 15 other calculators live on this same homepage. Free, in plain language, for students, teachers and everyday use. No sign-up.</p>'
+  +'<p class="lede">Sixteen free calculators across nine categories — and every calculator and every category now has its own page, with the tool, its formula, a step-by-step method and a worked example. Start with the featured Average Calculator, browse by category, or search for the tool you need. In plain language, for students, teachers and everyday use. No sign-up.</p>'
   +'<div class="searchbox"><div class="field"><span aria-hidden="true" style="font-size:20px;color:var(--ink3)">⌕</span><input id="heroSearch" type="search" placeholder="Search calculators — try “BMI”, “loan” or “average”…" aria-label="Search calculators" autocomplete="off"><button class="go" id="heroGo" type="button">Search</button></div><div class="suggest" id="heroSuggest" role="listbox"></div></div>'
-  +'<div class="chips"><span class="lbl">Popular:</span>'+["percentage","average","bmi","loan","age"].map(function(s){ var c=calcBySlug(s); return '<a class="chip" href="#calculator-'+s+'" data-calc="'+s+'">'+esc(c.name.replace(" Calculator",""))+'</a>'; }).join("")+'</div>'
+  +'<div class="chips"><span class="lbl">Popular:</span>'+["percentage","average","bmi","loan","age"].map(function(s){ var c=calcBySlug(s); return '<a class="chip" href="#/calculator/'+s+'">'+esc(c.name.replace(" Calculator",""))+'</a>'; }).join("")+'</div>'
   +'<div class="ticker" aria-hidden="true"><span class="dot"></span><span class="live">Live</span><span id="tickTxt">18% of 240 = 43.2 — watch the Playground below do this with sliders</span></div>'
   +'<div class="statrow"><div class="stat"><b data-count="16">0</b><span>calculators, all free</span></div><div class="stat"><b data-count="9">0</b><span>clear categories</span></div><div class="stat"><b data-count="100" data-suffix="%">0</b><span>no sign-up required</span></div></div>'
   +'</div>'
-  +'<div class="hero-card"><p class="hero-card-title">Try the Average Calculator live</p><p>Enter a set of numbers — test scores work well — pick a mode, and see the result calculated instantly, with the working shown.</p>'+avgWidgetHTML("ft","85, 92, 78, 92, 64")+'<p style="margin-top:12px"><a href="#calculator-average" data-calc="average" style="color:var(--accent);font-weight:900;text-decoration:none">Use the full Average Calculator below ↓</a></p></div>'
+  +'<div class="hero-card"><p class="hero-card-title">Try the Average Calculator live</p><p>Enter a set of numbers — test scores work well — pick a mode, and see the result calculated instantly, with the working shown.</p>'+avgWidgetHTML("ft","85, 92, 78, 92, 64")+'<p style="margin-top:12px"><a href="#/calculator/average" style="color:var(--accent);font-weight:900;text-decoration:none">Open the full Average Calculator page \u2192</a></p></div>'
   +'</div></div></div>';
 
-  h+=guideHTML();
 
-  h+='<section class="block" style="padding-top:36px"><div class="wrap"><div class="playground" id="playground"><span class="pg-live">Live playground</span><h3 class="pg-title">Don\'t read about it — play with it.</h3><p class="pg-sub">Three tiny live demos. Drag a slider and watch the answer, the bars and the working update instantly — exactly how every full calculator on this page behaves. No “calculate” button needed.</p>'
+  h+='<section class="block" style="padding-top:36px"><div class="wrap"><div class="playground" id="playground"><span class="pg-live">Live playground</span><h3 class="pg-title">Don\'t read about it — play with it.</h3><p class="pg-sub">Three tiny live demos. Drag a slider and watch the answer, the bars and the working update instantly — exactly how every full calculator on its own page behaves. No “calculate” button needed.</p>'
   +'<div class="seg" role="tablist" aria-label="Playground demos"><button type="button" class="on" data-pg="avg">Test-score average</button><button type="button" data-pg="pct">Percent of a number</button><button type="button" data-pg="tri">Build a triangle</button></div>'
   +'<div class="pg-view on" id="pgView-avg"><div class="pg-grid"><div>'
   +'<div class="pg-row"><div class="pg-lab"><span>Maths score</span><span class="pg-val" id="pgAv1">80</span></div><input type="range" id="pgA1" min="0" max="100" value="80" aria-label="Maths score"><div class="pg-bar"><i id="pgAb1" style="width:80%"></i></div></div>'
   +'<div class="pg-row"><div class="pg-lab"><span>English score</span><span class="pg-val" id="pgAv2">65</span></div><input type="range" id="pgA2" min="0" max="100" value="65" aria-label="English score"><div class="pg-bar b2"><i id="pgAb2" style="width:65%"></i></div></div>'
   +'<div class="pg-row"><div class="pg-lab"><span>Science score</span><span class="pg-val" id="pgAv3">90</span></div><input type="range" id="pgA3" min="0" max="100" value="90" aria-label="Science score"><div class="pg-bar b3"><i id="pgAb3" style="width:90%"></i></div></div>'
-  +'</div><div class="pg-result"><div class="rlabel">Your average</div><div class="pg-big" id="pgAvgBig">78.3</div><div class="rsub" id="pgAvgSub">(80 + 65 + 90) ÷ 3 = <b>78.3</b></div><div class="rsub" id="pgAvgMsg" style="margin-top:8px">Strong work — keep it up.</div><div class="btnrow" style="margin-top:12px"><button type="button" class="btn ghost sm" data-calc="average">Open the full Average Calculator ↓</button></div></div></div></div>'
+  +'</div><div class="pg-result"><div class="rlabel">Your average</div><div class="pg-big" id="pgAvgBig">78.3</div><div class="rsub" id="pgAvgSub">(80 + 65 + 90) ÷ 3 = <b>78.3</b></div><div class="rsub" id="pgAvgMsg" style="margin-top:8px">Strong work — keep it up.</div><div class="btnrow" style="margin-top:12px"><a class="btn ghost sm" href="#/calculator/average">Open the full Average Calculator \u2192</a></div></div></div></div>'
   +'<div class="pg-view" id="pgView-pct"><div class="pg-grid"><div>'
   +'<div class="pg-row"><div class="pg-lab"><span>Percentage</span><span class="pg-val" id="pgPctV">18%</span></div><input type="range" id="pgPct" min="0" max="100" value="18" aria-label="Percentage"></div>'
   +'<div class="pg-row"><div class="pg-lab"><span>Of this amount</span><span class="pg-val" id="pgAmtV">240</span></div><input type="range" id="pgAmt" min="0" max="500" step="10" value="240" aria-label="Amount"><div class="pg-bar"><i id="pgPctBar" style="width:18%"></i></div><p class="hint" style="margin:6px 0 0">The bar fills with the percentage you choose.</p></div>'
-  +'</div><div class="pg-result"><div class="rlabel">Result</div><div class="pg-big" id="pgPctBig">43.2</div><div class="rsub" id="pgPctSub">(18 ÷ 100) × 240 = <b>43.2</b> — “per cent” simply means out of every 100.</div><div class="btnrow" style="margin-top:12px"><button type="button" class="btn ghost sm" data-calc="percentage">Open the full Percentage Calculator ↓</button></div></div></div></div>'
+  +'</div><div class="pg-result"><div class="rlabel">Result</div><div class="pg-big" id="pgPctBig">43.2</div><div class="rsub" id="pgPctSub">(18 ÷ 100) × 240 = <b>43.2</b> — “per cent” simply means out of every 100.</div><div class="btnrow" style="margin-top:12px"><a class="btn ghost sm" href="#/calculator/percentage">Open the full Percentage Calculator \u2192</a></div></div></div></div>'
   +'<div class="pg-view" id="pgView-tri"><div class="pg-grid"><div>'
   +'<svg viewBox="0 0 200 142" role="img" aria-label="Right-angled triangle that reshapes as you drag the sliders" style="width:100%;max-width:340px;display:block;margin:4px auto 10px"><polygon id="pgTriPoly" points="20,120 140,120 20,60" fill="var(--accent-soft)" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round"/><polyline points="20,106 34,106 34,120" fill="none" stroke="var(--ink)" stroke-width="1.6"/><text id="pgTriLA" x="80" y="137" text-anchor="middle" font-family="var(--mono)" font-size="12" fill="var(--ink2)">a = 6</text><text id="pgTriLB" x="10" y="92" text-anchor="middle" font-size="12" fill="var(--ink2)" transform="rotate(-90 10 92)">b = 8</text><text id="pgTriLC" x="88" y="82" font-size="12" fill="var(--accent)" font-weight="700">c</text></svg>'
   +'<div class="pg-row"><div class="pg-lab"><span>Side a (along the bottom)</span><span class="pg-val" id="pgTaV">6</span></div><input type="range" id="pgTa" min="1" max="12" value="6" aria-label="Side a"></div>'
   +'<div class="pg-row"><div class="pg-lab"><span>Side b (up the side)</span><span class="pg-val" id="pgTbV">8</span></div><input type="range" id="pgTb" min="1" max="12" value="8" aria-label="Side b"></div>'
-  +'</div><div class="pg-result"><div class="rlabel">Hypotenuse (longest side)</div><div class="pg-big" id="pgTriBig">10</div><div class="rsub" id="pgTriSub">Pythagoras: √(6² + 8²) = √100 = <b>10</b>. Area = (6 × 8) ÷ 2 = <b>24</b>.</div><div class="btnrow" style="margin-top:12px"><button type="button" class="btn ghost sm" data-calc="triangle">Open the full Triangle Calculator ↓</button></div></div></div></div>'
+  +'</div><div class="pg-result"><div class="rlabel">Hypotenuse (longest side)</div><div class="pg-big" id="pgTriBig">10</div><div class="rsub" id="pgTriSub">Pythagoras: √(6² + 8²) = √100 = <b>10</b>. Area = (6 × 8) ÷ 2 = <b>24</b>.</div><div class="btnrow" style="margin-top:12px"><a class="btn ghost sm" href="#/calculator/triangle">Open the full Triangle Calculator \u2192</a></div></div></div></div>'
   +'</div></div></section>';
 
-  h+='<section class="block" id="popular"><div class="wrap"><div class="sec-head"><div><h2><span class="ch-no">§ 15</span>Popular calculators</h2><p>The tools people use most — note the formula printed on every card. Select any card and the tool opens right here on this homepage, below the full collection.</p></div><a class="more" href="#all-calculators">Browse all 16 ↓</a></div><div class="grid">'
+  h+='<section class="block" id="popular"><div class="wrap"><div class="sec-head"><div><h2><span class="ch-no">§ 15</span>Popular calculators</h2><p>The tools people use most — note the formula printed on every card. Every card opens that calculator\u2019s own page \u2014 its tool, formula, method and worked example included.</p></div><a class="more" href="#all-calculators">Browse all 16 ↓</a></div><div class="grid">'
   +popular.map(cardHTML).join("")+'</div></div></section>';
 
   h+='<section class="block"><div class="wrap"><div class="sec-head"><div><h2><span class="ch-no">§ 16</span>Learn while you calculate</h2><p>Every calculator on Numera is designed to teach as it calculates, in three clear steps.</p></div></div><div class="steps3">'
@@ -1544,19 +1562,18 @@ function homeView(){
   +'<div class="step-card"><span class="num">3</span><h3>Understand the method</h3><p>Below every tool you will find the formula, a step-by-step method and a fully worked example, so the answer can be checked and understood.</p></div>'
   +'</div></div></section>';
 
-  h+='<section class="block" id="categories"><div class="wrap"><div class="sec-head"><div><h2><span class="ch-no">§ 17</span>Browse by category</h2><p>Nine chapters, one home per tool — organised the way a textbook is. Selecting a chapter filters the collection below on this same page.</p></div><a class="more" href="#all-calculators">All calculators ↓</a></div><div class="catgrid">'
-  +CATEGORIES.map(function(cat,idx){ var n=calcsInCat(cat.slug).length; return '<a class="catcard '+cat.tint+'" href="#all-calculators" data-catfilter="'+cat.slug+'"><span class="cat-no">'+("0"+(idx+1))+'</span><span class="n">Chapter '+("0"+(idx+1))+' · '+n+' calculator'+(n===1?"":"s")+'</span><h3>'+esc(cat.name)+'</h3><p>'+esc(cat.blurb)+'</p></a>'; }).join("")+'</div></div></section>';
+  h+='<section class="block" id="categories"><div class="wrap"><div class="sec-head"><div><h2><span class="ch-no">§ 17</span>Browse by category</h2><p>Nine chapters, one home per tool — organised the way a textbook is. Every chapter heading opens that category\u2019s own page, listing its calculators.</p></div><a class="more" href="#all-calculators">All calculators ↓</a></div><div class="catgrid">'
+  +CATEGORIES.map(function(cat,idx){ return catCardHTML(cat, idx); }).join("")+'</div></div></section>';
 
   h+='<section class="block"><div class="wrap"><div class="challenge"><span class="ch-badge">Practice question</span><h2>Test your understanding</h2><p>Try working this out in your head or on paper first, then check your answer. There are no scores and no timers — if you need it, a clear hint and the full method are shown.</p><div class="ch-q" id="chQ">…</div><div class="ch-row"><input class="inp" id="chInp" type="number" inputmode="decimal" placeholder="Your answer" aria-label="Your answer to the practice question"><button class="btn" id="chCheck" type="button">Check answer</button><button class="btn ghost" id="chNew" type="button">New question</button></div><div class="ch-fb" id="chFb" aria-live="polite"></div></div></div></section>';
 
-  // All calculators + workspace — everything on this one page
-  h+='<section class="block" id="all-calculators"><div class="wrap"><div class="sec-head"><div><h2><span class="ch-no">§ 18</span>All calculators</h2><p>The complete collection on this single homepage. Filter by category, search by name, then select a tool — it opens in the worksheet directly underneath.</p></div></div>'
+  // All calculators — the directory grid; every card opens its own calculator page
+  h+='<section class="block" id="all-calculators"><div class="wrap"><div class="sec-head"><div><h2><span class="ch-no">§ 18</span>All calculators</h2><p>The complete collection. Filter by category, search by name, then select a tool to open its own page.</p></div></div>'
   +'<div class="searchbox" style="margin-bottom:18px;max-width:520px"><div class="field"><span aria-hidden="true" style="color:var(--ink3)">⌕</span><input id="listSearch" type="search" placeholder="Filter calculators…" aria-label="Filter calculators"><button class="go" id="listGo" type="button">Search</button></div></div>'
   +'<div class="filters" role="group" aria-label="Filter by category"><button type="button" data-f="" class="on">All</button><button type="button" data-f="popular">Popular</button><button type="button" data-f="new">Recently added</button>'
   +CATEGORIES.map(function(cat){ return '<button type="button" data-f="cat:'+cat.slug+'">'+esc(cat.name.replace(" Calculators",""))+'</button>'; }).join("")+'</div>'
   +'<div class="grid" id="allGrid"></div>'
   +'<div style="margin-top:28px"><label class="f" for="calcSelect">Open a calculator</label><select class="inp" id="calcSelect" style="max-width:420px">'+CALCS.map(function(c){ return '<option value="'+c.slug+'">'+esc(c.name)+'</option>'; }).join("")+'</select></div>'
-  +'<div id="workspace" style="scroll-margin-top:84px"></div>'
   +'</div></section>';
 
   h+='<section class="block"><div class="wrap"><div class="sec-head"><div><h2><span class="ch-no">§ 19</span>Recently added</h2><p>The newest calculators in the collection — also available in the full list above.</p></div></div><div class="grid">'
@@ -1576,7 +1593,7 @@ function homeView(){
   +'<div><h3>Percentages are hundredths</h3><div class="formula">P% of Y = (P ÷ 100) × Y</div><p>“Per cent” means per hundred. 18% of 240 is 0.18 × 240 = 43.2 — the same move powers tips, discounts and tax.</p></div>'
   +'<div><h3>An average is a fair share</h3><div class="formula">Mean = total ÷ count</div><p>Add everything together, then share the total equally. When a few very large values pull the mean around, the median — the middle value — gives a fairer picture of “typical”.</p></div>'
   +'<div><h3>Compounding builds on itself</h3><div class="formula">A = P(1 + r)ᵗ</div><p>Interest earns interest, so growth curves upwards over time. At 7%, money roughly doubles every 10 years — the rule of 72 in action.</p></div>'
-  +'</div><p style="margin-top:20px"><a href="#calculator-percentage" data-calc="percentage" style="font-weight:900">Try the Percentage Calculator ↓</a> &nbsp;·&nbsp; <a href="#calculator-compound-interest" data-calc="compound-interest" style="font-weight:900">See compounding live ↓</a></p></div></div></section>';
+  +'</div><p style="margin-top:20px"><a href="#/calculator/percentage" style="font-weight:900">Try the Percentage Calculator \u2192</a> &nbsp;·&nbsp; <a href="#/calculator/compound-interest" style="font-weight:900">See compounding live \u2192</a></p></div></div></section>';
 
   h+='<section class="block" id="about"><div class="wrap"><div class="sec-head"><div><h2><span class="ch-no">§ 21</span>About Numera</h2><p>Numera is a free calculator suite built on one editorial rule: a calculator must show its working. Every tool publishes its formula, a step-by-step method and a worked example you can verify by hand. Results are estimates for guidance — verify important figures independently. Questions or a correction? Email <a href="mailto:hello@numera.example" style="color:var(--accent);font-weight:700">hello@numera.example</a>.</p></div></div></div></section>';
   return h;
@@ -1708,51 +1725,104 @@ function applySearch(q){
   renderGrid();
   var sec=document.getElementById("all-calculators"); if(sec) sec.scrollIntoView({behavior:"smooth", block:"start"});
 }
-function wireHome(){
-  initAvg("ft"); initChallenge(); initPlayground(); initHeroMotion(); renderGrid(); showCalculator("average", false);
-  // Card / chip / link clicks open the tool on this same page
-  document.addEventListener("click", function(ev){
-    var cat=ev.target.closest("[data-catfilter]");
-    if(cat){ ev.preventDefault(); gridFilter="cat:"+cat.getAttribute("data-catfilter"); gridQuery=""; renderGrid(); document.getElementById("all-calculators").scrollIntoView({behavior:"smooth", block:"start"}); return; }
-    var el=ev.target.closest("[data-calc]");
-    if(el){ ev.preventDefault(); showCalculator(el.getAttribute("data-calc"), true); }
-  });
-  var sel=document.getElementById("calcSelect");
-  if(sel) sel.addEventListener("change", function(){ showCalculator(this.value, true); });
-  Array.prototype.forEach.call(document.querySelectorAll(".filters button"), function(b){
-    b.addEventListener("click", function(){ gridFilter=b.getAttribute("data-f")||""; renderGrid(); });
-  });
-  var listSearch=document.getElementById("listSearch");
-  if(listSearch){
-    listSearch.addEventListener("input", function(){ gridQuery=this.value.trim(); gridFilter=""; renderGrid(); });
-    document.getElementById("listGo").addEventListener("click", function(){ gridQuery=listSearch.value.trim(); renderGrid(); });
+/* ================= Router — every calculator & category has its own page ================= */
+var currentView = "";
+var pendingQuery = "";
+var sugDocWired = false;
+function scrollToAnchor(anchor){
+  if(!anchor){ window.scrollTo(0,0); return; }
+  var el = document.getElementById(anchor);
+  if(el){ setTimeout(function(){ el.scrollIntoView({behavior:"smooth", block:"start"}); }, 60); }
+  else window.scrollTo(0,0);
+}
+function renderHome(anchor){
+  currentView = "home";
+  app.innerHTML = homeView();
+  document.title = "Free Online Calculators \u2014 Formula, Steps & Worked Examples | Numera";
+  initAvg("ft"); initChallenge(); initPlayground(); initHeroMotion(); renderGrid();
+  wireHomePage();
+  if(pendingQuery){
+    gridQuery = pendingQuery; pendingQuery = "";
+    var ls = document.getElementById("listSearch"); if(ls) ls.value = gridQuery;
+    renderGrid();
+    scrollToAnchor("all-calculators");
+    return;
   }
-  // Hero search
-  var input=document.getElementById("heroSearch"), sug=document.getElementById("heroSuggest");
+  scrollToAnchor(anchor);
+}
+function renderCalcPage(slug){
+  var c = calcBySlug(slug); if(!c || !RENDER[slug]){ renderHome(); return; }
+  currentView = "calc";
+  if(recentUsed.indexOf(slug) < 0){ recentUsed.unshift(slug); recentUsed = recentUsed.slice(0,4); }
+  app.innerHTML = calcPageHTML(c);
+  document.title = c.name + " \u2014 Formula, Steps & Worked Example | Numera";
+  if(INIT[slug]) INIT[slug]();
+  initHeroMotion();
+  window.scrollTo(0,0);
+  var main = document.getElementById("app"); if(main) main.focus({preventScroll:true});
+}
+function renderCatPage(slug){
+  var cat = catBySlug(slug); if(!cat){ renderHome(); return; }
+  currentView = "cat";
+  app.innerHTML = catPageHTML(cat);
+  document.title = cat.name + " \u2014 Every Calculator in This Category | Numera";
+  initHeroMotion();
+  window.scrollTo(0,0);
+  var main = document.getElementById("app"); if(main) main.focus({preventScroll:true});
+}
+function route(){
+  var h = location.hash || "";
+  var m = h.match(/^#\/calculator\/(.+)$/);
+  if(m && calcBySlug(m[1])){ renderCalcPage(m[1]); return; }
+  m = h.match(/^#\/category\/(.+)$/);
+  if(m && catBySlug(m[1])){ renderCatPage(m[1]); return; }
+  m = h.match(/^#calculator-(.+)$/);
+  if(m && calcBySlug(m[1])){ location.replace("#/calculator/" + m[1]); return; }
+  if(h === "" || h === "#/" || h === "#top"){
+    if(currentView !== "home") renderHome();
+    else window.scrollTo({top:0, behavior:"smooth"});
+    return;
+  }
+  var anchor = h.slice(1);
+  if(currentView === "home" && document.getElementById(anchor)){ scrollToAnchor(anchor); return; }
+  renderHome(anchor);
+}
+function wireHomePage(){
+  var sel = document.getElementById("calcSelect");
+  if(sel) sel.addEventListener("change", function(){ location.hash = "#/calculator/" + this.value; });
+  Array.prototype.forEach.call(document.querySelectorAll(".filters button"), function(b){
+    b.addEventListener("click", function(){ gridFilter = b.getAttribute("data-f") || ""; renderGrid(); });
+  });
+  var listSearch = document.getElementById("listSearch");
+  if(listSearch){
+    listSearch.addEventListener("input", function(){ gridQuery = this.value.trim(); gridFilter = ""; renderGrid(); });
+    document.getElementById("listGo").addEventListener("click", function(){ gridQuery = listSearch.value.trim(); renderGrid(); });
+  }
+  var input = document.getElementById("heroSearch"), sug = document.getElementById("heroSuggest");
   if(input && sug){
     function showSug(){
-      var q=input.value.trim();
-      var list=q? searchCalcs(q) : CALCS.filter(function(c){return c.popular;});
-      if(!list.length){ sug.innerHTML='<a href="#all-calculators"><b>No matches</b><span>Browse all ↓</span></a>'; }
-      else sug.innerHTML=list.slice(0,6).map(function(c){ return '<a href="#calculator-'+c.slug+'" data-calc="'+c.slug+'" role="option"><b>'+esc(c.name)+'</b><span>'+catName(c.cat)+'</span></a>'; }).join("");
+      var q = input.value.trim();
+      var list = q ? searchCalcs(q) : CALCS.filter(function(c){ return c.popular; });
+      if(!list.length){ sug.innerHTML = '<a href="#all-calculators"><b>No matches</b><span>Browse all \u2193</span></a>'; }
+      else sug.innerHTML = list.slice(0,6).map(function(c){ return '<a href="#/calculator/' + c.slug + '" role="option"><b>' + esc(c.name) + '</b><span>' + catName(c.cat) + '</span></a>'; }).join("");
       sug.classList.add("open");
     }
     input.addEventListener("focus", showSug);
     input.addEventListener("input", showSug);
-    input.addEventListener("keydown", function(ev){ if(ev.key==="Enter"){ applySearch(input.value.trim()); sug.classList.remove("open"); } if(ev.key==="Escape"){ sug.classList.remove("open"); } });
+    input.addEventListener("keydown", function(ev){ if(ev.key === "Enter"){ applySearch(input.value.trim()); sug.classList.remove("open"); } if(ev.key === "Escape"){ sug.classList.remove("open"); } });
     document.getElementById("heroGo").addEventListener("click", function(){ applySearch(input.value.trim()); sug.classList.remove("open"); });
-    document.addEventListener("click", function docClose(ev){ if(!ev.target.closest(".searchbox")){ sug.classList.remove("open"); } });
+    if(!sugDocWired){
+      sugDocWired = true;
+      document.addEventListener("click", function(ev){
+        if(!ev.target.closest(".searchbox")){ var sg = document.getElementById("heroSuggest"); if(sg) sg.classList.remove("open"); }
+        var sugLink = ev.target.closest("#heroSuggest a[href^='#/calculator/']");
+        if(sugLink){ var sg2 = document.getElementById("heroSuggest"); if(sg2) sg2.classList.remove("open"); }
+      });
+    }
   }
-  // If the URL hash names a calculator on this page, open it; section anchors scroll natively.
-  function fromHash(){
-    var m=location.hash.match(/^#calculator-(.+)$/);
-    if(m && calcBySlug(m[1])) showCalculator(m[1], true);
-  }
-  window.addEventListener("hashchange", fromHash);
-  fromHash();
 }
 /* nav search + theme + menu — all stay on the homepage */
-document.getElementById("navSearch").addEventListener("keydown", function(ev){ if(ev.key==="Enter"){ gridQuery=this.value.trim(); gridFilter=""; var ls=document.getElementById("listSearch"); if(ls) ls.value=gridQuery; renderGrid(); document.getElementById("all-calculators").scrollIntoView({behavior:"smooth", block:"start"}); this.value=""; } });
+document.getElementById("navSearch").addEventListener("keydown", function(ev){ if(ev.key!=="Enter") return; var q=this.value.trim(); this.value=""; if(currentView!=="home"){ pendingQuery=q; if((location.hash||"")==="#/"){ route(); } else { location.hash="#/"; } } else { gridQuery=q; gridFilter=""; var ls=document.getElementById("listSearch"); if(ls) ls.value=gridQuery; renderGrid(); var sec=document.getElementById("all-calculators"); if(sec) sec.scrollIntoView({behavior:"smooth", block:"start"}); } });
 document.getElementById("burger").addEventListener("click", function(){ var n=document.getElementById("mainnav"); var open=n.classList.toggle("open"); this.setAttribute("aria-expanded", open?"true":"false"); });
 document.getElementById("mainnav").addEventListener("click", function(){ this.classList.remove("open"); });
 document.getElementById("themeBtn").addEventListener("click", function(){
@@ -1761,9 +1831,8 @@ document.getElementById("themeBtn").addEventListener("click", function(){
   root.setAttribute("data-theme", dark?"light":"dark");
   toast(dark?"Light theme":"Dark theme");
 });
-app.innerHTML=homeView();
-document.title="Average Calculator — Mean, Median, Mode & More | Numera";
-wireHome();
+window.addEventListener("hashchange", route);
+route();
 
 </script>
 </body>
