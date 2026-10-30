@@ -483,6 +483,8 @@ a.btn{text-decoration:none;display:inline-flex;align-items:center;justify-conten
 .crumbs .sep{margin:0 7px;color:var(--line2)}
 .catcard .go-link{display:inline-block;margin-top:12px;font-weight:800;color:var(--accent);font-size:14px}
 .page-actions{display:flex;gap:10px;flex-wrap:wrap;margin:6px 0 22px}
+.teaser{background:var(--surface);border:1.5px solid var(--line2);border-radius:18px;padding:22px;display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;box-shadow:var(--shadow)}
+.teaser p{margin:0;color:var(--ink2);max-width:62ch;font-size:15.5px}
 .empty-cat{border:1px dashed var(--line2);border-radius:var(--r-lg);padding:28px;background:var(--surface);color:var(--ink2)}
 </style>
 </head>
@@ -492,9 +494,9 @@ a.btn{text-decoration:none;display:inline-flex;align-items:center;justify-conten
     <a class="logo" href="#/"><span class="mark">∑</span>Num<em>era</em></a>
     <nav id="mainnav" aria-label="Main">
       <a href="#/">Home</a>
-      <a href="#all-calculators">All Calculators</a>
+      <a href="#/all-calculators">All Calculators</a>
       <a href="#categories">Categories</a>
-      <a href="#popular">Popular</a>
+      <a href="#/popular">Popular</a>
       <a href="#about">About</a>
     </nav>
     <div class="spacer"></div>
@@ -514,7 +516,7 @@ a.btn{text-decoration:none;display:inline-flex;align-items:center;justify-conten
         <a class="logo" href="#/" style="margin-bottom:10px"><span class="mark">∑</span>Num<em>era</em></a>
         <p>Free calculators that show their working. Every tool explains its formula and method in clear, simple steps, with a worked example — so you get the answer and understand how it was reached.</p>
       </div>
-      <div><h4>Calculators</h4><a href="#all-calculators">All Calculators</a><a href="#popular">Popular Calculators</a><a href="#/calculator/average">Average Calculator</a><a href="#/calculator/percentage">Percentage Calculator</a><a href="#/calculator/standard">Standard Calculator</a><a href="#/calculator/scientific">Scientific Calculator</a><a href="#/calculator/loan">Loan Calculator</a><a href="#/calculator/bmi">BMI Calculator</a></div>
+      <div><h4>Calculators</h4><a href="#/all-calculators">All Calculators</a><a href="#/popular">Popular Calculators</a><a href="#/calculator/average">Average Calculator</a><a href="#/calculator/percentage">Percentage Calculator</a><a href="#/calculator/standard">Standard Calculator</a><a href="#/calculator/scientific">Scientific Calculator</a><a href="#/calculator/loan">Loan Calculator</a><a href="#/calculator/bmi">BMI Calculator</a></div>
       <div><h4>Categories</h4><a href="#/category/math">Math</a><a href="#/category/scientific">Scientific</a><a href="#/category/finance">Finance</a><a href="#/category/health">Health &amp; Fitness</a><a href="#/category/date-time">Date &amp; Time</a><a href="#/category/education">Education</a><a href="#/category/conversion">Conversion</a><a href="#/category/everyday">Everyday</a><a href="#/category/numbers">Percentage &amp; Average</a><a href="#categories">All Categories</a></div>
       <div><h4>About</h4><a href="#about">About Numera</a><a href="#about">Contact: hello@numera.example</a><a href="#about">Results are estimates — verify important figures independently.</a></div>
     </div>
@@ -1356,7 +1358,7 @@ function calcPageHTML(c){
   CALCS.filter(function(x){ return x.popular && x.slug!==c.slug; }).forEach(function(x){ if(related.length<4 && related.indexOf(x)<0) related.push(x); });
   var h='<div class="wrap"><nav class="crumbs" aria-label="Breadcrumb"><a href="#/">Home</a><span class="sep">\u203a</span><a href="#/category/'+c.cat+'">'+esc(cat?cat.name:"")+'</a><span class="sep">\u203a</span><span aria-current="page">'+esc(c.name)+'</span></nav>'
   +'<div class="calc-head"><span class="pill-badge">'+esc(catName(c.cat))+' · Calculator page</span><h1>'+esc(c.name)+'</h1><p>'+esc(c.intro)+'</p></div>'
-  +'<div class="page-actions"><a class="btn ghost sm" href="#/category/'+c.cat+'">More in '+esc(cat?cat.name:"this category")+' \u2192</a><a class="btn ghost sm" href="#all-calculators">All 16 calculators</a></div>'
+  +'<div class="page-actions"><a class="btn ghost sm" href="#/category/'+c.cat+'">More in '+esc(cat?cat.name:"this category")+' \u2192</a><a class="btn ghost sm" href="#/all-calculators">All 16 calculators</a></div>'
   +'<p class="kid-note"><b>Learning tip \u2014</b> results update as you type. Below the tool you will find the formula, a step-by-step method and a worked example, so you can check any answer by hand.</p>'
   +'<div class="tool" id="toolBox">'+RENDER[c.slug]()+'</div>'
   +'<div class="prose"><h2>Formula and method</h2><div class="formula">'+esc(c.formula)+'</div>'
@@ -1366,7 +1368,7 @@ function calcPageHTML(c){
   +c.faqs.map(function(f){ return '<details class="faq"><summary>'+esc(f[0])+'</summary><p>'+esc(f[1])+'</p></details>'; }).join("")
   +'</div></div>';
   if(c.slug==="average") h+=guideHTML();
-  h+='<section class="block"><div class="wrap"><div class="sec-head"><div><h2>Related calculators</h2><p>More tools from the same category, plus the most popular calculators \u2014 every card opens that calculator\u2019s own page.</p></div><a class="more" href="#all-calculators">All 16 calculators</a></div><div class="grid">'
+  h+='<section class="block"><div class="wrap"><div class="sec-head"><div><h2>Related calculators</h2><p>More tools from the same category, plus the most popular calculators \u2014 every card opens that calculator\u2019s own page.</p></div><a class="more" href="#/all-calculators">All 16 calculators</a></div><div class="grid">'
   +related.map(cardHTML).join("")+'</div></div></section>';
   return h;
 }
@@ -1516,6 +1518,59 @@ function guideHTML(){
   +'<details class="faq"><summary><h3>How Do You Calculate Average Speed?</h3></summary><p>Divide the total distance travelled by the total time taken. Over equal distances this equals the harmonic mean of the speeds: the same distance at 30 km/h and then 60 km/h gives an average speed of 40 km/h, not 45 km/h.</p></details>'
   +'</div></div></section>';
 }
+
+function allCalcsPageHTML(){
+  return '<div class="wrap"><nav class="crumbs" aria-label="Breadcrumb"><a href="#/">Home</a><span class="sep">›</span><span aria-current="page">All Calculators</span></nav>'
+  +'<div class="calc-head"><span class="pill-badge">Directory · All 16 calculators</span><h1>All Calculators</h1><p>The complete collection. Filter by category, search by name, then select a tool to open its own page \u2014 every calculator has its own page with its formula, a step-by-step method and a worked example.</p></div>'
+  +'<p class="kid-note"><b>How to browse \u2014</b> use the search box to filter by name, the buttons to filter by category, or the dropdown at the bottom to jump straight to a calculator.</p>'
+  +'<div class="searchbox" style="margin-bottom:18px;max-width:520px"><div class="field"><span aria-hidden="true" style="color:var(--ink3)">⌕</span><input id="listSearch" type="search" placeholder="Filter calculators\u2026" aria-label="Filter calculators"><button class="go" id="listGo" type="button">Search</button></div></div>'
+  +'<div class="filters" role="group" aria-label="Filter by category"><button type="button" data-f="" class="on">All</button><button type="button" data-f="popular">Popular</button><button type="button" data-f="new">Recently added</button>'
+  +CATEGORIES.map(function(cat){ return '<button type="button" data-f="cat:'+cat.slug+'">'+esc(cat.name.replace(" Calculators",""))+'</button>'; }).join("")+'</div>'
+  +'<div class="grid" id="allGrid"></div>'
+  +'<div style="margin-top:28px"><label class="f" for="calcSelect">Open a calculator</label><select class="inp" id="calcSelect" style="max-width:420px">'+CALCS.map(function(c){ return '<option value="'+c.slug+'">'+esc(c.name)+'</option>'; }).join("")+'</select></div>'
+  +'</div>';
+}
+function popularPageHTML(){
+  var popular=CALCS.filter(function(c){return c.popular;});
+  return '<div class="wrap"><nav class="crumbs" aria-label="Breadcrumb"><a href="#/">Home</a><span class="sep">›</span><span aria-current="page">Popular Calculators</span></nav>'
+  +'<div class="calc-head"><span class="pill-badge">Most used · '+popular.length+' calculators</span><h1>Popular Calculators</h1><p>The tools people use most \u2014 note the formula printed on every card. Every card opens that calculator\u2019s own page \u2014 its tool, formula, method and worked example included.</p></div>'
+  +'<div class="page-actions"><a class="btn ghost sm" href="#/all-calculators">Browse all 16 calculators \u2192</a><a class="btn ghost sm" href="#/">Back to home</a></div>'
+  +'<div class="grid">'+popular.map(cardHTML).join("")+'</div>'
+  +'</div>';
+}
+function wireAllCalcsPage(){
+  var sel=document.getElementById("calcSelect");
+  if(sel) sel.addEventListener("change", function(){ location.hash="#/calculator/"+this.value; });
+  Array.prototype.forEach.call(document.querySelectorAll(".filters button"), function(b){
+    b.addEventListener("click", function(){ gridFilter=b.getAttribute("data-f")||""; renderGrid(); });
+  });
+  var listSearch=document.getElementById("listSearch");
+  if(listSearch){
+    listSearch.addEventListener("input", function(){ gridQuery=this.value.trim(); gridFilter=""; renderGrid(); });
+    var goBtn=document.getElementById("listGo");
+    if(goBtn) goBtn.addEventListener("click", function(){ gridQuery=listSearch.value.trim(); renderGrid(); });
+  }
+}
+function renderAllCalcsPage(){
+  currentView="all-calcs";
+  if(pendingQuery){ gridQuery=pendingQuery; pendingQuery=""; gridFilter=""; }
+  app.innerHTML=allCalcsPageHTML();
+  document.title="All Calculators \u2014 All 16 Free Calculators | Numera";
+  var ls=document.getElementById("listSearch"); if(ls && gridQuery) ls.value=gridQuery;
+  renderGrid();
+  wireAllCalcsPage();
+  initHeroMotion();
+  window.scrollTo(0,0);
+  var main=document.getElementById("app"); if(main) main.focus({preventScroll:true});
+}
+function renderPopularPage(){
+  currentView="popular";
+  app.innerHTML=popularPageHTML();
+  document.title="Popular Calculators \u2014 The Most-Used Free Calculators | Numera";
+  initHeroMotion();
+  window.scrollTo(0,0);
+  var main=document.getElementById("app"); if(main) main.focus({preventScroll:true});
+}
 function homeView(){
   var popular=CALCS.filter(function(c){return c.popular;});
   var fresh=CALCS.filter(function(c){return c.isNew;});
@@ -1553,8 +1608,7 @@ function homeView(){
   +'</div><div class="pg-result"><div class="rlabel">Hypotenuse (longest side)</div><div class="pg-big" id="pgTriBig">10</div><div class="rsub" id="pgTriSub">Pythagoras: √(6² + 8²) = √100 = <b>10</b>. Area = (6 × 8) ÷ 2 = <b>24</b>.</div><div class="btnrow" style="margin-top:12px"><a class="btn ghost sm" href="#/calculator/triangle">Open the full Triangle Calculator \u2192</a></div></div></div></div>'
   +'</div></div></section>';
 
-  h+='<section class="block" id="popular"><div class="wrap"><div class="sec-head"><div><h2><span class="ch-no">§ 15</span>Popular calculators</h2><p>The tools people use most — note the formula printed on every card. Every card opens that calculator\u2019s own page \u2014 its tool, formula, method and worked example included.</p></div><a class="more" href="#all-calculators">Browse all 16 ↓</a></div><div class="grid">'
-  +popular.map(cardHTML).join("")+'</div></div></section>';
+  h+='<section class="block"><div class="wrap"><div class="sec-head"><div><h2><span class="ch-no">§ 15</span>Popular calculators</h2><p>The tools people use most \u2014 note the formula printed on every card. The full popular list now lives on its own page.</p></div><a class="more" href="#/popular">View popular \u2192</a></div><div class="teaser"><p>Average, Percentage, BMI, Loan, Age and the other most-used tools \u2014 every card opens that calculator\u2019s own page, with its tool, formula, method and worked example.</p><a class="btn" href="#/popular">Open the Popular page \u2192</a></div></div></section>';
 
   h+='<section class="block"><div class="wrap"><div class="sec-head"><div><h2><span class="ch-no">§ 16</span>Learn while you calculate</h2><p>Every calculator on Numera is designed to teach as it calculates, in three clear steps.</p></div></div><div class="steps3">'
   +'<div class="step-card"><span class="num">1</span><h3>Enter your numbers</h3><p>Large, clearly labelled fields and buttons that are easy to read and tap, with sensible starter values so you can see a real result straight away.</p></div>'
@@ -1562,19 +1616,13 @@ function homeView(){
   +'<div class="step-card"><span class="num">3</span><h3>Understand the method</h3><p>Below every tool you will find the formula, a step-by-step method and a fully worked example, so the answer can be checked and understood.</p></div>'
   +'</div></div></section>';
 
-  h+='<section class="block" id="categories"><div class="wrap"><div class="sec-head"><div><h2><span class="ch-no">§ 17</span>Browse by category</h2><p>Nine chapters, one home per tool — organised the way a textbook is. Every chapter heading opens that category\u2019s own page, listing its calculators.</p></div><a class="more" href="#all-calculators">All calculators ↓</a></div><div class="catgrid">'
+  h+='<section class="block" id="categories"><div class="wrap"><div class="sec-head"><div><h2><span class="ch-no">§ 17</span>Browse by category</h2><p>Nine chapters, one home per tool — organised the way a textbook is. Every chapter heading opens that category\u2019s own page, listing its calculators.</p></div><a class="more" href="#/all-calculators">All calculators ↓</a></div><div class="catgrid">'
   +CATEGORIES.map(function(cat,idx){ return catCardHTML(cat, idx); }).join("")+'</div></div></section>';
 
   h+='<section class="block"><div class="wrap"><div class="challenge"><span class="ch-badge">Practice question</span><h2>Test your understanding</h2><p>Try working this out in your head or on paper first, then check your answer. There are no scores and no timers — if you need it, a clear hint and the full method are shown.</p><div class="ch-q" id="chQ">…</div><div class="ch-row"><input class="inp" id="chInp" type="number" inputmode="decimal" placeholder="Your answer" aria-label="Your answer to the practice question"><button class="btn" id="chCheck" type="button">Check answer</button><button class="btn ghost" id="chNew" type="button">New question</button></div><div class="ch-fb" id="chFb" aria-live="polite"></div></div></div></section>';
 
-  // All calculators — the directory grid; every card opens its own calculator page
-  h+='<section class="block" id="all-calculators"><div class="wrap"><div class="sec-head"><div><h2><span class="ch-no">§ 18</span>All calculators</h2><p>The complete collection. Filter by category, search by name, then select a tool to open its own page.</p></div></div>'
-  +'<div class="searchbox" style="margin-bottom:18px;max-width:520px"><div class="field"><span aria-hidden="true" style="color:var(--ink3)">⌕</span><input id="listSearch" type="search" placeholder="Filter calculators…" aria-label="Filter calculators"><button class="go" id="listGo" type="button">Search</button></div></div>'
-  +'<div class="filters" role="group" aria-label="Filter by category"><button type="button" data-f="" class="on">All</button><button type="button" data-f="popular">Popular</button><button type="button" data-f="new">Recently added</button>'
-  +CATEGORIES.map(function(cat){ return '<button type="button" data-f="cat:'+cat.slug+'">'+esc(cat.name.replace(" Calculators",""))+'</button>'; }).join("")+'</div>'
-  +'<div class="grid" id="allGrid"></div>'
-  +'<div style="margin-top:28px"><label class="f" for="calcSelect">Open a calculator</label><select class="inp" id="calcSelect" style="max-width:420px">'+CALCS.map(function(c){ return '<option value="'+c.slug+'">'+esc(c.name)+'</option>'; }).join("")+'</select></div>'
-  +'</div></section>';
+  // All calculators — teaser on the homepage; the full directory lives on its own page
+  h+='<section class="block"><div class="wrap"><div class="sec-head"><div><h2><span class="ch-no">§ 18</span>All calculators</h2><p>The complete collection \u2014 all 16 calculators in one directory. The full list, with search and category filters, now lives on its own page.</p></div><a class="more" href="#/all-calculators">View all 16 \u2192</a></div><div class="teaser"><p>Filter by category, search by name, or jump straight to a tool from the dropdown \u2014 on the All Calculators page.</p><a class="btn" href="#/all-calculators">Open All Calculators \u2192</a></div></div></section>';
 
   h+='<section class="block"><div class="wrap"><div class="sec-head"><div><h2><span class="ch-no">§ 19</span>Recently added</h2><p>The newest calculators in the collection — also available in the full list above.</p></div></div><div class="grid">'
   +fresh.map(cardHTML).join("")+'</div></div></section>';
@@ -1720,10 +1768,15 @@ function initChallenge(){
   newQ();
 }
 function applySearch(q){
-  gridQuery=q||""; gridFilter="";
-  var ls=document.getElementById("listSearch"); if(ls) ls.value=gridQuery;
-  renderGrid();
-  var sec=document.getElementById("all-calculators"); if(sec) sec.scrollIntoView({behavior:"smooth", block:"start"});
+  q=(q||"").trim(); gridFilter="";
+  if(currentView==="all-calcs"){
+    gridQuery=q;
+    var ls=document.getElementById("listSearch"); if(ls) ls.value=gridQuery;
+    renderGrid();
+    return;
+  }
+  pendingQuery=q;
+  if((location.hash||"")==="#/all-calculators"){ route(); } else { location.hash="#/all-calculators"; }
 }
 /* ================= Router — every calculator & category has its own page ================= */
 var currentView = "";
@@ -1739,15 +1792,8 @@ function renderHome(anchor){
   currentView = "home";
   app.innerHTML = homeView();
   document.title = "Free Online Calculators \u2014 Formula, Steps & Worked Examples | Numera";
-  initAvg("ft"); initChallenge(); initPlayground(); initHeroMotion(); renderGrid();
+  initAvg("ft"); initChallenge(); initPlayground(); initHeroMotion();
   wireHomePage();
-  if(pendingQuery){
-    gridQuery = pendingQuery; pendingQuery = "";
-    var ls = document.getElementById("listSearch"); if(ls) ls.value = gridQuery;
-    renderGrid();
-    scrollToAnchor("all-calculators");
-    return;
-  }
   scrollToAnchor(anchor);
 }
 function renderCalcPage(slug){
@@ -1772,6 +1818,10 @@ function renderCatPage(slug){
 }
 function route(){
   var h = location.hash || "";
+  if(h === "#/all-calculators"){ renderAllCalcsPage(); return; }
+  if(h === "#/popular"){ renderPopularPage(); return; }
+  if(h === "#all-calculators"){ location.replace("#/all-calculators"); return; }
+  if(h === "#popular"){ location.replace("#/popular"); return; }
   var m = h.match(/^#\/calculator\/(.+)$/);
   if(m && calcBySlug(m[1])){ renderCalcPage(m[1]); return; }
   m = h.match(/^#\/category\/(.+)$/);
@@ -1803,7 +1853,7 @@ function wireHomePage(){
     function showSug(){
       var q = input.value.trim();
       var list = q ? searchCalcs(q) : CALCS.filter(function(c){ return c.popular; });
-      if(!list.length){ sug.innerHTML = '<a href="#all-calculators"><b>No matches</b><span>Browse all \u2193</span></a>'; }
+      if(!list.length){ sug.innerHTML = '<a href="#/all-calculators"><b>No matches</b><span>Browse all \u2193</span></a>'; }
       else sug.innerHTML = list.slice(0,6).map(function(c){ return '<a href="#/calculator/' + c.slug + '" role="option"><b>' + esc(c.name) + '</b><span>' + catName(c.cat) + '</span></a>'; }).join("");
       sug.classList.add("open");
     }
@@ -1822,7 +1872,7 @@ function wireHomePage(){
   }
 }
 /* nav search + theme + menu — all stay on the homepage */
-document.getElementById("navSearch").addEventListener("keydown", function(ev){ if(ev.key!=="Enter") return; var q=this.value.trim(); this.value=""; if(currentView!=="home"){ pendingQuery=q; if((location.hash||"")==="#/"){ route(); } else { location.hash="#/"; } } else { gridQuery=q; gridFilter=""; var ls=document.getElementById("listSearch"); if(ls) ls.value=gridQuery; renderGrid(); var sec=document.getElementById("all-calculators"); if(sec) sec.scrollIntoView({behavior:"smooth", block:"start"}); } });
+document.getElementById("navSearch").addEventListener("keydown", function(ev){ if(ev.key!=="Enter") return; var q=this.value.trim(); this.value=""; applySearch(q); });
 document.getElementById("burger").addEventListener("click", function(){ var n=document.getElementById("mainnav"); var open=n.classList.toggle("open"); this.setAttribute("aria-expanded", open?"true":"false"); });
 document.getElementById("mainnav").addEventListener("click", function(){ this.classList.remove("open"); });
 document.getElementById("themeBtn").addEventListener("click", function(){
