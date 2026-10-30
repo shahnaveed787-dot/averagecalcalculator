@@ -486,6 +486,13 @@ a.btn{text-decoration:none;display:inline-flex;align-items:center;justify-conten
 .teaser{background:var(--surface);border:1.5px solid var(--line2);border-radius:18px;padding:22px;display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;box-shadow:var(--shadow)}
 .teaser p{margin:0;color:var(--ink2);max-width:62ch;font-size:15.5px}
 .empty-cat{border:1px dashed var(--line2);border-radius:var(--r-lg);padding:28px;background:var(--surface);color:var(--ink2)}
+.name-list{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.name-list li{background:var(--surface);border:1px solid var(--line2);border-radius:999px;padding:8px 14px;font-weight:700;font-size:14.5px;color:var(--ink)}
+.name-list-plain{margin:0;padding-left:22px;color:var(--ink2);font-size:16px;line-height:1.7}
+.name-list-plain li{font-weight:600;color:var(--ink)}
+.text-link-row{margin-top:16px}
+.text-link-row a{color:var(--accent);font-weight:800;text-decoration:none}
+.text-link-row a:hover{text-decoration:underline}
 </style>
 </head>
 <body>
@@ -1374,7 +1381,7 @@ function calcPageHTML(c){
 }
 function categoriesPageHTML(){
   var h='<div class="wrap"><nav class="crumbs" aria-label="Breadcrumb"><a href="#/">Home</a><span class="sep">\u203a</span><span aria-current="page">Categories</span></nav>'
-  +'<div class="calc-head"><span class="pill-badge">Categories \u00b7 All 9 on one page</span><h1>Categories</h1><p>All nine categories together on this single page. Every category below shows its description and all of its calculators; each calculator card opens that calculator\u2019s own page.</p></div>'
+  +'<div class="calc-head"><span class="pill-badge">Categories \u00b7 All 9 on one page</span><h1>Categories</h1><p>All nine categories together on this single page. Every category below shows its description and lists its calculators by name. The full calculator cards live only on the All Calculators page.</p></div>'
   +'<p class="kid-note"><b>How this page works \u2014</b> use the jump buttons to go straight to a category on this page, or scroll through all nine categories in order.</p>'
   +'<div class="filters" role="group" aria-label="Jump to a category on this page">'
   +CATEGORIES.map(function(cat){ return '<button type="button" data-jump-cat="'+cat.slug+'">'+esc(cat.name.replace(" Calculators",""))+'</button>'; }).join("")+'</div>'
@@ -1382,7 +1389,7 @@ function categoriesPageHTML(){
   CATEGORIES.forEach(function(cat, idx){
     var list=calcsInCat(cat.slug);
     h+='<section class="block" id="cat-'+cat.slug+'"><div class="wrap"><div class="sec-head"><div><h2><span class="ch-no">\u00a7 '+("0"+(idx+1))+'</span>'+esc(cat.name)+'</h2><p>'+esc(cat.blurb)+' \u2014 '+list.length+' calculator'+(list.length===1?"":"s")+' in this category.</p></div><a class="more" href="#/all-calculators">All calculators</a></div>'
-    +(list.length ? '<div class="grid">'+list.map(cardHTML).join("")+'</div>' : '<div class="empty-cat">No calculators live in this category yet.</div>')
+    +(list.length ? '<ul class="name-list">'+list.map(function(c){ return '<li>'+esc(c.name)+'</li>'; }).join("")+'</ul><p class="text-link-row"><a href="#/all-calculators">See these calculators on the All Calculators page \u2192</a></p>' : '<div class="empty-cat">No calculators live in this category yet.</div>')
     +'</div></section>';
   });
   h+='<section class="block"><div class="wrap"><div class="teaser"><p>Looking for the full list instead? All 16 calculators, with search and category filters, live on the All Calculators page.</p><a class="btn" href="#/all-calculators">Open All Calculators \u2192</a></div></div></section>';
@@ -1553,9 +1560,10 @@ function allCalcsPageHTML(){
 function popularPageHTML(){
   var popular=CALCS.filter(function(c){return c.popular;});
   return '<div class="wrap"><nav class="crumbs" aria-label="Breadcrumb"><a href="#/">Home</a><span class="sep">›</span><span aria-current="page">Popular Calculators</span></nav>'
-  +'<div class="calc-head"><span class="pill-badge">Most used · '+popular.length+' calculators</span><h1>Popular Calculators</h1><p>The tools people use most \u2014 note the formula printed on every card. Every card opens that calculator\u2019s own page \u2014 its tool, formula, method and worked example included.</p></div>'
+  +'<div class="calc-head"><span class="pill-badge">Most used · '+popular.length+' calculators</span><h1>Popular Calculators</h1><p>The tools people use most, listed by name below. The full calculator cards live only on the All Calculators page \u2014 head there to open any of these tools, with its formula, method and worked example.</p></div>'
   +'<div class="page-actions"><a class="btn ghost sm" href="#/all-calculators">Browse all 16 calculators \u2192</a><a class="btn ghost sm" href="#/">Back to home</a></div>'
-  +'<div class="grid">'+popular.map(cardHTML).join("")+'</div>'
+  +'<ul class="name-list-plain">'+popular.map(function(c){ return '<li>'+esc(c.name)+'</li>'; }).join("")+'</ul>'
+  +'<p class="text-link-row"><a href="#/all-calculators">Open these calculators on the All Calculators page \u2192</a></p>'
   +'</div>';
 }
 function wireAllCalcsPage(){
