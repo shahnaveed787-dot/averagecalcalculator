@@ -514,6 +514,15 @@ a.btn{text-decoration:none;display:inline-flex;align-items:center;justify-conten
 @media(max-width:820px){
   .landscape-tool{grid-template-columns:1fr}
 }
+/* ---------- Average tool in the above-fold area ----------
+   The hero is ordered H1 first, then the Average Calculator tool card, then
+   the rest of the intro (tagline, lede, search, popular chips, ticker, stat
+   row) below the tool — so the tool is on screen the moment the page loads,
+   with no scrolling, on desktop and phone alike. The tighter hero top
+   padding and grid gap keep the whole heading-plus-tool block inside the
+   first viewport. */
+.hero-grid{padding-top:22px;gap:24px}
+.hero-rest{min-width:0}
 </style>
 </head>
 <body>
@@ -1630,6 +1639,9 @@ function homeView(){
   +'<div class="float-symbols" aria-hidden="true"><span style="--lx:44%;--ty:64px;--fs:32px;--fc:var(--accent);--dl:0s">+</span><span style="--lx:90%;--ty:96px;--fs:30px;--fc:var(--sunny);--dl:.7s">×</span><span style="--lx:56%;--ty:400px;--fs:26px;--fc:var(--sky);--dl:1.3s">÷</span><span style="--lx:6%;--ty:470px;--fs:30px;--fc:var(--berry);--dl:.4s">π</span><span style="--lx:94%;--ty:430px;--fs:26px;--fc:var(--mint);--dl:1.8s">√</span><span style="--lx:38%;--ty:520px;--fs:24px;--fc:var(--grape);--dl:2.2s">%</span><span style="--lx:84%;--ty:250px;--fs:24px;--fc:var(--berry);--dl:1s">=</span><span style="--lx:3%;--ty:180px;--fs:24px;--fc:var(--mint);--dl:2.6s">−</span></div>'
   +'<span class="pill-badge">Numera\'s main calculator · Free · No sign-up</span>'
   +'<h1><span class="hl">Average Calculator</span></h1>'
+  +'</div>'
+  +'<div class="hero-card"><p class="hero-card-title">Try the Average Calculator live</p><p>Enter a set of numbers — test scores work well — pick a mode, and see the result calculated instantly, with the working shown.</p>'+avgWidgetHTML("ft","85, 92, 78, 92, 64")+'<p style="margin-top:12px"><a href="#how-to-use" style="color:var(--accent);font-weight:900;text-decoration:none">Read the full Average Calculator guide below \u2193</a></p></div>'
+  +'<div class="hero-rest">'
   +'<p class="hero-tag">Don\'t just get the answer. <span class="hl">See how it works.</span></p>'
   +'<p class="lede">Enter any list of numbers and get the mean, median, mode, range, sum and standard deviation instantly — in Standard, Percentage, Weighted or Geometric mode, with the working shown. The full Average Calculator guide is right below the tool. The full Percentage Calculator lives on this homepage too, right below the Average Calculator. Numera\'s 14 other calculators, each on its own page with its formula, method and worked example, live in the directory. In plain language, for students, teachers and everyday use.</p>'
   +'<div class="searchbox"><div class="field"><span aria-hidden="true" style="font-size:20px;color:var(--ink3)">⌕</span><input id="heroSearch" type="search" placeholder="Search calculators — try “BMI”, “loan” or “average”…" aria-label="Search calculators" autocomplete="off"><button class="go" id="heroGo" type="button">Search</button></div><div class="suggest" id="heroSuggest" role="listbox"></div></div>'
@@ -1637,7 +1649,6 @@ function homeView(){
   +'<div class="ticker" aria-hidden="true"><span class="dot"></span><span class="live">Live</span><span id="tickTxt">18% of 240 = 43.2 — watch the Playground below do this with sliders</span></div>'
   +'<div class="statrow"><div class="stat"><b data-count="16">0</b><span>calculators, all free</span></div><div class="stat"><b data-count="8">0</b><span>clear categories</span></div><div class="stat"><b data-count="100" data-suffix="%">0</b><span>no sign-up required</span></div></div>'
   +'</div>'
-  +'<div class="hero-card"><p class="hero-card-title">Try the Average Calculator live</p><p>Enter a set of numbers — test scores work well — pick a mode, and see the result calculated instantly, with the working shown.</p>'+avgWidgetHTML("ft","85, 92, 78, 92, 64")+'<p style="margin-top:12px"><a href="#how-to-use" style="color:var(--accent);font-weight:900;text-decoration:none">Read the full Average Calculator guide below \u2193</a></p></div>'
   +'</div></div></div>';
 
   h+=averageDetailHTML();
