@@ -548,7 +548,7 @@ a.btn{text-decoration:none;display:inline-flex;align-items:center;justify-conten
       <div><h4>Categories</h4><a href="#/categories">Categories — all on one page</a><a href="#/categories" data-cat-link="math">Math</a><a href="#/categories" data-cat-link="scientific">Scientific</a><a href="#/categories" data-cat-link="finance">Finance</a><a href="#/categories" data-cat-link="health">Health &amp; Fitness</a><a href="#/categories" data-cat-link="date-time">Date &amp; Time</a><a href="#/categories" data-cat-link="education">Education</a><a href="#/categories" data-cat-link="conversion">Conversion</a><a href="#/categories" data-cat-link="everyday">Everyday</a></div>
       <div><h4>About</h4><a href="#about">About Numera</a><a href="#about">Contact: hello@numera.example</a><a href="#about">Results are estimates — verify important figures independently.</a></div>
     </div>
-    <div class="footbar"><span>© 2026 Numera. Results are estimates for guidance — verify important figures independently.</span><span>16 calculators · 8 categories · No sign-up required</span></div>
+    <div class="footbar"><span>© 2026 Numera. Results are estimates for guidance — verify important figures independently.</span><span>15 calculators · 8 categories · No sign-up required</span></div>
   </div>
 </footer>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -935,29 +935,6 @@ INIT.standard = function(){ initKeypad(false); };
 RENDER.scientific = function(){ return '<div style="max-width:560px">'+keypadHTML(true)+'</div><p class="hint" style="margin-top:12px">Tip: functions wrap your entry — tap sin, then a number, then ). Factorial (n!) needs a whole number. Division by zero, log of a negative and √ of a negative return an error, never a fake value.</p>'; };
 INIT.scientific = function(){ initKeypad(true); };
 
-RENDER.percentage = function(){
-  return '<div class="seg" role="tablist" aria-label="Percentage question"><button type="button" class="on" data-m="0">What is X% of Y?</button><button type="button" data-m="1">X is what % of Y?</button><button type="button" data-m="2">% change</button></div>'
-  +'<div class="row2"><div><label class="f" id="pctL1" for="pctA">Percentage (X)</label><input class="inp" id="pctA" type="number" inputmode="decimal" value="18"></div>'
-  +'<div><label class="f" id="pctL2" for="pctB">Number (Y)</label><input class="inp" id="pctB" type="number" inputmode="decimal" value="240"></div></div>'
-  +'<div class="err" id="pctErr" role="alert"></div>'
-  +'<div class="result" id="pctRes" aria-live="polite"></div>';
-};
-INIT.percentage = function(){
-  var mode=0, labels=[["Percentage (X)","Number (Y)"],["Part (X)","Whole (Y)"],["From (old value)","To (new value)"]];
-  function go(){
-    var a=num("pctA"), b=num("pctB"), err=document.getElementById("pctErr"), res=document.getElementById("pctRes");
-    function fail(m){ err.textContent=m; err.classList.add("show"); res.innerHTML='<div class="rlabel">Result</div><div class="rbig">—</div>'; }
-    if(isNaN(a)||isNaN(b)) return fail("Enter both numbers to calculate.");
-    err.classList.remove("show");
-    if(mode===0){ var v=a/100*b; res.innerHTML='<div class="rlabel">Result</div><div class="rbig">'+fmt(v,4)+'</div><div class="rsub">'+fmt(a,4)+'% of '+fmt(b,4)+' is <b>'+fmt(v,4)+'</b>. Formula: ('+fmt(a,4)+' ÷ 100) × '+fmt(b,4)+'.</div><div class="btnrow" style="margin-top:12px"><button type="button" class="btn ghost sm" id="pctCopy">Copy result</button></div>'; }
-    else if(mode===1){ if(b===0) return fail("The whole (Y) can't be zero — that would be division by zero."); var p=a/b*100; res.innerHTML='<div class="rlabel">Result</div><div class="rbig">'+fmt(p,4)+'%</div><div class="rsub">'+fmt(a,4)+' is <b>'+fmt(p,4)+'%</b> of '+fmt(b,4)+'. Formula: ('+fmt(a,4)+' ÷ '+fmt(b,4)+') × 100.</div><div class="btnrow" style="margin-top:12px"><button type="button" class="btn ghost sm" id="pctCopy">Copy result</button></div>'; }
-    else { if(a===0) return fail("Percentage change from zero is undefined — any move from 0 is not a meaningful %."); var c=(b-a)/Math.abs(a)*100; var dir=c>0?"increase":(c<0?"decrease":"no change"); res.innerHTML='<div class="rlabel">Result</div><div class="rbig">'+(c>0?"+":"")+fmt(c,4)+'%</div><div class="rsub">From '+fmt(a,4)+' to '+fmt(b,4)+' is a <b>'+fmt(Math.abs(c),4)+'% '+dir+'</b>. Formula: (('+fmt(b,4)+' − '+fmt(a,4)+') ÷ '+fmt(Math.abs(a),4)+') × 100.</div><div class="btnrow" style="margin-top:12px"><button type="button" class="btn ghost sm" id="pctCopy">Copy result</button></div>'; }
-    var cp=document.getElementById("pctCopy"); if(cp) cp.addEventListener("click", function(){ copyText(res.querySelector(".rbig").textContent, "Result"); });
-  }
-  Array.prototype.forEach.call(document.querySelectorAll("[data-m]"), function(btn){ btn.addEventListener("click", function(){ mode=Number(btn.getAttribute("data-m")); Array.prototype.forEach.call(document.querySelectorAll("[data-m]"), function(x){x.classList.remove("on");}); btn.classList.add("on"); document.getElementById("pctL1").textContent=labels[mode][0]; document.getElementById("pctL2").textContent=labels[mode][1]; go(); }); });
-  ["pctA","pctB"].forEach(function(id){ document.getElementById(id).addEventListener("input", go); });
-  go();
-};
 
 RENDER.fraction = function(){
   function fr(p){ return '<div class="row2"><div><label class="f" for="'+p+'N">Numerator</label><input class="inp" id="'+p+'N" type="number" value="'+(p==="f1"?"3":"2")+'"></div><div><label class="f" for="'+p+'D">Denominator</label><input class="inp" id="'+p+'D" type="number" value="'+(p==="f1"?"4":"3")+'"></div></div>'; }
@@ -1427,28 +1404,9 @@ function renderGrid(){
   });
 }
 
-function averageDetailHTML(){
-  return '<section class="block"><div class="wrap"><div class="prose">'
-  +'<h2>Formula and method</h2><div class="formula">Mean = (sum of values) ÷ (count of values) · Median = middle value when sorted</div>'
-  +'<h3>How to use it</h3><ol><li style="--d:0">Enter your numbers in any order, separated by commas or spaces.</li><li style="--d:1">Results update instantly as you type.</li><li style="--d:2">Read the breakdown: the median tells you the typical value even when a few outliers drag the mean around.</li></ol>'
-  +'<h2>Worked example</h2><p><b>Average of 4, 8, 15, 16, 23, 42</b></p><div class="formula">Answer: Mean 18 · Median 15.5</div><p>Sum = 108, count = 6, so the mean is 108 ÷ 6 = 18. Sorted, the middle pair is 15 and 16, so the median is 15.5.</p>'
-  +'</div></div></section>';
-}
-function pctHomeHTML(){
-  return '<section class="block" id="percentage-calculator"><div class="wrap">'
-  +'<div class="sec-head"><div><h2>Percentage Calculator</h2><p>Percentages come in three flavours and mixing them up is the most common number mistake people make. Pick the question you\'re actually asking and Numera shows the formula it used.</p></div></div>'
-  +'<p class="kid-note"><b>Learning tip \u2014</b> results update as you type. Below the tool you will find the formula, a step-by-step method and a worked example, so you can check any answer by hand.</p>'
-  +'<div class="tool" id="pctToolBox">'+RENDER.percentage()+'</div>'
-  +'<div class="prose"><h2>Formula and method</h2><div class="formula">Part = (P ÷ 100) × Whole · P% = (Part ÷ Whole) × 100 · Change = ((New − Old) ÷ Old) × 100</div>'
-  +'<h3>How to use it</h3><ol><li style="--d:0">Choose your question from the three tabs.</li><li style="--d:1">Enter the two numbers.</li><li style="--d:2">Read the answer plus the plain-English sentence underneath — it restates the result so you can sanity-check it.</li></ol>'
-  +'<h2>Worked example</h2><p><b>What is 18% of 240?</b></p><div class="formula">Answer: 43.2</div><p>(18 ÷ 100) × 240 = 0.18 × 240 = 43.2.</p>'
-  +'</div></div></section>';
-}
 function guideHTML(){
   return ''
   +'<section class="block guide" id="how-to-use"><div class="wrap"><div class="prose">'
-  +'<p>An average calculator takes a list of numbers and returns one value that stands for the whole list. You type or paste your numbers, and the calculator adds them up and divides by how many there are. This guide shows you how that works by hand, so you can check any result, pick the right kind of average for your situation, and avoid the mistakes that cause wrong answers.</p>'
-  +'<p>You will learn the average formula, how the mean differs from the median and mode, how to find a weighted average, how to average percentages, decimals, fractions, and negative numbers, how to handle outliers, and how to do the same calculations in a spreadsheet.</p>'
   +'<h2>Free Online Average Calculator</h2>'
   +'<h3>How to use the average calculator</h3>'
   +'<h4>Step 1: Enter or paste your numbers</h4>'
@@ -1467,7 +1425,7 @@ function guideHTML(){
   +'<li><strong>Minimum, maximum and range.</strong> The range display shows both endpoints, for example "28 (64 to 92)", so the smallest value, the largest value, and the range are all visible.</li>'
   +'<li><strong>Working shown as sum divided by count.</strong> The tool shows the sum and the count behind the mean, for example "Sum 411 / count 5" for the default list 85, 92, 78, 92, 64, which gives 82.2. Note that the tool shows this working inline; it does not produce a separate step-by-step breakdown panel.</li>'
   +'</ul>'
-  +'<p>The page also has a separate Percentage tool with three question types: "What is X% of Y?", "X is what % of Y?", and "% change". Fourteen other calculators (including standard, scientific, fraction, ratio, BMI, age, date, GPA, loan, compound-interest, tip, discount, unit-converter, and triangle) live on the All Calculators page, which also has its own search box.</p>'
+  +'<p>Fourteen other calculators (including standard, scientific, fraction, ratio, BMI, age, date, GPA, loan, compound-interest, tip, discount, unit-converter, and triangle) live on the All Calculators page, which also has its own search box.</p>'
   +'<h2>What is an average calculator?</h2>'
   +'<p>An average calculator is an online tool that finds the arithmetic mean of a group of numbers. The arithmetic mean is the sum of the values divided by the number of values. In everyday American English, "average" almost always means this number.</p>'
   +'<p>People use an average calculator for test scores, monthly expenses, product ratings, sales figures, sports stats, and any list where they want one typical value. Doing the math by hand is easy for three or four numbers. For a long list, a calculator saves time and avoids addition errors.</p>'
@@ -1738,7 +1696,7 @@ function guideHTML(){
   +'<details class="faq"><summary><h3>How do you calculate an average in Google Sheets?</h3></summary><p>Use =AVERAGE(A1:A5) for the mean, =AVERAGE.WEIGHTED(A1:A3,B1:B3) for a weighted average, =MEDIAN(A1:A5) for the median, and =MODE.SNGL(A1:A5) for the mode.</p></details>'
   +'<details class="faq"><summary><h3>Why does my spreadsheet average differ from the calculator?</h3></summary><p>Usually because of blanks versus zeros. Spreadsheets ignore blanks and text but count zeros. If your sheet has a zero where the calculator\'s list has a blank (or the other way around), the counts differ and so do the results. Check that both lists contain exactly the same values, with zeros only where a real zero belongs.</p></details>'
   +'<h2>Related calculators on this site</h2>'
-  +'<p>The Average tool on this page handles mean, median, mode, range, sum, count, and population standard deviation, with Standard, Percentage, Weighted, and Geometric modes. Related tools that exist on this site are the Percentage tool (on this page, with three question types), the GPA Calculator page, and the All Calculators page, which lists all 14 other calculators with their own search box. Weighted, geometric, and percentage calculations are modes of the Average tool, and standard deviation is a result it shows, not separate calculator pages. There is no standalone harmonic-mean calculator on this site, and no running-average mode, so those calculations are covered in this article for hand use.</p>'
+  +'<p>The Average tool on this page handles mean, median, mode, range, sum, count, and population standard deviation, with Standard, Percentage, Weighted, and Geometric modes. Related tools that exist on this site are the GPA Calculator page and the All Calculators page, which lists all 14 other calculators with their own search box. Weighted, geometric, and percentage calculations are modes of the Average tool, and standard deviation is a result it shows, not separate calculator pages. There is no standalone harmonic-mean calculator on this site, and no running-average mode, so those calculations are covered in this article for hand use.</p>'
   +'<h2>Sources and references</h2>'
   +'<ul>'
   +'<li>OpenStax, Introductory Statistics: mean, median, and mode definitions and the outlier discussion.</li>'
@@ -1812,14 +1770,8 @@ function homeView(){
   +'<h1><span class="hl">Average Calculator:</span> Calculate Mean, Median, Mode and Weighted Average</h1>'
   +'</div>'
   +'<div class="hero-card"><p class="hero-card-title">Try the Average Calculator live</p><p>Enter a set of numbers — test scores work well — pick a mode, and see the result calculated instantly, with the working shown.</p>'+avgWidgetHTML("ft","85, 92, 78, 92, 64")+'<p style="margin-top:12px"><a href="#how-to-use" style="color:var(--accent);font-weight:900;text-decoration:none">Read the full Average Calculator guide below \u2193</a></p></div>'
-  +'<div class="hero-rest">'
-  +'<p class="hero-tag">Don\'t just get the answer. <span class="hl">See how it works.</span></p>'
-  +'<p class="lede">Enter any list of numbers and get the mean, median, mode, range, sum and standard deviation instantly — in Standard, Percentage, Weighted or Geometric mode, with the working shown. The full Average Calculator guide is right below the tool. The full Percentage Calculator lives on this homepage too, right below the Average Calculator. Numera\'s 14 other calculators, each on its own page with its formula, method and worked example, live in the directory. In plain language, for students, teachers and everyday use.</p>'
-  +'</div>'
   +'</div></div></div>';
 
-  h+=averageDetailHTML();
-  h+=pctHomeHTML();
   h+=guideHTML();
 
   h+='<section class="block" style="padding-top:36px"><div class="wrap"><div class="playground" id="playground"><span class="pg-live">Live playground</span><h3 class="pg-title">Don\'t read about it — play with it.</h3><p class="pg-sub">Three tiny live demos. Drag a slider and watch the answer, the bars and the working update instantly — exactly how every full calculator on its own page behaves. No “calculate” button needed.</p>'
@@ -2015,7 +1967,7 @@ function renderHome(anchor){
   currentView = "home";
   app.innerHTML = homeView();
   document.title = "Average Calculator \u2014 Free Mean, Median & Mode Calculator | Numera";
-  initAvg("ft"); if(INIT.percentage) INIT.percentage(); initChallenge(); initPlayground(); initHeroMotion();
+  initAvg("ft"); initChallenge(); initPlayground(); initHeroMotion();
   wireHomePage();
   scrollToAnchor(anchor);
 }
