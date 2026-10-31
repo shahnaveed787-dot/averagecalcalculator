@@ -570,13 +570,6 @@ section.guide{padding-bottom:44px}
   .guide table.plain tbody td{padding:9px 7px}
   .guide .formula{font-size:13.5px;padding:16px 12px}
 }
-/* ---------- Hero H2 banner (homepage hero only) ----------
-   Matches the article H2 banner exactly: green tint background, thick
-   left accent bar, green bold text, same padding and radius. */
-.hero .hero-free-h2{font-size:clamp(27px,3.4vw,34px);line-height:1.16;font-weight:700;color:var(--green);margin:0 0 19px;padding:15px 19px;background:var(--green-soft);border-left:7px solid var(--green);border-bottom:2px solid var(--green);border-radius:10px}
-@media(max-width:700px){
-  .hero .hero-free-h2{font-size:25px;margin:0 0 16px;padding:13px 15px}
-}
 </style>
 </head>
 <body>
@@ -1816,7 +1809,7 @@ function homeView(){
   var FS='<span><b>Mean</b> = total ÷ count</span><span><b>BMI</b> = kg ÷ m²</span><span><b>a² + b²</b> = c²</span><span><b>% of Y</b> = (P ÷ 100) × Y</span><span><b>A</b> = P(1 + r)ᵗ</span><span><b>sin 30°</b> = 0.5</span>';
   var h='<div class="hero" id="top"><div class="formula-strip" aria-hidden="true"><div class="trackwrap"><span class="track">'+FS+'</span><span class="track">'+FS+'</span></div></div><div class="wrap"><div class="hero-grid"><div>'
   +'<div class="float-symbols" aria-hidden="true"><span style="--lx:44%;--ty:64px;--fs:32px;--fc:var(--accent);--dl:0s">+</span><span style="--lx:90%;--ty:96px;--fs:30px;--fc:var(--sunny);--dl:.7s">×</span><span style="--lx:56%;--ty:400px;--fs:26px;--fc:var(--sky);--dl:1.3s">÷</span><span style="--lx:6%;--ty:470px;--fs:30px;--fc:var(--berry);--dl:.4s">π</span><span style="--lx:94%;--ty:430px;--fs:26px;--fc:var(--mint);--dl:1.8s">√</span><span style="--lx:38%;--ty:520px;--fs:24px;--fc:var(--grape);--dl:2.2s">%</span><span style="--lx:84%;--ty:250px;--fs:24px;--fc:var(--berry);--dl:1s">=</span><span style="--lx:3%;--ty:180px;--fs:24px;--fc:var(--mint);--dl:2.6s">−</span></div>'
-  +'<h2 class="hero-free-h2">Free Online Average Calculator</h2>'
+  +'<span class="pill-badge">Average Calculator\'s main calculator · Free · No sign-up</span>'
   +'<h1><span class="hl">Average Calculator:</span> Calculate Mean, Median, Mode and Weighted Average</h1>'
   +'</div>'
   +'<div class="hero-card"><p class="hero-card-title">Try the Average Calculator live</p><p>Enter a set of numbers — test scores work well — pick a mode, and see the result calculated instantly, with the working shown.</p>'+avgWidgetHTML("ft","85, 92, 78, 92, 64")+'<p style="margin-top:12px"><a href="#how-to-use" style="color:var(--accent);font-weight:900;text-decoration:none">Read the full Average Calculator guide below \u2193</a></p></div>'
