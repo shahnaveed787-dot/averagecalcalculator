@@ -1698,16 +1698,6 @@ function guideHTML(){
   +'<details class="faq"><summary><h2>How do you calculate an average in Excel?</h2></summary><p>Use =AVERAGE(A1:A5) for the numbers in cells A1 through A5. Use =AVERAGEIF(A1:A5,"&lt;&gt;0") to exclude zeros, =MEDIAN(A1:A5) for the median, and =MODE.SNGL(A1:A5) for the mode.</p></details>'
   +'<details class="faq"><summary><h2>How do you calculate an average in Google Sheets?</h2></summary><p>Use =AVERAGE(A1:A5) for the mean, =AVERAGE.WEIGHTED(A1:A3,B1:B3) for a weighted average, =MEDIAN(A1:A5) for the median, and =MODE.SNGL(A1:A5) for the mode.</p></details>'
   +'<details class="faq"><summary><h2>Why does my spreadsheet average differ from the calculator?</h2></summary><p>Usually because of blanks versus zeros: spreadsheets ignore blanks and text but count zeros. If your sheet has a zero where the calculator\'s list has a blank (or the other way around), the counts differ and so do the results.</p></details>'
-  +'<h2>Related calculators on this site</h2>'
-  +'<p>The Average tool on this page handles mean, median, mode, range, sum, count, and population standard deviation, with Standard, Percentage, Weighted, and Geometric modes. The related tools that exist on this site are the GPA Calculator page and the All Calculators page, which lists all 14 other calculators. Weighted, geometric, and percentage calculations are modes of the Average tool, and standard deviation is a result it shows, not separate pages. There is no standalone harmonic-mean calculator and no running-average mode, so those calculations are covered in this article for hand use.</p>'
-  +'<h2>Sources and references</h2>'
-  +'<ul>'
-  +'<li>OpenStax, Introductory Statistics: mean, median, and mode definitions and the outlier discussion.</li>'
-  +'<li>NIST/SEMATECH e-Handbook of Statistical Methods: median resists outliers and is the preferred summary for skewed data.</li>'
-  +'<li>Duke University: geometric and harmonic mean definitions, and the inequality harmonic mean &lt;= geometric mean &lt;= arithmetic mean for positive values.</li>'
-  +'<li>MathWords: weighted average definition.</li>'
-  +'<li>Microsoft Learn: Excel AVERAGE ignores blank cells and text and counts zeros; AVERAGEIF, SUMPRODUCT, and MODE.SNGL behavior.</li>'
-  +'</ul>'
   +'</div></div></section>';
 }
 function allCalcsPageHTML(){
@@ -1777,55 +1767,6 @@ function homeView(){
 
   h+=guideHTML();
 
-  h+='<section class="block" style="padding-top:36px"><div class="wrap"><div class="playground" id="playground"><span class="pg-live">Live playground</span><h3 class="pg-title">Don\'t read about it — play with it.</h3><p class="pg-sub">Three tiny live demos. Drag a slider and watch the answer, the bars and the working update instantly — exactly how every full calculator on its own page behaves. No “calculate” button needed.</p>'
-  +'<div class="seg" role="tablist" aria-label="Playground demos"><button type="button" class="on" data-pg="avg">Test-score average</button><button type="button" data-pg="pct">Percent of a number</button><button type="button" data-pg="tri">Build a triangle</button></div>'
-  +'<div class="pg-view on" id="pgView-avg"><div class="pg-grid"><div>'
-  +'<div class="pg-row"><div class="pg-lab"><span>Maths score</span><span class="pg-val" id="pgAv1">80</span></div><input type="range" id="pgA1" min="0" max="100" value="80" aria-label="Maths score"><div class="pg-bar"><i id="pgAb1" style="width:80%"></i></div></div>'
-  +'<div class="pg-row"><div class="pg-lab"><span>English score</span><span class="pg-val" id="pgAv2">65</span></div><input type="range" id="pgA2" min="0" max="100" value="65" aria-label="English score"><div class="pg-bar b2"><i id="pgAb2" style="width:65%"></i></div></div>'
-  +'<div class="pg-row"><div class="pg-lab"><span>Science score</span><span class="pg-val" id="pgAv3">90</span></div><input type="range" id="pgA3" min="0" max="100" value="90" aria-label="Science score"><div class="pg-bar b3"><i id="pgAb3" style="width:90%"></i></div></div>'
-  +'</div><div class="pg-result"><div class="rlabel">Your average</div><div class="pg-big" id="pgAvgBig">78.3</div><div class="rsub" id="pgAvgSub">(80 + 65 + 90) ÷ 3 = <b>78.3</b></div><div class="rsub" id="pgAvgMsg" style="margin-top:8px">Strong work — keep it up.</div><div class="btnrow" style="margin-top:12px"><a class="btn ghost sm" href="#how-to-use">Open the Average Calculator guide \u2192</a></div></div></div></div>'
-  +'<div class="pg-view" id="pgView-pct"><div class="pg-grid"><div>'
-  +'<div class="pg-row"><div class="pg-lab"><span>Percentage</span><span class="pg-val" id="pgPctV">18%</span></div><input type="range" id="pgPct" min="0" max="100" value="18" aria-label="Percentage"></div>'
-  +'<div class="pg-row"><div class="pg-lab"><span>Of this amount</span><span class="pg-val" id="pgAmtV">240</span></div><input type="range" id="pgAmt" min="0" max="500" step="10" value="240" aria-label="Amount"><div class="pg-bar"><i id="pgPctBar" style="width:18%"></i></div><p class="hint" style="margin:6px 0 0">The bar fills with the percentage you choose.</p></div>'
-  +'</div><div class="pg-result"><div class="rlabel">Result</div><div class="pg-big" id="pgPctBig">43.2</div><div class="rsub" id="pgPctSub">(18 ÷ 100) × 240 = <b>43.2</b> — “per cent” simply means out of every 100.</div><div class="btnrow" style="margin-top:12px"><a class="btn ghost sm" href="#percentage-calculator">Open the full Percentage Calculator \u2192</a></div></div></div></div>'
-  +'<div class="pg-view" id="pgView-tri"><div class="pg-grid"><div>'
-  +'<svg viewBox="0 0 200 142" role="img" aria-label="Right-angled triangle that reshapes as you drag the sliders" style="width:100%;max-width:340px;display:block;margin:4px auto 10px"><polygon id="pgTriPoly" points="20,120 140,120 20,60" fill="var(--accent-soft)" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round"/><polyline points="20,106 34,106 34,120" fill="none" stroke="var(--ink)" stroke-width="1.6"/><text id="pgTriLA" x="80" y="137" text-anchor="middle" font-family="var(--mono)" font-size="12" fill="var(--ink2)">a = 6</text><text id="pgTriLB" x="10" y="92" text-anchor="middle" font-size="12" fill="var(--ink2)" transform="rotate(-90 10 92)">b = 8</text><text id="pgTriLC" x="88" y="82" font-size="12" fill="var(--accent)" font-weight="700">c</text></svg>'
-  +'<div class="pg-row"><div class="pg-lab"><span>Side a (along the bottom)</span><span class="pg-val" id="pgTaV">6</span></div><input type="range" id="pgTa" min="1" max="12" value="6" aria-label="Side a"></div>'
-  +'<div class="pg-row"><div class="pg-lab"><span>Side b (up the side)</span><span class="pg-val" id="pgTbV">8</span></div><input type="range" id="pgTb" min="1" max="12" value="8" aria-label="Side b"></div>'
-  +'</div><div class="pg-result"><div class="rlabel">Hypotenuse (longest side)</div><div class="pg-big" id="pgTriBig">10</div><div class="rsub" id="pgTriSub">Pythagoras: √(6² + 8²) = √100 = <b>10</b>. Area = (6 × 8) ÷ 2 = <b>24</b>.</div><div class="btnrow" style="margin-top:12px"><a class="btn ghost sm" href="#/calculator/triangle">Open the full Triangle Calculator \u2192</a></div></div></div></div>'
-  +'</div></div></section>';
-
-
-  h+='<section class="block"><div class="wrap"><div class="sec-head"><div><h2><span class="ch-no">§ 16</span>Learn while you calculate</h2><p>Every calculator on Numera is designed to teach as it calculates, in three clear steps.</p></div></div><div class="steps3">'
-  +'<div class="step-card"><span class="num">1</span><h3>Enter your numbers</h3><p>Large, clearly labelled fields and buttons that are easy to read and tap, with sensible starter values so you can see a real result straight away.</p></div>'
-  +'<div class="step-card"><span class="num">2</span><h3>Get an instant result</h3><p>Results update the moment you type. If a value cannot be used, you get a clear message explaining what to change — never a misleading number.</p></div>'
-  +'<div class="step-card"><span class="num">3</span><h3>Understand the method</h3><p>Below every tool you will find the formula, a step-by-step method and a fully worked example, so the answer can be checked and understood.</p></div>'
-  +'</div></div></section>';
-
-
-  h+='<section class="block"><div class="wrap"><div class="challenge"><span class="ch-badge">Practice question</span><h2>Test your understanding</h2><p>Try working this out in your head or on paper first, then check your answer. There are no scores and no timers — if you need it, a clear hint and the full method are shown.</p><div class="ch-q" id="chQ">…</div><div class="ch-row"><input class="inp" id="chInp" type="number" inputmode="decimal" placeholder="Your answer" aria-label="Your answer to the practice question"><button class="btn" id="chCheck" type="button">Check answer</button><button class="btn ghost" id="chNew" type="button">New question</button></div><div class="ch-fb" id="chFb" aria-live="polite"></div></div></div></section>';
-
-
-  h+='<section class="block"><div class="wrap"><div class="sec-head"><div><h2><span class="ch-no">§ 19</span>Recently added</h2><p>The newest calculators in the collection — also available in the full list above.</p></div></div><div class="grid">'
-  +fresh.map(cardHTML).join("")+'</div></div></section>';
-
-  h+='<section class="block"><div class="wrap"><div class="sec-head"><div><h2><span class="ch-no">§ 20</span>Why use Numera</h2><p>Built to be clear, accurate and easy to use — for students, teachers, professionals and everyday tasks.</p></div></div><div class="whygrid">'
-  +[["bolt","Instant, accurate results","Calculations update the moment you type, with validation built in. Divide by zero, for example, and the tool explains why it is not allowed instead of inventing a number."],
-    ["free","Free, with no sign-up","Every calculator is free to use, with no account, no email request and nothing to install."],
-    ["book","The method, not just the answer","Each tool shows the formula, a step-by-step method and a worked example, so students and teachers can check how a result was reached — not just the result itself."],
-    ["phone","Designed for every screen","Keypads and fields are large, clear and touch-friendly, and the same tools work well on a phone, tablet, laptop or classroom screen."],
-    ["check","Clear about estimates","Where a result is an estimate — a loan payment, projected growth or a BMI category — it is stated in plain language with the assumptions used."],
-    ["sci","Keyboard and accessibility friendly","The standard and scientific calculators work fully from a real keyboard, and every control is clearly labelled for assistive technology."]]
-    .map(function(w){ return '<div class="why"><span class="ic">'+ICONS[w[0]]+'</span><h3>'+w[1]+'</h3><p>'+w[2]+'</p></div>'; }).join("")
-  +'</div></div></section>';
-
-  h+='<section class="block"><div class="wrap"><div class="learn"><h2>Key concepts behind everyday calculations</h2><p>Most everyday calculations rest on three core ideas. They are the same principles our calculators use, explained clearly with every tool.</p><div class="learn-grid">'
-  +'<div><h3>Percentages are hundredths</h3><div class="formula">P% of Y = (P ÷ 100) × Y</div><p>“Per cent” means per hundred. 18% of 240 is 0.18 × 240 = 43.2 — the same move powers tips, discounts and tax.</p></div>'
-  +'<div><h3>An average is a fair share</h3><div class="formula">Mean = total ÷ count</div><p>Add everything together, then share the total equally. When a few very large values pull the mean around, the median — the middle value — gives a fairer picture of “typical”.</p></div>'
-  +'<div><h3>Compounding builds on itself</h3><div class="formula">A = P(1 + r)ᵗ</div><p>Interest earns interest, so growth curves upwards over time. At 7%, money roughly doubles every 10 years — the rule of 72 in action.</p></div>'
-  +'</div><p style="margin-top:20px"><a href="#percentage-calculator" style="font-weight:900">Try the Percentage Calculator \u2192</a> &nbsp;·&nbsp; <a href="#/calculator/compound-interest" style="font-weight:900">See compounding live \u2192</a></p></div></div></section>';
-
-  h+='<section class="block" id="about"><div class="wrap"><div class="sec-head"><div><h2><span class="ch-no">§ 21</span>About Numera</h2><p>Numera is a free calculator suite built on one editorial rule: a calculator must show its working. Every tool publishes its formula, a step-by-step method and a worked example you can verify by hand. Results are estimates for guidance — verify important figures independently. Questions or a correction? Email <a href="mailto:hello@numera.example" style="color:var(--accent);font-weight:700">hello@numera.example</a>.</p></div></div></div></section>';
   return h;
 }
 function pgTween(el, to, dp){
