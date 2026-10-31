@@ -521,6 +521,55 @@ a.btn{text-decoration:none;display:inline-flex;align-items:center;justify-conten
 .hero-rest{min-width:0;text-align:center}
 .hero-rest .hero-tag{text-align:center}
 .hero .hero-rest p.lede{margin-left:auto;margin-right:auto;text-align:center}
+/* ---------- Guide content restyle (style only, homepage article) ----------
+   Scoped to .guide so the tool, header, footer, navigation and every other
+   page keep their existing look. No text changes: headings keep the green
+   H2 and golden H3 colors, presented with stronger size, weight, spacing
+   and accent bars inside one designed reading panel. */
+section.guide{padding-bottom:44px}
+.guide .prose{max-width:880px;margin:6px auto 10px;background:var(--surface);border:1px solid var(--line2);border-top:6px solid var(--green);border-radius:20px;padding:clamp(24px,4.5vw,52px);box-shadow:var(--shadow-lg);overflow:hidden}
+.guide .prose>p{font-size:17px;line-height:1.78;color:var(--ink2);margin:0 0 17px}
+.guide .prose>p strong,.guide .prose li strong{color:var(--ink);font-weight:800}
+.guide .prose>h2{font-size:clamp(27px,3.4vw,34px);line-height:1.16;font-weight:700;color:var(--green);margin:54px 0 19px;padding:15px 19px;background:var(--green-soft);border-left:7px solid var(--green);border-bottom:2px solid var(--green);border-radius:10px}
+.guide .prose>h2:first-child{margin-top:0}
+.guide .prose>h3{font-size:20.5px;line-height:1.3;font-weight:700;color:#9A7B00;margin:34px 0 12px;padding:11px 15px;background:var(--sun-soft);border-left:5px solid var(--sun);border-radius:8px}
+@media (prefers-color-scheme:dark){.guide .prose>h3{color:#E8C15A}}
+:root[data-theme="dark"] .guide .prose>h3{color:#E8C15A}
+:root[data-theme="light"] .guide .prose>h3{color:#9A7B00}
+.guide .prose>h3+p{border-left:3px solid var(--line2);padding-left:17px;margin-left:7px}
+.guide .prose ul,.guide .prose ol{background:var(--surface2);border:1px solid var(--line);border-radius:14px;padding:16px 22px 16px 42px;margin:18px 0 24px}
+.guide .prose li{font-size:16.5px;line-height:1.7;color:var(--ink2);padding:8px 0;border-bottom:1px dashed var(--line2)}
+.guide .prose li:last-child{border-bottom:0}
+.guide .prose li::marker{color:var(--green);font-weight:700}
+.guide .prose li strong{color:var(--green-deep)}
+.guide .formula{font-size:16.5px;text-align:center;white-space:normal;padding:20px 22px;margin:18px 0 24px;border:2px solid var(--ink);border-left:8px solid var(--sun);border-radius:14px;box-shadow:0 10px 24px rgba(19,26,42,.16)}
+.guide .prose code{background:var(--sun-soft);border-color:var(--line2);font-weight:600;overflow-wrap:anywhere}
+.guide table.plain{font-size:15px;margin:20px 0 26px;border:1.5px solid var(--ink);border-radius:14px;box-shadow:var(--shadow)}
+.guide table.plain thead th{background:var(--ink);color:#F5F1E8;font-family:var(--mono);font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:13px 14px;border-bottom:0}
+.guide table.plain tbody td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+.guide table.plain tbody tr:nth-child(even){background:var(--surface2)}
+.guide table.plain tbody tr:last-child td{border-bottom:0}
+.guide details.faq{border:1.5px solid var(--line2);border-radius:14px;margin-bottom:12px;box-shadow:0 3px 10px rgba(19,26,42,.05);overflow:hidden;transition:border-color .18s ease}
+.guide details.faq:hover{border-color:var(--green)}
+.guide details.faq summary{padding:18px 20px;background:var(--surface2)}
+.guide details.faq[open ] summary{background:var(--green-soft)}
+.guide details.faq summary::after{background:var(--green);color:#fff;width:27px;height:27px;border-radius:50%;text-align:center;line-height:27px;font-size:18px}
+.guide details.faq summary h2{font-size:16.5px}
+.guide details.faq p{padding:2px 20px 19px;font-size:16px;line-height:1.72}
+@media(max-width:700px){
+  .guide .prose{padding:24px 18px;border-radius:16px}
+  .guide .prose>h2{font-size:25px;margin:42px 0 16px;padding:13px 15px}
+  .guide .prose>h3{font-size:18.5px;margin:28px 0 10px}
+  .guide .prose>p{font-size:16.5px;line-height:1.74}
+  .guide .prose ul,.guide .prose ol{padding:12px 16px 12px 34px}
+  .guide details.faq summary{padding:16px}
+  .guide details.faq p{padding:2px 16px 17px}
+}
+@media(max-width:560px){
+  .guide table.plain thead th{font-size:10.5px;letter-spacing:.03em;padding:10px 7px}
+  .guide table.plain tbody td{padding:9px 7px}
+  .guide .formula{font-size:13.5px;padding:16px 12px}
+}
 </style>
 </head>
 <body>
