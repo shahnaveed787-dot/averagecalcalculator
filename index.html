@@ -1429,6 +1429,8 @@ function categoriesPageHTML(){
     var list=calcsInCat(cat.slug);
     h+='<section class="block" id="cat-'+cat.slug+'"><div class="wrap"><div class="sec-head"><div><h2><span class="ch-no">\u00a7 '+("0"+(idx+1))+'</span>'+esc(cat.name)+'</h2><p>'+esc(cat.blurb)+' \u2014 '+list.length+' calculator'+(list.length===1?"":"s")+' in this category.</p></div><a class="more" href="#/all-calculators">All calculators</a></div>'
     +(list.length ? '<ul class="name-list">'+list.map(function(c){ return '<li>'+esc(c.name)+'</li>'; }).join("")+'</ul><p class="text-link-row"><a href="#/all-calculators">See these calculators on the All Calculators page \u2192</a></p>' : '<div class="empty-cat">No calculators live in this category yet.</div>')
+    +(cat.slug==="health" ? '<h2>Average calculations for sports analysts</h2><p>A player scoring 24, 18, 30, 22, and 26 points over five games has a sum of 120 and a count of 5, so the average is 24 points per game. The same method covers batting averages, goals per game, and points per game.</p>' : '')
+    +(cat.slug==="finance" ? '<h2>Average calculations for businesses</h2><p>A shop with six months of sales of 420, 380, 510, 460, 390, and 440 (in thousands) has a sum of 2,600 and a count of 6, so the average monthly sales are 433.33. Businesses use an average calculator for inventory planning, typical order sizes, and monthly performance.</p><h2>Average calculations for financial analysts</h2><p>An analyst tracking a portfolio with four monthly values of 10,200, 10,500, 10,800, and 10,400 has a sum of 41,900 and a count of 4, so the average monthly value is 10,475. For growth over time, analysts use the geometric mean rather than the simple mean, as explained above.</p>' : '')
     +(cat.slug==="education" ? '<h2>Average calculations for students</h2><p>A student with quiz scores of 88, 92, 76, and 95 has a sum of 351 and a count of 4, so the average is 87.75. Students also use an average calculator to find the score needed on a final exam, as shown in the missing-number section.</p><h2>Average calculations for teachers</h2><p>A teacher with class scores of 78, 85, 92, 67, 88, and 76 has a sum of 486 and a count of 6, so the class average is 81. Teachers compare class averages across terms and check the median when a few extreme scores distort the mean.</p><h2>Average calculations for researchers</h2><p>A researcher with five lab measurements of 12.4, 12.7, 12.5, 12.6, and 12.8 has a sum of 63.0 and a count of 5, so the average measurement is 12.6. Researchers report the mean with the standard deviation, so readers see both the typical value and the spread.</p>' : '')
     +'</div></section>';
   });
@@ -1684,12 +1686,6 @@ function guideHTML(){
   +'<h3>Free to use, with no sign-up</h3>'
   +'<p>The average calculator on this site is free to use and requires no account or sign-up.</p>'
   +'<h2>Average calculator applications</h2>'
-  +'<h2>Average calculations for businesses</h2>'
-  +'<p>A shop with six months of sales of 420, 380, 510, 460, 390, and 440 (in thousands) has a sum of 2,600 and a count of 6, so the average monthly sales are 433.33. Businesses use an average calculator for inventory planning, typical order sizes, and monthly performance.</p>'
-  +'<h2>Average calculations for financial analysts</h2>'
-  +'<p>An analyst tracking a portfolio with four monthly values of 10,200, 10,500, 10,800, and 10,400 has a sum of 41,900 and a count of 4, so the average monthly value is 10,475. For growth over time, analysts use the geometric mean rather than the simple mean, as explained above.</p>'
-  +'<h2>Average calculations for sports analysts</h2>'
-  +'<p>A player scoring 24, 18, 30, 22, and 26 points over five games has a sum of 120 and a count of 5, so the average is 24 points per game. The same method covers batting averages, goals per game, and points per game.</p>'
   +'<h2>Average calculations in everyday life</h2>'
   +'<p>A household with six months of grocery bills of 120, 135, 118, 142, 125, and 130 has a sum of 770 and a count of 6, so the average monthly grocery bill is 128.33. The average calculator uses the same method for fuel costs, utility bills, and daily step counts.</p>'
   +'<h2>Common average calculation mistakes</h2>'
