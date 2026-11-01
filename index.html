@@ -1582,6 +1582,8 @@ function guideHTML(){
   +'<p>A running average, also called a moving average, comes in two related forms. The cumulative running mean is the mean of all values so far: after 10 it is 10, after 10 and 12 it is (10 + 12) / 2 = 11, and after 10, 12, and 14 it is (10 + 12 + 14) / 3 = 12. The sliding-window form averages only the most recent window of values, dropping the oldest as each new value arrives.</p>'
   +'<p><strong>Running average example</strong></p>'
   +'<p>Take daily sales of 10, 12, 14, 16, 18. The 3-day sliding-window averages are (10 + 12 + 14) / 3 = 12, (12 + 14 + 16) / 3 = 14, and (14 + 16 + 18) / 3 = 16. Each window drops the oldest value and adds the newest, which smooths day-to-day jumps and reveals the trend. The average calculator has no running-average mode, so this section shows how to work one by hand.</p>'
+  +'<h2>Average percentage calculator</h2>'
+  +'<p>An average percentage calculator finds the average of a set of percentages, such as test scores, survey results, or growth rates. When every percentage shares the same total, the percentage average is simple: add the percentages and divide by the count.</p>'
   +'<h2>Other averages worth knowing</h2>'
   +'<h3>Trimmed mean</h3>'
   +'<p>A trimmed mean drops an equal percentage from both tails of the sorted list, then averages what remains: a compromise between the mean, which uses everything, and the median, which uses only position. For 1, 2, 3, 4, 5, 6, 7, 8, 9, 100, a 10% trimmed mean drops 1 and 100 and averages 2 through 9: 44 / 8 = 5.5. The plain mean of the same list is 14.5 and the median is 5.5.</p>'
